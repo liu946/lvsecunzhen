@@ -1,4 +1,5 @@
-var field = [
+var field = {
+    "XiangZhen" : 
     {
         "classname": "乡镇数据",
         "childfield": [
@@ -271,94 +272,76 @@ var field = [
                 "field": "ZiRanBaoHuQuYongDiMianJi"
             }
         ],
-        "class": "XiangZhenShuJu"
+        "class": "XiangZhen"
     },
+    "ZhenQuHuoCunZhuang":
     {
-        "classname": "镇区数据",
+        "classname": "镇区或村庄数据",
         "childfield": [
             {
-                "fieldname": "镇区编号",
+                "fieldname": "所属乡镇",
+                "onlyincity":false;
                 "datatype": "int(11)",
-                "field": "ZhenQuBianHao"
+                "field": "SuoShuXiangZhen"
             },
             {
-                "fieldname": "镇区名称",
+                "fieldname": "镇区或村庄编号",
+                "onlyincity":false;
+                "datatype": "int(11)",
+                "field": "BianHao"
+            },
+            {
+                "fieldname": "名称",
+                "onlyincity":false;
                 "datatype": "varchar(100)",
-                "field": "ZhenQuMingChen"
+                "field": "MingChen"
             },
             {
-                "fieldname": "镇区人口",
+                "fieldname": "人口",
+                "onlyincity":false;
                 "datatype": "int(11)",
                 "unit": "人",
-                "field": "ZhenQuRenKou"
+                "field": "RenKou"
             },
             {
-                "fieldname": "镇区绿化覆盖率",
+                "fieldname": "绿化覆盖率",
+                "onlyincity":true;
                 "datatype": "double",
                 "unit": "%",
-                "field": "ZhenQuLvHuaFuGaiLv"
+                "field": "LvHuaFuGaiLv"
             },
             {
-                "fieldname": "镇区居民人均收入",
+                "fieldname": "居民人均收入",
+                "onlyincity":false;
                 "datatype": "double",
                 "unit": "元",
                 "field": "ZhenQuJiMinRenJunShouRu"
             },
             {
-                "fieldname": "镇区文体设施建筑总面积",
+                "fieldname": "文体设施建筑总面积",
+                "onlyincity":true;
                 "datatype": "int(11)",
                 "unit": "平方米",
-                "field": "ZhenQuWenTiSheShiJianZhuZongMianJi"
+                "field": "WenTiSheShiJianZhuZongMianJi"
             },
             {
-                "fieldname": "镇区商业用地总面积",
+                "fieldname": "商业用地总面积",
+                "onlyincity":true;
                 "datatype": "double",
                 "unit": "公顷",
-                "field": "ZhenQuShangYeYongDiZongMianJi"
+                "field": "ShangYeYongDiZongMianJi"
             },
             {
-                "fieldname": "镇区建设用地总面积",
+                "fieldname": "建设用地总面积",
+                "onlyincity":false;
                 "datatype": "double",
                 "unit": "公顷",
-                "field": "ZhenQuJianSheYongDiZongMianJi"
+                "field": "JianSheYongDiZongMianJi"
             }
         ],
-        "class": "ZhenQuShuJu"
+        "class": "ZhenQuHuoCunZhuang"
     },
-    {
-        "classname": "村庄数据",
-        "childfield": [
-            {
-                "fieldname": "村庄编号",
-                "datatype": "int(11)",
-                "field": "CunZhuangBianHao"
-            },
-            {
-                "fieldname": "村庄名称",
-                "datatype": "varchar(100)",
-                "field": "CunZhuangMingChen"
-            },
-            {
-                "fieldname": "村庄人口",
-                "datatype": "int(11)",
-                "unit": "人",
-                "field": "CunZhuangRenKou"
-            },
-            {
-                "fieldname": "村庄居民人均收入",
-                "datatype": "double",
-                "unit": "元",
-                "field": "CunZhuangJiMinRenJunShouRu"
-            },
-            {
-                "fieldname": "村庄建设用地总面积",
-                "datatype": "double",
-                "unit": "公顷",
-                "field": "CunZhuangJianSheYongDiZongMianJi"
-            }
-        ],
-        "class": "CunZhuangShuJu"
-    },
+    "ZhuHu":
     {
         "classname": "住户数据",
         "childfield": [
@@ -369,7 +352,7 @@ var field = [
             },
             {
                 "fieldname": "所属村庄或镇区",
-                "datatype": "varchar(100)",
+                "datatype": "selectint(11)",
                 "field": "SuoShuCunZhuangHuoZhenQu"
             },
             {
@@ -494,8 +477,8 @@ var field = [
                 "field": "RiJunDuanJuLiChuXingCiShu"
             }
         ],
-        "class": "ZhuHuShuJu"
+        "class": "ZhuHu"
     }
-]
+}
 
 module.exports = field;
