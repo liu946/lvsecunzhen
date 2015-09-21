@@ -11,9 +11,7 @@ var field = require('../conf/fielddef.js')
 var sqlhelper = require('../func/sql.js')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  	res.render('input', { title: 'Express' });
-});
+
 
 router.get('/field',function (req, res, next) {
 	res.json(field);
