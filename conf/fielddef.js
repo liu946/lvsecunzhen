@@ -280,60 +280,60 @@ var field = {
         "childfield": [
             {
                 "fieldname": "所属乡镇",
-                "onlyincity":false;
+                "onlyincity":false,
                 "datatype": "int(11)",
                 "field": "SuoShuXiangZhen"
             },
             {
                 "fieldname": "镇区或村庄编号",
-                "onlyincity":false;
+                "onlyincity":false,
                 "datatype": "int(11)",
                 "field": "BianHao"
             },
             {
                 "fieldname": "名称",
-                "onlyincity":false;
+                "onlyincity":false,
                 "datatype": "varchar(100)",
                 "field": "MingChen"
             },
             {
                 "fieldname": "人口",
-                "onlyincity":false;
+                "onlyincity":false,
                 "datatype": "int(11)",
                 "unit": "人",
                 "field": "RenKou"
             },
             {
                 "fieldname": "绿化覆盖率",
-                "onlyincity":true;
+                "onlyincity":true,
                 "datatype": "double",
                 "unit": "%",
                 "field": "LvHuaFuGaiLv"
             },
             {
                 "fieldname": "居民人均收入",
-                "onlyincity":false;
+                "onlyincity":false,
                 "datatype": "double",
                 "unit": "元",
                 "field": "ZhenQuJiMinRenJunShouRu"
             },
             {
                 "fieldname": "文体设施建筑总面积",
-                "onlyincity":true;
+                "onlyincity":true,
                 "datatype": "int(11)",
                 "unit": "平方米",
                 "field": "WenTiSheShiJianZhuZongMianJi"
             },
             {
                 "fieldname": "商业用地总面积",
-                "onlyincity":true;
+                "onlyincity":true,
                 "datatype": "double",
                 "unit": "公顷",
                 "field": "ShangYeYongDiZongMianJi"
             },
             {
                 "fieldname": "建设用地总面积",
-                "onlyincity":false;
+                "onlyincity":false,
                 "datatype": "double",
                 "unit": "公顷",
                 "field": "JianSheYongDiZongMianJi"
