@@ -59,6 +59,21 @@ var model = {
 				str+="COMMENT '"+comment+"' ";
 			};
 		return str;
+	},
+	
+	update:function  (id,obj,callback) {
+		if (obj.hasOwnProperty('id')) {
+			delete obj.id;
+		};
+		var field = "UPDATE "+this.tablename +" SET ";
+		for (var i in obj) {
+			field += " "+i+" = '"+remove(obj[i])+"',";
+		};
+		field = field.substr(0,field.length-1);
+		field += " WHERE `id` = "+id+" ;";
+
+		sqlhelper.exsqllist(['USE '+global.conf.dbname,field],[,callback])
+
 	}
 
 }
