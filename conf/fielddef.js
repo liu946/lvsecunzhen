@@ -4,11 +4,6 @@ var field = {
         "classname": "乡镇数据",
         "childfield": [
             {
-                "fieldname": "镇编号",
-                "datatype": "int(11)",
-                "field": "ZhenBianHao"
-            },
-            {
                 "fieldname": "镇名称",
                 "datatype": "varchar(100)",
                 "field": "ZhenMingChen"
@@ -242,12 +237,6 @@ var field = {
                 "field": "CunZhenZhongXueXueXiaoJianZhuZongMianJi"
             },
             {
-                "fieldname": "村镇中学学校建筑总面积",
-                "datatype": "int(11)",
-                "unit": "平方米",
-                "field": "CunZhenZhongXueXueXiaoJianZhuZongMianJi"
-            },
-            {
                 "fieldname": "村镇卫生设施建筑总面积",
                 "datatype": "int(11)",
                 "unit": "平方米",
@@ -279,16 +268,17 @@ var field = {
         "classname": "镇区或村庄数据",
         "childfield": [
             {
+                "fieldname": "镇区或村庄",
+                "onlyincity":false,
+                "datatype": "int(4)",
+                "field": "ZhenQuHuoCunZhuang",
+                "items":{1:"镇区",2:"村庄"}
+            },
+            {
                 "fieldname": "所属乡镇",
                 "onlyincity":false,
                 "datatype": "int(11)",
                 "field": "SuoShuXiangZhen"
-            },
-            {
-                "fieldname": "镇区或村庄编号",
-                "onlyincity":false,
-                "datatype": "int(11)",
-                "field": "BianHao"
             },
             {
                 "fieldname": "名称",
@@ -357,37 +347,37 @@ var field = {
             },
             {
                 "fieldname": "居民对地区环境建设满意度",
-                "datatype": "select",
+                "datatype": "select1-5",
                 "field": "JiMinDuiDiQuHuanJingJianSheManYiDu"
             },
             {
                 "fieldname": "居民对地区经济发展满意度",
-                "datatype": "select",
+                "datatype": "select1-5",
                 "field": "JiMinDuiDiQuJingJiFaZhanManYiDu"
             },
             {
                 "fieldname": "居民对地区就业情况满意度",
-                "datatype": "select",
+                "datatype": "select1-5",
                 "field": "JiMinDuiDiQuJiuYeQingKuangManYiDu"
             },
             {
                 "fieldname": "生活用水满意度",
-                "datatype": "select",
+                "datatype": "select1-5",
                 "field": "ShengHuoYongShuiManYiDu"
             },
             {
                 "fieldname": "公共设施服务满意度",
-                "datatype": "select",
+                "datatype": "select1-5",
                 "field": "GongGongSheShiFuWuManYiDu"
             },
             {
                 "fieldname": "居民对村镇水、电、垃圾基础设施满意度",
-                "datatype": "select",
+                "datatype": "select1-5",
                 "field": "JiMinDuiCunZhenShuiDianLaJiJiChuSheShiManYiDu"
             },
             {
                 "fieldname": "居民对道路交通设施满意度",
-                "datatype": "select",
+                "datatype": "select1-5",
                 "field": "JiMinDuiDaoLuJiaoTongSheShiManYiDu"
             },
             {

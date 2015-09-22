@@ -1,6 +1,6 @@
 conf = {
 	dbserver:"localhost",
-	dbname:"yanhandb",
+	dbname:"lvsecunzhendb",
 	dbuser:"root",
 	dbpwd:"123456",
 	dbtable:"data"

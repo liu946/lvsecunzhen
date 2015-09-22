@@ -11,7 +11,7 @@ global.conf = require('./conf/conf.js')
 
 var routes = require('./routes/index');
 var input = require('./routes/input');
-
+var dbgenerator = require('./routes/dbgenerator');
 
 
 
@@ -31,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/input', input);
+app.use('/dbgenerator', dbgenerator);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
