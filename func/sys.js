@@ -1,3 +1,10 @@
+/** 
+ * Filename: sys.js
+ * Date: 2015/09/22 (CST)
+ * Author: Michael Liu (HIT)
+ * Copyright (c) 2015 liu. All rights reserved.
+ */
+
 
 var sys = {
 	clone:function(obj) {

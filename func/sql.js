@@ -1,3 +1,10 @@
+/** 
+ * Filename: sql.js
+ * Date: 2015/09/22 (CST)
+ * Author: Michael Liu (HIT)
+ * Copyright (c) 2015 liu. All rights reserved.
+ */
+
 
 var sql = {
 	// 单次链接，适合只执行一句的sql

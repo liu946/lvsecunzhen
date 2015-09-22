@@ -1,3 +1,10 @@
+/** 
+ * Filename: model.js
+ * Date: 2015/09/22 (CST)
+ * Author: Michael Liu (HIT)
+ * Copyright (c) 2015 liu. All rights reserved.
+ */
+
 
 var sqlhelper = require('../func/sql.js')
 var sys = require("../func/sys.js")
@@ -26,7 +33,6 @@ var model = {
 	// only for this project
 	decodetype:function (data) {
 		var str='';
-
 			for (var j = 0; j < data.length ; j++) {
 				str+=',';
 				str+=data[j]['field']+' ';
@@ -51,9 +57,7 @@ var model = {
 					comment+='--单位（'+data[j]['unit']+'）';
 				};
 				str+="COMMENT '"+comment+"' ";
-
 			};
-
 		return str;
 	}
 
