@@ -9,7 +9,7 @@ var express = require('express');
 var router = express.Router();
 var field = require('../conf/fielddef.js')
 var sqlhelper = require('../func/sql.js')
-
+var sys = require('../func/sys.js')
 /* GET home page. */
 
 
@@ -17,16 +17,20 @@ router.get('/field',function (req, res, next) {
 	res.json(field);
 })
 
-router.post('/update',function(req ,res ,next){
+router.post('/update/:modelname/:id',function(req ,res ,next){
 
+	var model = sys.M(req.params.modelname);
+	model.update(req.params.id,req.body,function(){
+		res.render('OK');
+	});
 })
 
-router.get('/edit/:id',function(req ,res ,next){
-	res.render('edit',{ id: req.params.id})
+router.get('/edit/:modelname/:id',function(req ,res ,next){
+	res.render('edit'+req.params.modelname,{ id: req.params.id})
 })
 
 router.get('/new',function(req ,res ,next){
-
+	res.send('OK')
 })
 
 router.get('/get/:id',function(req ,res ,next){
