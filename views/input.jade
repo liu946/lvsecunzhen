@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	.container
+		.header
+			.content
+				h1
+					| 绿色村镇体系数据录入
+
+		.main
+			form#J_form(onsubmit='return false;',action='#')
+				.clickoption
+					.content
+						.submit.box
+							p
+								| 提交
+						.save.box
+							p 
+								| 保存
+			
+	script(src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js")
+	script(src="/script/input.js")

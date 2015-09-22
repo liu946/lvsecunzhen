@@ -1,0 +1,81 @@
+.border-radius(@value) {
+    -webkit-border-radius: @value;
+       -moz-border-radius: @value;
+        -ms-border-radius: @value;
+            border-radius: @value;
+}
+
+.transition(@value: all .2s ease-in-out) {
+    -webkit-transition: @value;
+       -moz-transition: @value;
+        -ms-transition: @value;
+            transition: @value;
+}
+
+.transform(@value) {
+    -webkit-transform: @value;
+       -moz-transform: @value;
+        -ms-transform: @value;
+            transform: @value;
+}
+
+.animation(@value, @time) {
+    -webkit-animation: @value @time;
+       -moz-animation: @value @time;
+        -ms-animation: @value @time;
+            animation: @value @time;
+}
+
+.keyframes(@name, @start, @midterm, @last){
+    @-webkit-keyframes ~'@{name}' { 0% { @start(); } 50% { @midterm(); } 100% { @last(); } }
+      @-moz-keyframes ~'@{name}' { 0% { @start(); } 50% { @midterm(); } 100% { @last(); } } 
+        @-o-keyframes ~'@{name}' { 0% { @start(); } 50% { @midterm(); } 100% { @last(); } } 
+          @keyframes ~'@{name}' { 0% { @start(); } 50% { @midterm(); } 100% { @last(); } }
+}
+
+.perspective(@value) {
+    -webkit-perspective: @value;
+       -moz-perspective: @value;
+        -ms-perspective: @value;
+            perspective: @value;
+}
+
+.transform-style(@value) {
+    -webkit-transform-style: @value;
+       -moz-transform-style: @value;
+        -ms-transform-style: @value;
+            transform-style: @value;
+}
+
+.transform-origin(@value) {
+    -webkit-transform-origin: @value;
+       -moz-transform-origin: @value;
+        -ms-transform-origin: @value;
+            transform-origin: @value;
+}
+
+.box-shadow(@value) {
+    -webkit-box-shadow: @value;
+       -moz-box-shadow: @value;
+        -ms-box-shadow: @value;
+            box-shadow: @value;
+}
+
+.text-overflow() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.blur(@value){ 
+    filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+    -webkit-filter: blur(@value); /* Chrome, Opera */
+       -moz-filter: blur(@value);
+        -ms-filter: blur(@value);    
+            filter: blur(@value);
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=@value, MakeShadow=false); /* IE6~IE9 */
+}
+.box-flex(@value){
+    -webkit-box-flex:@value;
+      -moz-box-flex:@value;
+        box-flex:@value;
+}

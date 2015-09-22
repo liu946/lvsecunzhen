@@ -1,8 +1,1 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
+body{margin:0;padding:0}.clear{clear:both}.container{width:100%;height:auto}.container .main{width:1000px;margin:0 auto}.container .main .content{width:90%;padding:10px 5%}.container .main .content .list{width:100%;height:100px}.container .main .content .list .note{width:20%;float:left}.container .main .content .list .input{width:80%;float:right}.container .main .content .list .input input{height:20px;width:40%;padding:5px 10px;margin:20px;font-size:16px}.container .main .content .list .input input[type=radio]{width:20px;margin:10px 5px;padding:10px}.container .main .content .list .input input[type=checkbox]{width:20px;margin:20px 5px;padding:10px}.container .main .content .list .input .otherdata{width:60px;height:20px;font-size:12px;margin:0;padding:0 0 0 5px;border:0;border-bottom:1px solid #555;display:none}.container .main .content .list .expand{height:100px}.clickoption{position:fixed;height:100px;width:200px;left:80%;top:600px;text-align:center}.clickoption .content{float:right;width:200px}.clickoption .content .box{width:60px;height:40px;display:inline-block;text-align:center;margin:10px;-webkit-transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-ms-transition:all .2s ease-in-out;transition:all .2s ease-in-out}.clickoption .content .box:active{-webkit-transform:scale(.8);-moz-transform:scale(.8);-ms-transform:scale(.8);transform:scale(.8)}.clickoption .content .box p{color:#fff}.clickoption .content .submit{background:#444}.clickoption .content .save{background:#777}.header{width:100%;height:200px;background:#aaa}.header .content{width:1000px;height:50px;margin:0 auto;padding:75px 0;text-align:center}
