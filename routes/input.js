@@ -17,24 +17,23 @@ router.get('/field',function (req, res, next) {
 	res.json(field);
 })
 
-router.post('/update/:modelname/:id',function(req ,res ,next){
+router.post('/update/:modelname',function(req ,res ,next){
 
 	var model = sys.M(req.params.modelname);
-	model.update(req.params.id,req.body,function(){
+	model.update(req.body.id,req.body,function(){
 		res.render('OK');
 	});
 })
 
-router.get('/edit/:modelname/:id',function(req ,res ,next){
-	res.render('edit'+req.params.modelname,{ id: req.params.id})
+router.get('/edit/:modelname',function(req ,res ,next){
+	res.render('edit'+req.params.modelname)
 })
 
-router.get('/new',function(req ,res ,next){
-	res.send('OK')
-})
-
-router.get('/get/:id',function(req ,res ,next){
-
+router.get('/get/:modelname/:id',function(req ,res ,next){
+	var model = sys.M(req.params.modelname);
+	model.getitem(req.params.id,function (obj){
+		res.json(obj);
+	});
 })
 
 module.exports = router;

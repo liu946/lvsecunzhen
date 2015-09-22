@@ -74,7 +74,13 @@ var model = {
 
 		sqlhelper.exsqllist(['USE '+global.conf.dbname,field],[,callback])
 
-	}
+	},
+	getitem:function(id,callback){
+		// 注入危险
+		sqlhelper.exsql('SELECT * FROM '+global.conf.dbname+"."+this.tablename+" WHERE `id`="+id+" LIMIT 1 ;",function(rows, fields){
+			callback(rows[0]);
+		});
+	},
 
 }
 
