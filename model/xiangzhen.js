@@ -15,6 +15,6 @@ var tb = sys.clone(model);
 tb.tablename = "XiangZhen";
 tb.getall = function (callback) {
 	// body...
-	this.__proto__.getall(callback);
+	this.__proto__.getall.call(this,'*',callback);
 }
 module.exports = tb;

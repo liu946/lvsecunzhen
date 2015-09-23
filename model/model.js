@@ -89,8 +89,8 @@ var model = {
 		// body...
 		if (field=='' || typeof(field)== 'undefined') {field='*'};
 
-		sqlhelper.exsql('SELECT '+field+' FROM '+global.conf.dbname+"."+this.tablename+" WHERE `id`="+id+" LIMIT 1 ;",function(rows, fields){
-			callback(rows[0]);
+		sqlhelper.exsql('SELECT '+field+' FROM '+global.conf.dbname+"."+this.tablename+" ;",function(rows, fields){
+			callback(rows);
 		});
 	}
 
