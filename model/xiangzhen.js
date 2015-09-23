@@ -13,5 +13,8 @@ var sys = require("../func/sys.js")
 var tb = sys.clone(model);
 
 tb.tablename = "XiangZhen";
-
+tb.getall = function (callback) {
+	// body...
+	this.__proto__.getall(callback);
+}
 module.exports = tb;

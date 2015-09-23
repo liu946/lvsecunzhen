@@ -5,12 +5,15 @@
  * Copyright (c) 2015 liu. All rights reserved.
  */
 
-var model = require("./model.js")
+var childmodel = require("./childmodel.js")
 var sqlhelper = require('../func/sql.js')
 var sys = require("../func/sys.js")
 
-var tb = sys.clone(model);
+var tb = sys.clone(childmodel);
 
 tb.tablename = "ZhuHu";
-
+tb.getall = function (callback) {
+	// body...
+	this.getallwithfather(callback);
+}
 module.exports = tb;

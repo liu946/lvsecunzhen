@@ -12,6 +12,12 @@ var sqlhelper = require('../func/sql.js')
 var sys = require('../func/sys.js')
 /* GET home page. */
 
+router.get('/:modelname',function (req, res, next){
+	var model = sys.M(req.params.modelname);
+	model.getall(function (row,field){
+		res.json(row);
+	})
+})
 
 router.get('/field',function (req, res, next) {
 	res.json(field);
@@ -30,7 +36,7 @@ router.get('/edit/:modelname',function(req ,res ,next){
 
 router.get('/get/:modelname/:id',function(req ,res ,next){
 	var model = sys.M(req.params.modelname);
-	model.getitem(req.params.id,function (obj){
+	model.getitem(req.params.id,'*',function (obj){
 		res.json(obj);
 	});
 })
