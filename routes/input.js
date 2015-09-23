@@ -20,6 +20,14 @@ router.get('/index/:modelname',function(req,res,next){
 	res.render('list'+req.params.modelname);
 })
 
+// 插入数据
+router.post('/insert/:modelname',function(req ,res ,next){
+	var model = sys.M(req.params.modelname);
+	model.insert(req.body,function(){
+		res.send('OK');
+	});
+})
+
 // 保存数据
 router.post('/update/:modelname',function(req ,res ,next){
 	var model = sys.M(req.params.modelname);

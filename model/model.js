@@ -63,7 +63,20 @@ var model = {
 			};
 		return str;
 	},
-	
+	insert:function (obj,callback) {
+		var field = [];
+		var value = [];
+		for (i in obj) {
+			field.push(i);
+			value.push(obj[i]);
+		};
+		var sql = "INSERT INTO "+this.tablename+" ("+field.toString()+") VALUES ("+value.toString()+");";
+		var getmaxsql = "select max(id) as id from "+this.tablename+";";
+		var maxhandle = function(rows, fields){
+				callback(rows[0].id);
+			}
+		sqlhelper.exsqllist(['USE '+global.conf.dbname,sql,getmaxsql],[,,maxhandle])
+	},
 	update:function  (id,obj,callback) {
 		if (obj.hasOwnProperty('id')) {
 			delete obj.id;
