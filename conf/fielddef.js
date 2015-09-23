@@ -10,7 +10,7 @@ var field = {
             },
             {
                 "fieldname": "镇域人口",
-                "datatype": "int(11)",
+                "datatype": "jsonstr",
                 "unit": "人",
                 "field": "ZhenYuRenKou"
             },
@@ -34,7 +34,7 @@ var field = {
             },
             {
                 "fieldname": "耕地面积",
-                "datatype": "double",
+                "datatype": "jsonstr",
                 "unit": "公顷",
                 "field": "GengDiMianJi"
             },
@@ -289,7 +289,7 @@ var field = {
             {
                 "fieldname": "人口",
                 "onlyincity":false,
-                "datatype": "int(11)",
+                "datatype": "jsonstr",
                 "unit": "人",
                 "field": "RenKou"
             },

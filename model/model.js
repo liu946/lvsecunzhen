@@ -45,6 +45,9 @@ var model = {
 					case 'selectint(11)':
 						str+="int(11) "
 					break;
+					case 'jsonstr':
+						str+='varchar(500) ';
+					break;
 					default:
 						str+=data[j]['datatype']+" ";
 					break;

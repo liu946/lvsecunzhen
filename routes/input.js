@@ -18,7 +18,6 @@ router.get('/field',function (req, res, next) {
 })
 
 router.post('/update/:modelname',function(req ,res ,next){
-
 	var model = sys.M(req.params.modelname);
 	model.update(req.body.id,req.body,function(){
 		res.render('OK');
