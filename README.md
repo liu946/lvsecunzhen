@@ -8,4 +8,5 @@ Windows 平台使用如下命令：
 
 > set DEBUG=myapp & npm start
 
-
+## URL流程
+![url流程](https://raw.githubusercontent.com/liu946/lvsecunzhen/master/doc/img/url.jpg)
