@@ -12,55 +12,24 @@ body{
 .container{
 	width: 100%;
 	height: auto;
+	.header{
+		width: 100%;
+		height: 200px;
+		background: #aaa;
+		.content{
+			width: 1000px;
+			height: 50px;
+			margin: 0 auto;
+			padding: 75px 0;
+			text-align: center;
+			h1{
+
+			}
+		}
+	}
 	.main{
 		width: 1000px;
 		margin: 0 auto;
-		.content{
-			width: 90%;
-			padding: 10px 5%;
-			.list{
-				width: 100%;
-				height: 100px;
-				.note{
-					width: 20%;
-					float: left;
-				}
-				.input{
-					width: 80%;
-					float: right;
-					input{
-						height: 20px;
-						width: 40%;
-						padding: 5px 10px;
-						margin: 20px;
-						font-size: 16px;
-						&[type = 'radio']{
-							width: 20px;
-							margin: 10px 5px;
-							padding: 10px;
-						}
-						&[type = 'checkbox']{
-							width: 20px;
-							margin: 20px 5px;
-							padding: 10px;
-						}
-					}
-					.otherdata{
-						width: 60px;
-						height: 20px;
-						font-size: 12px;
-						margin: 0;
-						padding: 0 0 0 5px;
-						border: 0;
-						border-bottom: 1px solid #555;
-						display: none;
-					}
-				}
-				.expand{
-					height: 100px;
-				}
-			}
-		}
 	}
 }
 
@@ -97,18 +66,70 @@ body{
 	}
 }
 
-.header{
-	width: 100%;
-	height: 200px;
-	background: #aaa;
-	.content{
-		width: 1000px;
-		height: 50px;
-		margin: 0 auto;
-		padding: 75px 0;
-		text-align: center;
-		h1{
+#J_form{
+	.list{
+		width: 100%;
+		height: 100px;
+		.note{
+			width: 20%;
+			float: left;
+		}
+		.input{
+			width: 80%;
+			float: right;
+			input{
+				height: 20px;
+				width: 40%;
+				padding: 5px 10px;
+				margin: 20px;
+				font-size: 16px;
+				&[type = 'radio']{
+					width: 20px;
+					margin: 10px 5px;
+					padding: 10px;
+				}
+				&[type = 'checkbox']{
+					width: 20px;
+					margin: 20px 5px;
+					padding: 10px;
+				}
+			}
+			.otherdata{
+				width: 60px;
+				height: 20px;
+				font-size: 12px;
+				margin: 0;
+				padding: 0 0 0 5px;
+				border: 0;
+				border-bottom: 1px solid #555;
+				display: none;
+			}
+		}
+		.expand{
+			height: 100px;
+		}
+	}
+}
 
+// index页面
+#addform{
+	width: 100px;
+	height: 100px;
+	margin: 50px auto;
+	background: #444;
+	.transition(all .1s ease-in-out);
+	&:active{
+		.transform(scale(.5));
+	}
+}
+#formlist{
+	margin-top: 100px;
+	.contentlist{
+		width: 100%;
+		border: 1px solid #ddd;
+		.container{
+			width: 100%;
+			height: 50px;
 		}
 	}
 }
