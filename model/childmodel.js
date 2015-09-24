@@ -1,4 +1,4 @@
-/** 
+ /** 
  * Filename: childmodel.js
  * Date: 2015/09/23 (CST)
  * Author: Michael Liu (HIT)
@@ -20,11 +20,11 @@ tb.father = {
 
 tb.getwithfather = function (childtablesql,fields,fatherfields,callback){
 	if (childtablesql!='') {childmodel+=' and '};
-	var sql = 'SELECT '+fields+','+tb.father.linkfield+' FROM '+this.tablename+
-				', (SELECT '+fatherfields+' FROM '+this.father.tablename+' ) temptable'+tb.father.tablename+this.tablename+' '+
+	var sql = 'SELECT '+fields+','+this.father.linkfield+' FROM '+this.tablename+
+				', (SELECT id,'+fatherfields+' FROM '+this.father.tablename+' ) temptable'+this.father.tablename+this.tablename+' '+
 				' WHERE '+childtablesql+this.tablename+'.'+this.father.linkfield+
-				' = temptable'+tb.father.tablename+this.tablename+'.id;';
-	sqlhelper(['USE '+global.conf.dbname+';',sql],[,callback]);
+				' = temptable'+this.father.tablename+this.tablename+'.id;';
+	sqlhelper.exsqllist(['USE '+global.conf.dbname+';',sql],[,callback]);
 }
 
 tb.getonewithfather = function  (id,fields,fatherfields,callback) {

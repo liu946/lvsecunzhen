@@ -12,8 +12,12 @@ var sys = require("../func/sys.js")
 var tb = sys.clone(childmodel);
 
 tb.tablename = "ZhuHu";
+tb.father = {
+	tablename:'ZhenQuHuoCunZhuang',
+	linkfield:'SuoShuCunZhuangHuoZhenQu'
+}
 tb.getall = function (callback) {
 	// body...
-	this.getallwithfather(callback);
+	this.getallwithfather('WenJuanBianHao,ZhenQuHuoCunZhuang,MingChen','ZhenQuHuoCunZhuang,MingChen',callback);
 }
 module.exports = tb;
