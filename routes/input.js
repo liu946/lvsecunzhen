@@ -36,6 +36,13 @@ router.post('/update/:modelname',function (req ,res ,next){
 	});
 })
 
+// 新建数据项
+router.get('/new/:modelname',function(req ,res ,next){
+	var model = sys.M(req.params.modelname);
+	model.insertnull(function (id) {
+		res.redirect('edit/'+req.params.modelname+'/'+id);
+	})
+})
 // 获得编辑页面
 router.get('/edit/:modelname',function (req ,res ,next){
 	res.render('edit'+req.params.modelname,{modelname: req.params.modelname})

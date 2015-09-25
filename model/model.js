@@ -105,7 +105,15 @@ var model = {
 		sqlhelper.exsql('SELECT '+field+' FROM '+global.conf.dbname+"."+this.tablename+" ;",function(rows, fields){
 			callback(rows);
 		});
-	}
+	},
+	insertnull:function(callback){ 
+			var insertsql = "insert into "+this.tablename+" () values ();";
+			var getmaxsql = "select max(id) as id from "+this.tablename+";";
+			var maxhandle = function(rows, fields){
+					callback(rows[0].id);
+				}
+			sqlhelper.exsqllist(["USE "+global.conf.dbname+";",insertsql,getmaxsql],[,,maxhandle]);
+	},
 
 }
 
