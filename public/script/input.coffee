@@ -59,10 +59,20 @@ putmodel = (object,inputs) ->
 			for i in [1985..2016] by 1
 				str += "<li>
 							<div class='content'><p>#{i}</p></div>
-							<div class='datavalue'><input type='text' id='#{i}' name='#{fieldid}_#{i}'>#{unit}</div>
+							<div class='datavalue'><input type='text' id='#{i}' name='#{fieldname}_#{i}'>#{unit}</div>
 						</li>"
 				mend = "style='height:1049px'"
 			str += "</ul>"
+		else if type == 'list'
+			str = "<select name='#{fieldname}' id='#{fieldid}'>"
+			data = getkeyvalue "/get/#{modelname}"
+			for i in data
+				str += "<option value='i'>#{i}</option>"
+			str += "</select>"
+		else if items != undefined
+			str = ""
+			for k,v of items
+				str += "<input type='radio' class='#{fieldid}' name='#{fieldid}' value='#{k}' />#{v}"
 		else
 			str = "<input type='text' id='#{fieldid}' name='#{fieldid}' />#{unit}"
 			mend = ''

@@ -347,6 +347,7 @@ var field = {
             {
                 "fieldname": "所属村庄或镇区",
                 "datatype": "selectint(11)",
+                "type" : "list",
                 "field": "SuoShuCunZhuangHuoZhenQu"
             },
             {

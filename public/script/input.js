@@ -46,7 +46,7 @@ getDBvalue = function(url, array) {
 };
 
 putmodel = function(object, inputs) {
-  var b, fieldid, fieldname, html, i, id, items, j, l, len, mend, ref, str, type, unit;
+  var b, data, fieldid, fieldname, html, i, id, items, j, k, l, len, len1, m, mend, ref, str, type, unit, v;
   html = "";
   id = object["class"];
   html = "<div id='" + id + "' class='content'>";
@@ -66,10 +66,24 @@ putmodel = function(object, inputs) {
     if (type === 'time') {
       str = "<ul class='yearinput'>";
       for (i = l = 1985; l <= 2016; i = l += 1) {
-        str += "<li> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' id='" + i + "' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
+        str += "<li> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' id='" + i + "' name='" + fieldname + "_" + i + "'>" + unit + "</div> </li>";
         mend = "style='height:1049px'";
       }
       str += "</ul>";
+    } else if (type === 'list') {
+      str = "<select name='" + fieldname + "' id='" + fieldid + "'>";
+      data = getkeyvalue("/get/" + modelname);
+      for (m = 0, len1 = data.length; m < len1; m++) {
+        i = data[m];
+        str += "<option value='i'>" + i + "</option>";
+      }
+      str += "</select>";
+    } else if (items !== void 0) {
+      str = "";
+      for (k in items) {
+        v = items[k];
+        str += "<input type='radio' class='" + fieldid + "' name='" + fieldid + "' value='" + k + "' />" + v;
+      }
     } else {
       str = "<input type='text' id='" + fieldid + "' name='" + fieldid + "' />" + unit;
       mend = '';
