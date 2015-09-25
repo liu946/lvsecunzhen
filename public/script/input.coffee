@@ -44,12 +44,30 @@ putmodel = (object,inputs) ->
 	for b in object.childfield
 		fieldname = b.fieldname
 		fieldid = b.field
+		type = b.type
+		unit = b.unit
+		items = b.items
 
 		inputs = getinputname fieldid,inputs
-		
-		str = "<input type='text' id='#{fieldid}' name='#{fieldid}' />"
+
+		mend = ''
+
+		if unit == undefined
+			unit = ''
+		if type == 'time'
+			str = "<ul class='yearinput'>"
+			for i in [1985..2016] by 1
+				str += "<li>
+							<div class='content'><p>#{i}</p></div>
+							<div class='datavalue'><input type='text' id='#{i}' name='#{fieldid}_#{i}'>#{unit}</div>
+						</li>"
+				mend = "style='height:1049px'"
+			str += "</ul>"
+		else
+			str = "<input type='text' id='#{fieldid}' name='#{fieldid}' />#{unit}"
+			mend = ''
 			
-		html += "<div class='list'>
+		html += "<div class='list' #{mend}>
 					<div class='note'>
 						<h3>#{fieldname}</h3>
 					</div>
@@ -89,11 +107,12 @@ getformvalue = (array) ->
 # 实例化
 value = JSON.parse getkeyvalue('/input/field').responseText
 value = value[modelname]
+
 inputs = []
 inputs = putmodel value,inputs
 
 # 获取数据库的存入的值	
-getDBvalue "/input/get/#{modelname}/#{id}", inputs
+# getDBvalue "/input/get/#{modelname}/#{id}", inputs
 
 # 提交功能
 $('.submit').on 'click',() ->

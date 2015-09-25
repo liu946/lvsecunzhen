@@ -46,7 +46,7 @@ getDBvalue = function(url, array) {
 };
 
 putmodel = function(object, inputs) {
-  var b, fieldid, fieldname, html, id, j, len, ref, str;
+  var b, fieldid, fieldname, html, i, id, items, j, l, len, mend, ref, str, type, unit;
   html = "";
   id = object["class"];
   html = "<div id='" + id + "' class='content'>";
@@ -55,9 +55,26 @@ putmodel = function(object, inputs) {
     b = ref[j];
     fieldname = b.fieldname;
     fieldid = b.field;
+    type = b.type;
+    unit = b.unit;
+    items = b.items;
     inputs = getinputname(fieldid, inputs);
-    str = "<input type='text' id='" + fieldid + "' name='" + fieldid + "' />";
-    html += "<div class='list'> <div class='note'> <h3>" + fieldname + "</h3> </div> <div class='input'> " + str + " </div> </div>";
+    mend = '';
+    if (unit === void 0) {
+      unit = '';
+    }
+    if (type === 'time') {
+      str = "<ul class='yearinput'>";
+      for (i = l = 1985; l <= 2016; i = l += 1) {
+        str += "<li> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' id='" + i + "' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
+        mend = "style='height:1049px'";
+      }
+      str += "</ul>";
+    } else {
+      str = "<input type='text' id='" + fieldid + "' name='" + fieldid + "' />" + unit;
+      mend = '';
+    }
+    html += "<div class='list' " + mend + "> <div class='note'> <h3>" + fieldname + "</h3> </div> <div class='input'> " + str + " </div> </div>";
   }
   html += "</div><hr />";
   $('#J_form').append(html);
@@ -104,8 +121,6 @@ value = value[modelname];
 inputs = [];
 
 inputs = putmodel(value, inputs);
-
-getDBvalue("/input/get/" + modelname + "/" + id, inputs);
 
 $('.submit').on('click', function() {
   var target;

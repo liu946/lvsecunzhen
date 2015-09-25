@@ -11,7 +11,7 @@ var field = {
             {
                 "fieldname": "镇域人口",
                 "datatype": "jsonstr",
-                "type" : "time"
+                "type" : "time",
                 "unit": "人",
                 "field": "ZhenYuRenKou"
             },
@@ -36,7 +36,7 @@ var field = {
             {
                 "fieldname": "耕地面积",
                 "datatype": "jsonstr",
-                "type" : "time"
+                "type" : "time",
                 "unit": "公顷",
                 "field": "GengDiMianJi"
             },
@@ -280,7 +280,7 @@ var field = {
                 "fieldname": "所属乡镇",
                 "onlyincity":false,
                 "datatype": "int(11)",
-                "type": "list"
+                "type": "list",
                 "field": "SuoShuXiangZhen"
             },
             {
@@ -293,7 +293,7 @@ var field = {
                 "fieldname": "人口",
                 "onlyincity":false,
                 "datatype": "jsonstr",
-                "type": "time"
+                "type": "time",
                 "unit": "人",
                 "field": "RenKou"
             },
