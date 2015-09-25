@@ -38,7 +38,7 @@ router.post('/update/:modelname',function (req ,res ,next){
 
 // 获得编辑页面
 router.get('/edit/:modelname',function (req ,res ,next){
-	res.render('edit'+req.params.modelname)
+	res.render('edit'+req.params.modelname,{modelname: req.params.modelname})
 })
 
 // 获得对应表格数据列表json

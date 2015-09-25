@@ -1,5 +1,5 @@
 var field = {
-    "XiangZhen" : 
+    "xiangzhen" : 
     {
         "classname": "乡镇数据",
         "childfield": [
@@ -11,6 +11,7 @@ var field = {
             {
                 "fieldname": "镇域人口",
                 "datatype": "jsonstr",
+                "type" : "time"
                 "unit": "人",
                 "field": "ZhenYuRenKou"
             },
@@ -35,6 +36,7 @@ var field = {
             {
                 "fieldname": "耕地面积",
                 "datatype": "jsonstr",
+                "type" : "time"
                 "unit": "公顷",
                 "field": "GengDiMianJi"
             },
@@ -263,7 +265,7 @@ var field = {
         ],
         "class": "XiangZhen"
     },
-    "ZhenQuHuoCunZhuang":
+    "zhenquhuocunzhuang":
     {
         "classname": "镇区或村庄数据",
         "childfield": [
@@ -278,6 +280,7 @@ var field = {
                 "fieldname": "所属乡镇",
                 "onlyincity":false,
                 "datatype": "int(11)",
+                "type": "list"
                 "field": "SuoShuXiangZhen"
             },
             {
@@ -290,6 +293,7 @@ var field = {
                 "fieldname": "人口",
                 "onlyincity":false,
                 "datatype": "jsonstr",
+                "type": "time"
                 "unit": "人",
                 "field": "RenKou"
             },
@@ -331,7 +335,7 @@ var field = {
         ],
         "class": "ZhenQuHuoCunZhuang"
     },
-    "ZhuHu":
+    "zhuhu":
     {
         "classname": "住户数据",
         "childfield": [

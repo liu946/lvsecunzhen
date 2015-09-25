@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	-var a = "id = " + id
+	-var a = "modelname = " + "'" + modelname + "'"
 	script!= a
 
 	.container
@@ -20,9 +20,6 @@ block content
 						.submit.box
 							p
 								| 提交
-						.save.box
-							p 
-								| 保存
-			
+						
 	script(src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js")
 	script(src="/script/input.js")
