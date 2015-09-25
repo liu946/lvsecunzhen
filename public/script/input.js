@@ -21,11 +21,17 @@ getDBvalue = function(url, array) {
     dataType: 'json',
     async: true
   }).done(function(data) {
-    var a, b, k, v;
+    var a, b, k, m, n, v;
     for (k in data) {
       v = data[k];
       if (k === 'id') {
         continue;
+      }
+      if (typeof v === 'object') {
+        for (m in v) {
+          n = v[m];
+          $("#" + m).val(n);
+        }
       }
       a = $("#" + k);
       if (a.length > 0) {
@@ -33,9 +39,6 @@ getDBvalue = function(url, array) {
       } else {
         b = $("input." + k + "[value='" + v + "']");
         b.prop('checked', true);
-        if (b.attr('class').split(' ')[1] === 'other') {
-          $("#" + k + "_other").val(v).css('display', 'inline-block');
-        }
       }
     }
   }).fail(function() {
@@ -46,7 +49,7 @@ getDBvalue = function(url, array) {
 };
 
 putmodel = function(object, inputs) {
-  var b, data, fieldid, fieldname, html, i, id, items, j, k, l, len, len1, m, mend, ref, str, type, unit, v;
+  var b, data, fieldid, fieldname, html, i, id, items, j, k, l, len, len1, mend, o, ref, str, type, unit, v;
   html = "";
   id = object["class"];
   html = "<div id='" + id + "' class='content'>";
@@ -66,15 +69,15 @@ putmodel = function(object, inputs) {
     if (type === 'time') {
       str = "<ul class='yearinput'>";
       for (i = l = 1985; l <= 2016; i = l += 1) {
-        str += "<li> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' id='" + i + "' name='" + fieldname + "_" + i + "'>" + unit + "</div> </li>";
+        str += "<li> <input type='hidden' class='time' name='" + fieldid + "'> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldname + "_" + i + "'>" + unit + "</div> </li>";
         mend = "style='height:1049px'";
       }
       str += "</ul>";
     } else if (type === 'list') {
       str = "<select name='" + fieldname + "' id='" + fieldid + "'>";
       data = getkeyvalue("/input/get/" + modelname);
-      for (m = 0, len1 = data.length; m < len1; m++) {
-        i = data[m];
+      for (o = 0, len1 = data.length; o < len1; o++) {
+        i = data[o];
         str += "<option value='i'>" + i + "</option>";
       }
       str += "</select>";
@@ -108,19 +111,28 @@ getinputname = function(value, target) {
 };
 
 getformvalue = function(array) {
-  var data, flag, i, j, len, target, targetvalue;
+  var data, flag, i, j, key, l, len, target, targettype, targetvalue, timedt;
   data = {
     "id": id
   };
   flag = 0;
   for (j = 0, len = array.length; j < len; j++) {
-    i = array[j];
-    target = i;
-    targetvalue = $("input[name=" + target + "]").val();
+    key = array[j];
+    target = $("input[name=" + key + "]");
+    targetvalue = target.val();
+    targettype = target.attr('class');
     if (targetvalue === '') {
       flag = 1;
     }
-    data[target] = targetvalue;
+    if (targettype === 'time') {
+      timedt = {};
+      for (i = l = 1985; l < 2016; i = l += 1) {
+        timedt[i] = $("input[name=" + key + "_" + i + "]").val();
+      }
+      data[key] = timedt;
+    } else {
+      data[key] = targetvalue;
+    }
   }
   return {
     data: data,

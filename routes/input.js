@@ -17,7 +17,7 @@ router.get('/field',function (req, res, next) {
 })
 // 列表页面
 router.get('/index/:modelname',function (req,res,next){
-	res.render('list'+req.params.modelname);
+	res.render('list'+req.params.modelname,{modelname: req.params.modelname});
 })
 
 // 插入数据

@@ -22,14 +22,16 @@ getDBvalue = (url,array) ->
 		for k, v of data
 			if k == 'id'
 				continue
+
+			if typeof(v) == 'object'
+				for m,n of v
+					$("##{m}").val n
 			a = $("##{k}")
 			if a.length > 0
 				$("##{k}").val v
 			else
 				b = $("input.#{k}[value='#{v}']")
 				b.prop 'checked', true
-				if b.attr('class').split(' ')[1] == 'other'
-					$("##{k}_other").val(v).css 'display','inline-block'
 		return	
 	.fail () ->
 		alert "数据库获取数据失败"
@@ -58,8 +60,9 @@ putmodel = (object,inputs) ->
 			str = "<ul class='yearinput'>"
 			for i in [1985..2016] by 1
 				str += "<li>
+							<input type='hidden' class='time' name='#{fieldid}'>
 							<div class='content'><p>#{i}</p></div>
-							<div class='datavalue'><input type='text' id='#{i}' name='#{fieldname}_#{i}'>#{unit}</div>
+							<div class='datavalue'><input type='text' name='#{fieldname}_#{i}'>#{unit}</div>
 						</li>"
 				mend = "style='height:1049px'"
 			str += "</ul>"
@@ -102,12 +105,21 @@ getinputname = (value,target) ->
 getformvalue = (array) ->
 	data = {"id": id}
 	flag = 0
-	for i in array	
-		target = i
-		targetvalue = $("input[name=#{target}]").val()
+	for key in array	
+		target = $("input[name=#{key}]")
+		targetvalue = target.val()
+		targettype = target.attr 'class'
 		if targetvalue == ''
 			flag = 1
-		data[target] = targetvalue
+
+		if targettype == 'time'
+			timedt = {}
+			for i in [1985...2016] by 1
+				timedt[i] = $("input[name=#{key}_#{i}]").val()
+			data[key] = timedt
+		else
+			data[key] = targetvalue
+
 	return {
 		data : data
 		flag : flag
