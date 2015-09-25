@@ -65,7 +65,7 @@ putmodel = (object,inputs) ->
 			str += "</ul>"
 		else if type == 'list'
 			str = "<select name='#{fieldname}' id='#{fieldid}'>"
-			data = getkeyvalue "/get/#{modelname}"
+			data = getkeyvalue "/input/get/#{modelname}"
 			for i in data
 				str += "<option value='i'>#{i}</option>"
 			str += "</select>"
@@ -122,16 +122,23 @@ inputs = []
 inputs = putmodel value,inputs
 
 # 获取数据库的存入的值	
-# getDBvalue "/input/get/#{modelname}/#{id}", inputs
+getDBvalue "/input/get/#{modelname}/#{id}", inputs
+
+# 保存功能
+$('.save').on 'click',() ->
+	target = getformvalue(inputs)
+	value = target.data
+	$.post "/input/update/#{modelname}", value, (data) ->
+		console.log data
+		getDBvalue "/input/get/#{modelname}", inputs
 
 # 提交功能
 $('.submit').on 'click',() ->
 	target = getformvalue(inputs)
 	value = target.data
-
 	if target.flag
 		alert "没有填写完整，请检查"
 	else
-		$.post "/input/insert/#{modelname}", value, (data) ->
+		$.post "/input/update/#{modelname}", value, (data) ->
 			console.log data
 

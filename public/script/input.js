@@ -72,7 +72,7 @@ putmodel = function(object, inputs) {
       str += "</ul>";
     } else if (type === 'list') {
       str = "<select name='" + fieldname + "' id='" + fieldid + "'>";
-      data = getkeyvalue("/get/" + modelname);
+      data = getkeyvalue("/input/get/" + modelname);
       for (m = 0, len1 = data.length; m < len1; m++) {
         i = data[m];
         str += "<option value='i'>" + i + "</option>";
@@ -136,6 +136,18 @@ inputs = [];
 
 inputs = putmodel(value, inputs);
 
+getDBvalue("/input/get/" + modelname + "/" + id, inputs);
+
+$('.save').on('click', function() {
+  var target;
+  target = getformvalue(inputs);
+  value = target.data;
+  return $.post("/input/update/" + modelname, value, function(data) {
+    console.log(data);
+    return getDBvalue("/input/get/" + modelname, inputs);
+  });
+});
+
 $('.submit').on('click', function() {
   var target;
   target = getformvalue(inputs);
@@ -143,7 +155,7 @@ $('.submit').on('click', function() {
   if (target.flag) {
     return alert("没有填写完整，请检查");
   } else {
-    return $.post("/input/insert/" + modelname, value, function(data) {
+    return $.post("/input/update/" + modelname, value, function(data) {
       return console.log(data);
     });
   }
