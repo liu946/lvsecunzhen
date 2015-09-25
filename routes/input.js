@@ -40,12 +40,12 @@ router.post('/update/:modelname',function (req ,res ,next){
 router.get('/new/:modelname',function(req ,res ,next){
 	var model = sys.M(req.params.modelname);
 	model.insertnull(function (id) {
-		res.redirect('edit/'+req.params.modelname+'/'+id);
+		res.redirect('../edit/'+req.params.modelname+'/'+id);
 	})
 })
 // 获得编辑页面
-router.get('/edit/:modelname',function (req ,res ,next){
-	res.render('edit'+req.params.modelname,{modelname: req.params.modelname})
+router.get('/edit/:modelname/:id',function (req ,res ,next){
+	res.render('edit'+req.params.modelname,{id:req.params.id,modelname: req.params.modelname})
 })
 
 // 获得对应表格数据列表json
