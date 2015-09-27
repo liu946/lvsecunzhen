@@ -21,9 +21,9 @@ tb.father = {
 tb.getwithfather = function (childtablesql,fields,fatherfields,callback){
 	if (childtablesql!='') {childmodel+=' and '};
 	var sql = 'SELECT '+fields+','+this.father.linkfield+' FROM '+this.tablename+
-				', (SELECT id,'+fatherfields+' FROM '+this.father.tablename+' ) temptable'+this.father.tablename+this.tablename+' '+
+				', (SELECT id as parentid,'+fatherfields+' FROM '+this.father.tablename+' ) temptable'+this.father.tablename+this.tablename+' '+
 				' WHERE '+childtablesql+this.tablename+'.'+this.father.linkfield+
-				' = temptable'+this.father.tablename+this.tablename+'.id;';
+				' = temptable'+this.father.tablename+this.tablename+'.parentid;';
 	sqlhelper.exsqllist(['USE '+global.conf.dbname+';',sql],[,callback]);
 }
 

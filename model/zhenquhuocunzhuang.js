@@ -18,6 +18,6 @@ tb.father = {
 }
 tb.getall = function (callback) {
 	// body...
-	this.getallwithfather('ZhenQuHuoCunZhuang,MingChen,ZhenMingChen','ZhenMingChen',callback);
+	this.getallwithfather('id,ZhenQuHuoCunZhuang,MingChen,ZhenMingChen','ZhenMingChen',callback);
 }
 module.exports = tb;
