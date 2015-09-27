@@ -160,6 +160,7 @@ $('.save').on('click', function() {
   target = getformvalue(inputs);
   value = target.data;
   value = JSON.stringify(value);
+  console.log(value);
   return $.post("/input/update/" + modelname, value, function(data) {
     console.log(data);
     return getDBvalue("/input/get/" + modelname, inputs);

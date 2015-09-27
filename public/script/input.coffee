@@ -145,6 +145,7 @@ $('.save').on 'click',() ->
 	target = getformvalue(inputs)
 	value = target.data
 	value = JSON.stringify(value)
+	console.log value
 	$.post "/input/update/#{modelname}", value, (data) ->
 		console.log data
 		getDBvalue "/input/get/#{modelname}", inputs
