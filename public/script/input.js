@@ -18,10 +18,11 @@ getkeyvalue = function(url) {
 getDBvalue = function(url, array) {
   return $.ajax({
     url: url,
-    dataType: 'json',
+    dataType: 'text',
     async: true
   }).done(function(data) {
     var a, b, k, m, n, v;
+    data = JSON.parse(data);
     for (k in data) {
       v = data[k];
       if (k === 'id') {
@@ -30,12 +31,13 @@ getDBvalue = function(url, array) {
       if (typeof v === 'object') {
         for (m in v) {
           n = v[m];
-          $("#" + m).val(n);
+          console.log(m, n, k);
+          $("input[name=" + k + "_" + m + "]").val(n);
         }
       }
       a = $("#" + k);
       if (a.length > 0) {
-        $("#" + k).val(v);
+        a.val(v);
       } else {
         b = $("input." + k + "[value='" + v + "']");
         b.prop('checked', true);
@@ -69,7 +71,7 @@ putmodel = function(object, inputs) {
     if (type === 'time') {
       str = "<ul class='yearinput'>";
       for (i = l = 1985; l <= 2016; i = l += 1) {
-        str += "<li> <input type='hidden' class='time' name='" + fieldid + "'> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldname + "_" + i + "'>" + unit + "</div> </li>";
+        str += "<li> <input type='hidden' class='time' name='" + fieldid + "'> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
         mend = "style='height:1049px'";
       }
       str += "</ul>";
@@ -111,7 +113,7 @@ getinputname = function(value, target) {
 };
 
 getformvalue = function(array) {
-  var data, flag, i, j, key, l, len, target, targettype, targetvalue, timedt;
+  var a, b, data, flag, i, j, key, l, len, target, targettype, targetvalue, timedt;
   data = {
     "id": id
   };
@@ -127,6 +129,9 @@ getformvalue = function(array) {
     if (targettype === 'time') {
       timedt = {};
       for (i = l = 1985; l < 2016; i = l += 1) {
+        a = $("input[name=" + key + "_" + i + "]");
+        b = a.val();
+        console.log(a);
         timedt[i] = $("input[name=" + key + "_" + i + "]").val();
       }
       data[key] = timedt;
@@ -154,6 +159,7 @@ $('.save').on('click', function() {
   var target;
   target = getformvalue(inputs);
   value = target.data;
+  value = JSON.stringify(value);
   return $.post("/input/update/" + modelname, value, function(data) {
     console.log(data);
     return getDBvalue("/input/get/" + modelname, inputs);

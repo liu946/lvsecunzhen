@@ -16,19 +16,20 @@ getkeyvalue = (url) ->
 getDBvalue = (url,array) ->
 	$.ajax
 		url: url,
-		dataType: 'json',
+		dataType: 'text',
 		async: true
 	.done (data) ->
+		data = JSON.parse data
 		for k, v of data
 			if k == 'id'
 				continue
-
 			if typeof(v) == 'object'
 				for m,n of v
-					$("##{m}").val n
+					console.log m,n,k
+					$("input[name=#{k}_#{m}]").val n
 			a = $("##{k}")
 			if a.length > 0
-				$("##{k}").val v
+				a.val v
 			else
 				b = $("input.#{k}[value='#{v}']")
 				b.prop 'checked', true
@@ -62,7 +63,7 @@ putmodel = (object,inputs) ->
 				str += "<li>
 							<input type='hidden' class='time' name='#{fieldid}'>
 							<div class='content'><p>#{i}</p></div>
-							<div class='datavalue'><input type='text' name='#{fieldname}_#{i}'>#{unit}</div>
+							<div class='datavalue'><input type='text' name='#{fieldid}_#{i}'>#{unit}</div>
 						</li>"
 				mend = "style='height:1049px'"
 			str += "</ul>"
@@ -115,6 +116,9 @@ getformvalue = (array) ->
 		if targettype == 'time'
 			timedt = {}
 			for i in [1985...2016] by 1
+				a = $("input[name=#{key}_#{i}]")
+				b = a.val()
+				console.log a
 				timedt[i] = $("input[name=#{key}_#{i}]").val()
 			data[key] = timedt
 		else
@@ -140,6 +144,7 @@ getDBvalue "/input/get/#{modelname}/#{id}", inputs
 $('.save').on 'click',() ->
 	target = getformvalue(inputs)
 	value = target.data
+	value = JSON.stringify(value)
 	$.post "/input/update/#{modelname}", value, (data) ->
 		console.log data
 		getDBvalue "/input/get/#{modelname}", inputs
