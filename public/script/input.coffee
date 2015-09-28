@@ -23,9 +23,9 @@ getDBvalue = (url,array) ->
 		for k, v of data
 			if k == 'id'
 				continue
-			if typeof(v) == 'object'
+			if v.length >= 300
+				v = JSON.parse v
 				for m,n of v
-					console.log m,n,k
 					$("input[name=#{k}_#{m}]").val n
 			a = $("##{k}")
 			if a.length > 0
@@ -118,9 +118,8 @@ getformvalue = (array) ->
 			for i in [1985...2016] by 1
 				a = $("input[name=#{key}_#{i}]")
 				b = a.val()
-				console.log a
 				timedt[i] = $("input[name=#{key}_#{i}]").val()
-			data[key] = timedt
+			data[key] = JSON.stringify timedt
 		else
 			data[key] = targetvalue
 
@@ -144,8 +143,6 @@ getDBvalue "/input/get/#{modelname}/#{id}", inputs
 $('.save').on 'click',() ->
 	target = getformvalue(inputs)
 	value = target.data
-	value = JSON.stringify(value)
-	console.log value
 	$.post "/input/update/#{modelname}", value, (data) ->
 		console.log data
 		getDBvalue "/input/get/#{modelname}", inputs

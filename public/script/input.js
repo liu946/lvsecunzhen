@@ -28,10 +28,10 @@ getDBvalue = function(url, array) {
       if (k === 'id') {
         continue;
       }
-      if (typeof v === 'object') {
+      if (v.length >= 300) {
+        v = JSON.parse(v);
         for (m in v) {
           n = v[m];
-          console.log(m, n, k);
           $("input[name=" + k + "_" + m + "]").val(n);
         }
       }
@@ -131,10 +131,9 @@ getformvalue = function(array) {
       for (i = l = 1985; l < 2016; i = l += 1) {
         a = $("input[name=" + key + "_" + i + "]");
         b = a.val();
-        console.log(a);
         timedt[i] = $("input[name=" + key + "_" + i + "]").val();
       }
-      data[key] = timedt;
+      data[key] = JSON.stringify(timedt);
     } else {
       data[key] = targetvalue;
     }
@@ -159,8 +158,6 @@ $('.save').on('click', function() {
   var target;
   target = getformvalue(inputs);
   value = target.data;
-  value = JSON.stringify(value);
-  console.log(value);
   return $.post("/input/update/" + modelname, value, function(data) {
     console.log(data);
     return getDBvalue("/input/get/" + modelname, inputs);
