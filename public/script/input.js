@@ -80,7 +80,7 @@ putmodel = function(object, inputs) {
     if (type === 'time') {
       str = "<ul class='yearinput'>";
       for (i = l = 1985; l <= 2016; i = l += 1) {
-        str += "<li> <input type='hidden' class='time' name='" + fieldid + "'> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
+        str += "<li> <input type='hidden' class='time' name='" + fieldid + "' value='nothing'> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
         mend = "style='height:1049px'";
       }
       str += "</ul>";
@@ -156,10 +156,14 @@ getformvalue = function(array) {
     }
     if (targettype === 'time') {
       timedt = {};
+      flag = 1;
       for (i = l = 1985; l < 2016; i = l += 1) {
         a = $("input[name=" + key + "_" + i + "]");
         b = a.val();
         timedt[i] = $("input[name=" + key + "_" + i + "]").val();
+        if (timedt[i] !== '') {
+          flag = 0;
+        }
       }
       data[key] = JSON.stringify(timedt);
     } else {
@@ -189,7 +193,6 @@ $('.save').on('click', function() {
   var target;
   target = getformvalue(inputs);
   value = target.data;
-  console.log(value);
   return $.post("/input/update/" + modelname, value, function(data) {
     console.log(data);
     return getDBvalue("/input/get/" + modelname, inputs);

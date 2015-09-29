@@ -66,7 +66,7 @@ putmodel = (object,inputs) ->
 			str = "<ul class='yearinput'>"
 			for i in [1985..2016] by 1
 				str += "<li>
-							<input type='hidden' class='time' name='#{fieldid}'>
+							<input type='hidden' class='time' name='#{fieldid}' value='nothing'>
 							<div class='content'><p>#{i}</p></div>
 							<div class='datavalue'><input type='text' name='#{fieldid}_#{i}'>#{unit}</div>
 						</li>"
@@ -131,6 +131,7 @@ getformvalue = (array) ->
 
 		targettype = target.attr 'class'
 		targetvalue = target.val()
+
 		if targettype != undefined
 			classname = targettype.split(' ')[1]
 			if classname == 'selecttext'
@@ -138,10 +139,14 @@ getformvalue = (array) ->
 
 		if targettype == 'time'
 			timedt = {}
+			flag = 1
 			for i in [1985...2016] by 1
 				a = $("input[name=#{key}_#{i}]")
 				b = a.val()
 				timedt[i] = $("input[name=#{key}_#{i}]").val()
+				if timedt[i] != ''
+					flag = 0
+
 			data[key] = JSON.stringify timedt
 		else
 			data[key] = targetvalue
@@ -168,7 +173,6 @@ getDBvalue "/input/get/#{modelname}/#{id}", inputs
 $('.save').on 'click',() ->
 	target = getformvalue(inputs)
 	value = target.data
-	console.log value
 	$.post "/input/update/#{modelname}", value, (data) ->
 		console.log data
 		getDBvalue "/input/get/#{modelname}", inputs
