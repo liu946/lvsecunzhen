@@ -33,8 +33,10 @@ getDBvalue = (url,array) ->
 				a.val v
 			else
 				b = $("input.#{k}[value='#{v}']")
-				console.log k,v
-				b.prop 'checked', true
+				if b.length > 0
+					b.prop 'checked', true
+				else
+					$("option[value='#{v}']").prop 'selected',true
 
 	.fail () ->
 		alert "数据库获取数据失败"
@@ -71,14 +73,17 @@ putmodel = (object,inputs) ->
 				mend = "style='height:1049px'"
 			str += "</ul>"
 		else if type == 'list'
-			str = "<select name='#{fieldid}' id='#{fieldid}'>"
+			str = "<select name='#{fieldid}' class='#{fieldid}'>"
+
 			if modelname == 'zhenquhuocunzhuang'
-				point = 'xiangzhen'
+				data = getkeyvalue("/input/get/xiangzhen").responseJSON
+				for i in data
+					str += "<option value='#{i.id}'>#{i.ZhenMingChen}</option>"
 			else if modelname == 'zhuhu'
-				point = 'zhenquhuocunzhuang'
-			data = getkeyvalue("/input/get/#{point}").responseJSON
-			for i in data
-				str += "<option value='#{i.ZhenMingChen}'>#{i.ZhenMingChen}</option>"
+				data = getkeyvalue("/input/get/zhenquhuocunzhuang").responseJSON
+				for i in data
+					str += "<option value='#{i.id}'>#{i.MingChen}</option>"
+
 			str += "</select>"
 		else if datatype == 'bool'
 			str = "<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='1'/>是
@@ -119,6 +124,8 @@ getformvalue = (array) ->
 	for key in array
 		if key == 'SuoShuXiangZhen'
 			target = $('select[name=SuoShuXiangZhen]')
+		else if key == 'SuoShuCunZhuangHuoZhenQu'
+			target = $('select[name=SuoShuCunZhuangHuoZhenQu]')
 		else
 			target = $("input[name=#{key}]")
 

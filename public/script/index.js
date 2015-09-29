@@ -23,10 +23,20 @@ html = '';
 
 for (i = 0, len = data.length; i < len; i++) {
   d = data[i];
-  html += "<div class='container'> <div class='id'><p>" + d.id + "</p></div> <div class='title'><p>" + d.ZhenMingChen + "</p></div> <div class='exchange'><a href='/input/edit/" + modelname + "/" + d.id + "'>修改</a></div> </div>";
+  html += "<div class='container'> <div class='id'><p>" + d.id + "</p></div>";
+  if (d.ZhenMingChen !== void 0) {
+    html += "<div class='title'><p>" + d.ZhenMingChen + "</p></div>";
+  }
+  if (d.MingChen !== void 0) {
+    html += "<div class='title'><p>" + d.MingChen + "</p></div>";
+  }
+  if (d.WenJuanBianHao !== void 0) {
+    html += "<div class='title'><p>" + d.WenJuanBianHao + "</p></div>";
+  }
+  html += "<div class='exchange'><a href='/input/edit/" + modelname + "/" + d.id + "'>修改</a></div> </div>";
 }
 
-$('#formlist .contentlist').html(html);
+$('#formlist .contentlist').append(html);
 
 $('#addform').on('click', function() {
   return location.href = "/input/new/" + modelname;

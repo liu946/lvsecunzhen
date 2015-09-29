@@ -15,12 +15,20 @@ console.log data
 html = ''
 for d in data
 	html += "<div class='container'>
-				<div class='id'><p>#{d.id}</p></div>
-				<div class='title'><p>#{d.ZhenMingChen}</p></div>
-				<div class='exchange'><a href='/input/edit/#{modelname}/#{d.id}'>修改</a></div>
+				<div class='id'><p>#{d.id}</p></div>"
+	if d.ZhenMingChen != undefined
+		html +=	"<div class='title'><p>#{d.ZhenMingChen}</p></div>"
+
+	if d.MingChen != undefined
+		html += "<div class='title'><p>#{d.MingChen}</p></div>"
+
+	if d.WenJuanBianHao != undefined
+		html += "<div class='title'><p>#{d.WenJuanBianHao}</p></div>"
+	
+	html += "<div class='exchange'><a href='/input/edit/#{modelname}/#{d.id}'>修改</a></div>
 			</div>"
 
-$('#formlist .contentlist').html html
+$('#formlist .contentlist').append html
 
 $('#addform').on 'click',() ->
 	location.href = "/input/new/#{modelname}"

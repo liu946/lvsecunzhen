@@ -43,8 +43,11 @@ getDBvalue = function(url, array) {
         results.push(a.val(v));
       } else {
         b = $("input." + k + "[value='" + v + "']");
-        console.log(k, v);
-        results.push(b.prop('checked', true));
+        if (b.length > 0) {
+          results.push(b.prop('checked', true));
+        } else {
+          results.push($("option[value='" + v + "']").prop('selected', true));
+        }
       }
     }
     return results;
@@ -56,7 +59,7 @@ getDBvalue = function(url, array) {
 };
 
 putmodel = function(object, inputs) {
-  var b, data, datatype, fieldid, fieldname, html, i, id, items, j, k, l, len, len1, mend, o, point, ref, str, type, unit, v;
+  var b, data, datatype, fieldid, fieldname, html, i, id, items, j, k, l, len, len1, len2, mend, o, p, ref, str, type, unit, v;
   html = "";
   id = object["class"];
   html = "<div id='" + id + "_' class='content'>";
@@ -82,16 +85,19 @@ putmodel = function(object, inputs) {
       }
       str += "</ul>";
     } else if (type === 'list') {
-      str = "<select name='" + fieldid + "' id='" + fieldid + "'>";
+      str = "<select name='" + fieldid + "' class='" + fieldid + "'>";
       if (modelname === 'zhenquhuocunzhuang') {
-        point = 'xiangzhen';
+        data = getkeyvalue("/input/get/xiangzhen").responseJSON;
+        for (o = 0, len1 = data.length; o < len1; o++) {
+          i = data[o];
+          str += "<option value='" + i.id + "'>" + i.ZhenMingChen + "</option>";
+        }
       } else if (modelname === 'zhuhu') {
-        point = 'zhenquhuocunzhuang';
-      }
-      data = getkeyvalue("/input/get/" + point).responseJSON;
-      for (o = 0, len1 = data.length; o < len1; o++) {
-        i = data[o];
-        str += "<option value='" + i.ZhenMingChen + "'>" + i.ZhenMingChen + "</option>";
+        data = getkeyvalue("/input/get/zhenquhuocunzhuang").responseJSON;
+        for (p = 0, len2 = data.length; p < len2; p++) {
+          i = data[p];
+          str += "<option value='" + i.id + "'>" + i.MingChen + "</option>";
+        }
       }
       str += "</select>";
     } else if (datatype === 'bool') {
@@ -135,6 +141,8 @@ getformvalue = function(array) {
     key = array[j];
     if (key === 'SuoShuXiangZhen') {
       target = $('select[name=SuoShuXiangZhen]');
+    } else if (key === 'SuoShuCunZhuangHuoZhenQu') {
+      target = $('select[name=SuoShuCunZhuangHuoZhenQu]');
     } else {
       target = $("input[name=" + key + "]");
     }
