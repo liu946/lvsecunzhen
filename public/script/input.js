@@ -21,28 +21,33 @@ getDBvalue = function(url, array) {
     dataType: 'text',
     async: true
   }).done(function(data) {
-    var a, b, k, m, n, v;
+    var a, b, k, m, n, results, v;
     data = JSON.parse(data);
+    results = [];
     for (k in data) {
       v = data[k];
       if (k === 'id') {
         continue;
       }
-      if (v.length >= 300) {
-        v = JSON.parse(v);
-        for (m in v) {
-          n = v[m];
-          $("input[name=" + k + "_" + m + "]").val(n);
+      if (typeof v === 'string') {
+        if (v.length >= 300) {
+          v = JSON.parse(v);
+          for (m in v) {
+            n = v[m];
+            $("input[name=" + k + "_" + m + "]").val(n);
+          }
         }
       }
       a = $("#" + k);
       if (a.length > 0) {
-        a.val(v);
+        results.push(a.val(v));
       } else {
         b = $("input." + k + "[value='" + v + "']");
-        b.prop('checked', true);
+        console.log(k, v);
+        results.push(b.prop('checked', true));
       }
     }
+    return results;
   }).fail(function() {
     return alert("数据库获取数据失败");
   }).always(function() {
@@ -51,15 +56,16 @@ getDBvalue = function(url, array) {
 };
 
 putmodel = function(object, inputs) {
-  var b, data, fieldid, fieldname, html, i, id, items, j, k, l, len, len1, mend, o, ref, str, type, unit, v;
+  var b, data, datatype, fieldid, fieldname, html, i, id, items, j, k, l, len, len1, mend, o, point, ref, str, type, unit, v;
   html = "";
   id = object["class"];
-  html = "<div id='" + id + "' class='content'>";
+  html = "<div id='" + id + "_' class='content'>";
   ref = object.childfield;
   for (j = 0, len = ref.length; j < len; j++) {
     b = ref[j];
     fieldname = b.fieldname;
     fieldid = b.field;
+    datatype = b.datatype;
     type = b.type;
     unit = b.unit;
     items = b.items;
@@ -76,18 +82,25 @@ putmodel = function(object, inputs) {
       }
       str += "</ul>";
     } else if (type === 'list') {
-      str = "<select name='" + fieldname + "' id='" + fieldid + "'>";
-      data = getkeyvalue("/input/get/" + modelname);
+      str = "<select name='" + fieldid + "' id='" + fieldid + "'>";
+      if (modelname === 'zhenquhuocunzhuang') {
+        point = 'xiangzhen';
+      } else if (modelname === 'zhuhu') {
+        point = 'zhenquhuocunzhuang';
+      }
+      data = getkeyvalue("/input/get/" + point).responseJSON;
       for (o = 0, len1 = data.length; o < len1; o++) {
         i = data[o];
-        str += "<option value='i'>" + i + "</option>";
+        str += "<option value='" + i.ZhenMingChen + "'>" + i.ZhenMingChen + "</option>";
       }
       str += "</select>";
+    } else if (datatype === 'bool') {
+      str = "<input type='radio' class='" + fieldid + " selecttext' name='" + fieldid + "' value='1'/>是 <input type='radio' class='" + fieldid + " selecttext' name='" + fieldid + "' value='0'/>否";
     } else if (items !== void 0) {
       str = "";
       for (k in items) {
         v = items[k];
-        str += "<input type='radio' class='" + fieldid + "' name='" + fieldid + "' value='" + k + "' />" + v;
+        str += "<input type='radio' class='" + fieldid + " selecttext' name='" + fieldid + "' value='" + k + "'/>" + v;
       }
     } else {
       str = "<input type='text' id='" + fieldid + "' name='" + fieldid + "' />" + unit;
@@ -113,18 +126,25 @@ getinputname = function(value, target) {
 };
 
 getformvalue = function(array) {
-  var a, b, data, flag, i, j, key, l, len, target, targettype, targetvalue, timedt;
+  var a, b, classname, data, flag, i, j, key, l, len, target, targettype, targetvalue, timedt;
   data = {
     "id": id
   };
   flag = 0;
   for (j = 0, len = array.length; j < len; j++) {
     key = array[j];
-    target = $("input[name=" + key + "]");
-    targetvalue = target.val();
+    if (key === 'SuoShuXiangZhen') {
+      target = $('select[name=SuoShuXiangZhen]');
+    } else {
+      target = $("input[name=" + key + "]");
+    }
     targettype = target.attr('class');
-    if (targetvalue === '') {
-      flag = 1;
+    targetvalue = target.val();
+    if (targettype !== void 0) {
+      classname = targettype.split(' ')[1];
+      if (classname === 'selecttext') {
+        targetvalue = $("input[name=" + key + "]:checked").val();
+      }
     }
     if (targettype === 'time') {
       timedt = {};
@@ -136,6 +156,9 @@ getformvalue = function(array) {
       data[key] = JSON.stringify(timedt);
     } else {
       data[key] = targetvalue;
+    }
+    if (targetvalue === '') {
+      flag = 1;
     }
   }
   return {
@@ -158,6 +181,7 @@ $('.save').on('click', function() {
   var target;
   target = getformvalue(inputs);
   value = target.data;
+  console.log(value);
   return $.post("/input/update/" + modelname, value, function(data) {
     console.log(data);
     return getDBvalue("/input/get/" + modelname, inputs);

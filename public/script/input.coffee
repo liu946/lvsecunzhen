@@ -23,17 +23,19 @@ getDBvalue = (url,array) ->
 		for k, v of data
 			if k == 'id'
 				continue
-			if v.length >= 300
-				v = JSON.parse v
-				for m,n of v
-					$("input[name=#{k}_#{m}]").val n
+			if typeof(v) == 'string'
+				if v.length >= 300
+					v = JSON.parse v
+					for m,n of v
+						$("input[name=#{k}_#{m}]").val n
 			a = $("##{k}")
 			if a.length > 0
 				a.val v
 			else
 				b = $("input.#{k}[value='#{v}']")
+				console.log k,v
 				b.prop 'checked', true
-		return	
+
 	.fail () ->
 		alert "数据库获取数据失败"
 	.always () ->
@@ -43,10 +45,11 @@ getDBvalue = (url,array) ->
 putmodel = (object,inputs) ->
 	html = ""
 	id = object.class
-	html = "<div id='#{id}' class='content'>"
+	html = "<div id='#{id}_' class='content'>"
 	for b in object.childfield
 		fieldname = b.fieldname
 		fieldid = b.field
+		datatype = b.datatype
 		type = b.type
 		unit = b.unit
 		items = b.items
@@ -68,15 +71,22 @@ putmodel = (object,inputs) ->
 				mend = "style='height:1049px'"
 			str += "</ul>"
 		else if type == 'list'
-			str = "<select name='#{fieldname}' id='#{fieldid}'>"
-			data = getkeyvalue "/input/get/#{modelname}"
+			str = "<select name='#{fieldid}' id='#{fieldid}'>"
+			if modelname == 'zhenquhuocunzhuang'
+				point = 'xiangzhen'
+			else if modelname == 'zhuhu'
+				point = 'zhenquhuocunzhuang'
+			data = getkeyvalue("/input/get/#{point}").responseJSON
 			for i in data
-				str += "<option value='i'>#{i}</option>"
+				str += "<option value='#{i.ZhenMingChen}'>#{i.ZhenMingChen}</option>"
 			str += "</select>"
+		else if datatype == 'bool'
+			str = "<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='1'/>是
+				<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='0'/>否"
 		else if items != undefined
 			str = ""
 			for k,v of items
-				str += "<input type='radio' class='#{fieldid}' name='#{fieldid}' value='#{k}' />#{v}"
+				str += "<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='#{k}'/>#{v}"
 		else
 			str = "<input type='text' id='#{fieldid}' name='#{fieldid}' />#{unit}"
 			mend = ''
@@ -106,12 +116,18 @@ getinputname = (value,target) ->
 getformvalue = (array) ->
 	data = {"id": id}
 	flag = 0
-	for key in array	
-		target = $("input[name=#{key}]")
-		targetvalue = target.val()
+	for key in array
+		if key == 'SuoShuXiangZhen'
+			target = $('select[name=SuoShuXiangZhen]')
+		else
+			target = $("input[name=#{key}]")
+
 		targettype = target.attr 'class'
-		if targetvalue == ''
-			flag = 1
+		targetvalue = target.val()
+		if targettype != undefined
+			classname = targettype.split(' ')[1]
+			if classname == 'selecttext'
+				targetvalue = $("input[name=#{key}]:checked").val()
 
 		if targettype == 'time'
 			timedt = {}
@@ -123,6 +139,8 @@ getformvalue = (array) ->
 		else
 			data[key] = targetvalue
 
+		if targetvalue == ''
+			flag = 1
 	return {
 		data : data
 		flag : flag
@@ -143,6 +161,7 @@ getDBvalue "/input/get/#{modelname}/#{id}", inputs
 $('.save').on 'click',() ->
 	target = getformvalue(inputs)
 	value = target.data
+	console.log value
 	$.post "/input/update/#{modelname}", value, (data) ->
 		console.log data
 		getDBvalue "/input/get/#{modelname}", inputs

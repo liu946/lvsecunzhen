@@ -11,6 +11,7 @@ getlist = (url) ->
 		console.log "complete"
 
 data = getlist("/input/get/#{modelname}").responseJSON
+console.log data
 html = ''
 for d in data
 	html += "<div class='container'>

@@ -17,6 +17,8 @@ getlist = function(url) {
 
 data = getlist("/input/get/" + modelname).responseJSON;
 
+console.log(data);
+
 html = '';
 
 for (i = 0, len = data.length; i < len; i++) {
