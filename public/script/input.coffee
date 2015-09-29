@@ -52,16 +52,23 @@ putmodel = (object,inputs) ->
 		fieldname = b.fieldname
 		fieldid = b.field
 		datatype = b.datatype
+		onlyincity = b.onlyincity
 		type = b.type
 		unit = b.unit
 		items = b.items
 
+		if onlyincity == true
+			special = 'onlyincity'
+		else
+			special = ''
+		
 		inputs = getinputname fieldid,inputs
 
 		mend = ''
 
 		if unit == undefined
 			unit = ''
+
 		if type == 'time'
 			str = "<ul class='yearinput'>"
 			for i in [1985..2016] by 1
@@ -87,16 +94,17 @@ putmodel = (object,inputs) ->
 			str += "</select>"
 		else if datatype == 'bool'
 			str = "<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='1'/>是
-				<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='0'/>否"
+				<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='2'/>否"
 		else if items != undefined
 			str = ""
 			for k,v of items
 				str += "<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='#{k}'/>#{v}"
+		
 		else
 			str = "<input type='text' id='#{fieldid}' name='#{fieldid}' />#{unit}"
 			mend = ''
 			
-		html += "<div class='list' #{mend}>
+		html += "<div class='list #{special}' #{mend}>
 					<div class='note'>
 						<h3>#{fieldname}</h3>
 					</div>
@@ -105,7 +113,7 @@ putmodel = (object,inputs) ->
 					</div>
 				</div>"
 
-	html += "</div><hr />"
+	html += "</div>"
 	$('#J_form').append html
 	return inputs
 
@@ -169,12 +177,25 @@ inputs = putmodel value,inputs
 # 获取数据库的存入的值	
 getDBvalue "/input/get/#{modelname}/#{id}", inputs
 
+# 镇区和乡村选择
+zhenqustorge = []
+$("input.ZhenQuHuoCunZhuang[value=2]").on 'click',() ->
+	zhenqustorge = $(".onlyincity")
+	for i in zhenqustorge
+		$(i).remove()
+$("input.ZhenQuHuoCunZhuang[value=1]").on 'click',() ->
+	value = ""
+	for i in zhenqustorge
+		$('#J_form').append i
+	zhenqustorge = []
+	
+
 # 保存功能
 $('.save').on 'click',() ->
 	target = getformvalue(inputs)
 	value = target.data
 	$.post "/input/update/#{modelname}", value, (data) ->
-		console.log data
+		alert '保存成功'
 		getDBvalue "/input/get/#{modelname}", inputs
 
 # 提交功能
@@ -185,5 +206,6 @@ $('.submit').on 'click',() ->
 		alert "没有填写完整，请检查"
 	else
 		$.post "/input/update/#{modelname}", value, (data) ->
-			console.log data
+			alert '提交成功'
+			location.href  = "/input/index/#{modelname}"
 
