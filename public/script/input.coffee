@@ -20,6 +20,7 @@ getDBvalue = (url,array) ->
 		async: true
 	.done (data) ->
 		data = JSON.parse data
+		zhenqustorge = []
 		for k, v of data
 			if k == 'id'
 				continue
@@ -37,6 +38,24 @@ getDBvalue = (url,array) ->
 					b.prop 'checked', true
 				else
 					$("option[value='#{v}']").prop 'selected',true
+
+		# 镇区和乡村选择
+		$("input.ZhenQuHuoCunZhuang[value=2]").on 'click',() ->
+			zhenqustorge = $(".onlyincity")
+			for i in zhenqustorge
+				$(i).remove()
+				
+		if $("input.ZhenQuHuoCunZhuang[value=2]").prop('checked')
+			zhenqustorge = $(".onlyincity")
+			for i in zhenqustorge
+				$(i).remove()		
+
+		$("input.ZhenQuHuoCunZhuang[value=1]").on 'click',() ->
+			value = ""
+			for i in zhenqustorge
+				$('#J_form').append i
+		
+			
 
 	.fail () ->
 		alert "数据库获取数据失败"
@@ -176,18 +195,6 @@ inputs = putmodel value,inputs
 
 # 获取数据库的存入的值	
 getDBvalue "/input/get/#{modelname}/#{id}", inputs
-
-# 镇区和乡村选择
-zhenqustorge = []
-$("input.ZhenQuHuoCunZhuang[value=2]").on 'click',() ->
-	zhenqustorge = $(".onlyincity")
-	for i in zhenqustorge
-		$(i).remove()
-$("input.ZhenQuHuoCunZhuang[value=1]").on 'click',() ->
-	value = ""
-	for i in zhenqustorge
-		$('#J_form').append i
-	zhenqustorge = []
 	
 
 # 保存功能
@@ -206,6 +213,6 @@ $('.submit').on 'click',() ->
 		alert "没有填写完整，请检查"
 	else
 		$.post "/input/update/#{modelname}", value, (data) ->
-			alert '提交成功'
-			location.href  = "/input/index/#{modelname}"
+			 alert "提交成功"
+			 location.href = "/input/index/#{modelname}"
 

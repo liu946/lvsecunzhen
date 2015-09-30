@@ -24,6 +24,12 @@ for d in data
 
 	if d.WenJuanBianHao != undefined
 		html += "<div class='title'><p>#{d.WenJuanBianHao}</p></div>"
+
+	if d.ZhenQuHuoCunZhuang != undefined
+		if d.ZhenQuHuoCunZhuang == 1
+			html += "<div class='title'><p>镇区</p></div>"
+		if d.ZhenQuHuoCunZhuang == 2
+			html += "<div class='title'><p>乡村</p></div>"
 	
 	html += "<div class='exchange'><a href='/input/edit/#{modelname}/#{d.id}'>修改</a></div>
 			</div>"
