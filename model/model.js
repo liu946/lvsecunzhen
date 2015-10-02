@@ -21,11 +21,11 @@ var model = {
 	},
 	generatetable:function (createcallback) {
 		console.log('[Model] Generating table "' +this.tablename+ '" in '+global.conf.dbname);
-		
+
 		var createsql = "CREATE TABLE IF NOT EXISTS "+this.tablename;
 		createsql +="("+
 			"id int(11) not null primary key auto_increment"+
-			this.decodetype(datatype[this.tablename]["childfield"])
+			this.decodetype(datatype[this.tablename.toLocaleLowerCase()]["childfield"])
 			+");";
 		sqlhelper.exsqllist(["USE "+global.conf.dbname+";",createsql],[,createcallback])
 	},
@@ -40,10 +40,10 @@ var model = {
 				{
 					case 'select1-5':
 					case 'bool':
-						str+="int(4) "
+						str+="int(4) ";
 					break;
 					case 'selectint(11)':
-						str+="int(11) "
+						str+="int(11) ";
 					break;
 					case 'jsonstr':
 						str+='varchar(500) ';
@@ -82,16 +82,16 @@ var model = {
 		if (obj.hasOwnProperty('id')) {
 			delete obj.id;
 		};
-		
+
 		var field = "UPDATE "+this.tablename +" SET ";
-		
+
 		for (var i in obj) {
 			field += " "+i+" = '"+obj[i]+"',";
 		};
-		
+
 		field = field.substr(0,field.length-1);
 		field += " WHERE `id` = "+id+" ;";
-		
+
 		sqlhelper.exsqllist(['USE '+global.conf.dbname,field],[,callback])
 
 	},
@@ -110,15 +110,14 @@ var model = {
 			callback(rows);
 		});
 	},
-	insertnull:function(callback){ 
+	insertnull:function(callback){
 			var insertsql = "insert into "+this.tablename+" () values ();";
 			var getmaxsql = "select max(id) as id from "+this.tablename+";";
 			var maxhandle = function(rows, fields){
 					callback(rows[0].id);
 				}
 			sqlhelper.exsqllist(["USE "+global.conf.dbname+";",insertsql,getmaxsql],[,,maxhandle]);
-	},
-
+	}
 }
 
 module.exports = model;
