@@ -16,16 +16,29 @@ var field = {
                 "field": "ZhenYuRenKou"
             },
             {
+                "fieldname": "非农人口",
+                "datatype": "jsonstr",
+                "type" : "time",
+                "unit": "人",
+                "field": "FeiNongRenKou"
+            },
+            {
+                "fieldname": "绿色无公害农产品种植面积",
+                "datatype": "double",
+                "unit": "亩",
+                "field": "LvSeWuGongHaiNongChanPinZhongZhiMianJi"
+            },
+            {
                 "fieldname": "林地面积",
                 "datatype": "double",
                 "unit": "公顷",
                 "field": "LinDiMianJi"
             },
             {
-                "fieldname": "草地面积",
+                "fieldname": "园地面积",
                 "datatype": "double",
                 "unit": "公顷",
-                "field": "CaoDiMianJi"
+                "field": "YuanDiMianJi"
             },
             {
                 "fieldname": "水域面积",
@@ -67,6 +80,7 @@ var field = {
             {
                 "fieldname": "居民人均收入",
                 "datatype": "double",
+                "type" : "time2000",
                 "unit": "元",
                 "field": "JiMinRenJunShouRu"
             },
@@ -93,6 +107,18 @@ var field = {
                 "datatype": "double",
                 "unit": "吨",
                 "field": "ShuiDaoChanLiang"
+            },
+            {
+                "fieldname": "大豆种植面积",
+                "datatype": "double",
+                "unit": "亩",
+                "field": "DaDouZhongZhiMianJi"
+            },
+            {
+                "fieldname": "大豆产量",
+                "datatype": "double",
+                "unit": "吨",
+                "field": "DaDouChanLiang"
             },
             {
                 "fieldname": "一产GDP",
@@ -137,12 +163,6 @@ var field = {
                 "field": "ShengHuoWuShuiChuLiLv"
             },
             {
-                "fieldname": "调查问卷总户数",
-                "datatype": "int(11)",
-                "unit": "户",
-                "field": "DiaoChaWenJuanZongHuShu"
-            },
-            {
                 "fieldname": "镇域道路总长度",
                 "datatype": "int(11)",
                 "unit": "公里",
@@ -154,6 +174,7 @@ var field = {
                 "unit": "公里",
                 "field": "ZhenYuDaoLuYingHuaChangDu"
             },
+
             {
                 "fieldname": "中学学生人数",
                 "datatype": "int(11)",
@@ -161,16 +182,60 @@ var field = {
                 "field": "ZhongXueXueShengRenShu"
             },
             {
+                "fieldname": "村镇中学学校建筑总面积",
+                "datatype": "int(11)",
+                "unit": "平方米",
+                "field": "CunZhenZhongXueXueXiaoJianZhuZongMianJi"
+            },
+            {
                 "fieldname": "小学学生人数",
                 "datatype": "int(11)",
                 "unit": "人",
                 "field": "XiaoXueXueShengRenShu"
             },
+            
             {
-                "fieldname": "学生人数总数",
+                "fieldname": "村镇小学学校建筑总面积",
                 "datatype": "int(11)",
-                "unit": "人",
-                "field": "XueShengRenShuZongShu"
+                "unit": "平方米",
+                "field": "CunZhenXiaoXueXueXiaoJianZhuZongMianJi"
+            },
+            
+            {
+                "fieldname": "镇域总用地面积",
+                "datatype": "int(11)",
+                "unit": "平方米",
+                "field": "ZhenYuYongDiZongMianJi"
+            },
+            {
+                "fieldname": "村镇卫生设施建筑总面积",
+                "datatype": "int(11)",
+                "unit": "平方米",
+                "field": "CunZhenWeiShengSheShiJianZhuZongMianJi"
+            },
+            {
+                "fieldname": "自然保护区用地面积",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "ZiRanBaoHuQuYongDiMianJi"
+            },
+            {
+                "fieldname": "采矿用地面积",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "CaiKuangYongDiMianJi"
+            },
+            {
+                "fieldname": "自然保留地面积",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "ZiRanBaoLiuDiMianJi"
+            },
+            {
+                "fieldname": "特殊用地面积",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "TeShuYongDiMianJi"
             },
             {
                 "fieldname": "卫生设施千人病床数",
@@ -227,41 +292,18 @@ var field = {
                 "field": "ZongMuBenZhiWuZhongLeiShu"
             },
             {
-                "fieldname": "绿色无公害农产品种植面积",
-                "datatype": "double",
-                "unit": "亩",
-                "field": "LvSeWuGongHaiNongChanPinZhongZhiMianJi"
-            },
-            {
-                "fieldname": "村镇中学学校建筑总面积",
-                "datatype": "int(11)",
-                "unit": "平方米",
-                "field": "CunZhenZhongXueXueXiaoJianZhuZongMianJi"
-            },
-            {
-                "fieldname": "村镇卫生设施建筑总面积",
-                "datatype": "int(11)",
-                "unit": "平方米",
-                "field": "CunZhenWeiShengSheShiJianZhuZongMianJi"
-            },
-            {
-                "fieldname": "绿色出行距离内学生人数",
-                "datatype": "int(11)",
-                "unit": "人",
-                "field": "LvSeChuXingJuLiNaXueShengRenShu"
-            },
-            {
                 "fieldname": "近五年灾害发生频率",
                 "datatype": "int(11)",
                 "unit": "次每年",
                 "field": "JinWuNianZaiHaiFaShengPinLv"
             },
+            
             {
-                "fieldname": "自然保护区用地面积",
+                "fieldname": "农用化肥施用量",
                 "datatype": "double",
-                "unit": "公顷",
-                "field": "ZiRanBaoHuQuYongDiMianJi"
-            }
+                "unit": "吨",
+                "field": "NongYongHuaFeiShiYongLiang"
+            },
         ],
         "class": "XiangZhen"
     },
@@ -271,67 +313,180 @@ var field = {
         "childfield": [
             {
                 "fieldname": "镇区或村庄",
-                "onlyincity":false,
+                "showin":"both",
                 "datatype": "int(4)",
                 "field": "ZhenQuHuoCunZhuang",
                 "items":{1:"镇区",2:"村庄"}
             },
             {
                 "fieldname": "所属乡镇",
-                "onlyincity":false,
+                "showin":"both",
                 "datatype": "int(11)",
                 "type": "list",
                 "field": "SuoShuXiangZhen"
             },
             {
                 "fieldname": "名称",
-                "onlyincity":false,
+                "showin":"both",
                 "datatype": "varchar(100)",
                 "field": "MingChen"
             },
             {
                 "fieldname": "人口",
-                "onlyincity":false,
+                "showin":"both",
                 "datatype": "jsonstr",
                 "type": "time",
                 "unit": "人",
                 "field": "RenKou"
             },
             {
-                "fieldname": "绿化覆盖率",
-                "onlyincity":true,
+                "fieldname": "绿地面积",
+                "showin":"both",
                 "datatype": "double",
                 "unit": "%",
-                "field": "LvHuaFuGaiLv"
+                "field": "LvDiMianJi"
             },
             {
                 "fieldname": "居民人均收入",
-                "onlyincity":false,
+                "showin":"both",
                 "datatype": "double",
                 "unit": "元",
                 "field": "ZhenQuJiMinRenJunShouRu"
             },
             {
-                "fieldname": "文体设施建筑总面积",
-                "onlyincity":true,
+                "fieldname": "文体设施建筑用地面积",
+                "showin":"zhenqu",
                 "datatype": "int(11)",
                 "unit": "平方米",
                 "field": "WenTiSheShiJianZhuZongMianJi"
             },
             {
-                "fieldname": "商业用地总面积",
-                "onlyincity":true,
-                "datatype": "double",
-                "unit": "公顷",
-                "field": "ShangYeYongDiZongMianJi"
-            },
-            {
                 "fieldname": "建设用地总面积",
-                "onlyincity":false,
+                "showin":"both",
                 "datatype": "double",
                 "unit": "公顷",
                 "field": "JianSheYongDiZongMianJi"
-            }
+            },
+            {
+                "fieldname": "居住用地总面积",
+                "showin":"both",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "JuZhuYongDiZongMianJi"
+            },
+            {
+                "fieldname": "公共设施用地总面积",
+                "showin":"both",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "GongGongSheShiYongDiZongMianJi"
+            },
+            {
+                "fieldname": "生产设施用地总面积",
+                "showin":"both",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "ShengChanSheShiYongDiZongMianJi"
+            },
+            {
+                "fieldname": "道路广场用地总面积",
+                "showin":"both",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "DaoLuGuangChangYongDiZongMianJi"
+            },
+            {
+                "fieldname":"仓储用地面积",
+                "showin":"zhenqu",
+                "datatype":"double",
+                "unit":"公顷",
+                "field":"CangChuYongDiZongMianJi",
+            },
+            {
+                "fieldname":"对外交通用地面积",
+                "showin":"zhenqu",
+                "datatype":"double",
+                "unit":"公顷",
+                "field":"DuiWaiJiaoTongYongDiZongMianJi",
+            },
+            {
+                "fieldname":"道路广场用地面积",
+                "showin":"zhenqu",
+                "datatype":"double",
+                "unit":"公顷",
+                "field":"DaoLuGuangChangYongDiZongMianJi",
+            },
+            {
+                "fieldname":"工程设施用地面积",
+                "showin":"zhenqu",
+                "datatype":"double",
+                "unit":"公顷",
+                "field":"GongChengSheShiYongDiZongMianJi",
+            },
+            {
+                "fieldname":"商业用地面积",
+                "showin":"zhenqu",
+                "datatype":"double",
+                "unit":"公顷",
+                "field":"ShangYeYongDiZongMianJi",
+            },
+            {
+                "fieldname":"玉米产量",
+                "showin":"cunzhuang",
+                "datatype":"double",
+                "unit":"公顷",
+                "fieldname":"YMChanLiang",
+            },
+            {
+                "fieldname":"水稻产量",
+                "showin":"cunzhuang",
+                "datatype":"double",
+                "unit":"公顷",
+                "fieldname":"SDChanLiang",
+            },
+            {
+                "fieldname":"大豆产量",
+                "showin":"cunzhuang",
+                "datatype":"double",
+                "unit":"公顷",
+                "fieldname":"DDChanLiang",
+            },
+            {
+                "fieldname":"水域面积",
+                "showin":"cunzhuang",
+                "datatype":"double",
+                "unit":"公顷",
+                "fieldname":"SYMianJi",
+            },
+            {
+                "fieldname":"增加耕地面积",
+                "showin":"cunzhuang",
+                "datatype":"double",
+                "unit":"公顷",
+                "fieldname":"ZJGDMianJi",
+            },
+            {
+                "fieldname":"林地面积",
+                "showin":"cunzhuang",
+                "datatype":"double",
+                "unit":"公顷",
+                "fieldname":"LDMianJi",
+            },
+            {
+                "fieldname":"园地面积",
+                "showin":"cunzhuang",
+                "datatype":"double",
+                "unit":"公顷",
+                "fieldname":"YDMianJi",
+            },
+            {
+                "fieldname":"水域及其他用地面积",
+                "showin":"cunzhuang",
+                "datatype":"double",
+                "unit":"公顷",
+                "fieldname":"SYJQTYDMianJi",
+            },
+
         ],
         "class": "ZhenQuHuoCunZhuang"
     },
@@ -398,10 +553,16 @@ var field = {
                 "field": "ZhaiJiDiMianJi"
             },
             {
-                "fieldname": "农药化肥剩余量",
+                "fieldname": "化肥施用量",
                 "datatype": "int(11)",
-                "unit": "千克",
-                "field": "NongYaoHuaFeiShengYuLiang"
+                "unit": "斤/亩",
+                "field": "HuaFeiShiYongLiang"
+            },
+            {
+                "fieldname": "农药施用量",
+                "datatype": "int(11)",
+                "unit": "斤/亩",
+                "field": "NongYaoShiYongLiang"
             },
             {
                 "fieldname": "耕地规模",
@@ -428,10 +589,10 @@ var field = {
                 "field": "MuChaiJieGanXiaoHao"
             },
             {
-                "fieldname": "剩余农药化肥综合利用量",
+                "fieldname": "农产品剩余物有效利用率",
                 "datatype": "int(11)",
-                "unit": "千克",
-                "field": "ShengYuNongYaoHuaFeiZongHeLiYongLiang"
+                "unit": "%",
+                "field": "NongChanPingShengYuWuYouXiaoLiYongLv"
             },
             {
                 "fieldname": "是否直接倾倒污水",
@@ -439,9 +600,9 @@ var field = {
                 "field": "ShiFuZhiJieQingDaoWuShui"
             },
             {
-                "fieldname": "长距离出行是否绿色",
+                "fieldname": "长距离出行是否以公共交通方式为主",
                 "datatype": "bool",
-                "field": "ChangJuLiChuXingShiFuLvSe"
+                "field": "ChangJuLiChuXingShiFuoGGJTWZ"
             },
             {
                 "fieldname": "是否使用自来水",
@@ -460,16 +621,10 @@ var field = {
                 "field": "ShiFuCunZaiShuiTuLiuShi"
             },
             {
-                "fieldname": "日均短距离绿色出行次数",
+                "fieldname": "日均短距离出行（步行、自行车、电动车）次数",
                 "datatype": "int(11)",
                 "unit": "次",
                 "field": "RiJunDuanJuLiLvSeChuXingCiShu"
-            },
-            {
-                "fieldname": "日均短距离出行次数",
-                "datatype": "int(11)",
-                "unit": "次",
-                "field": "RiJunDuanJuLiChuXingCiShu"
             }
         ],
         "class": "ZhuHu"
