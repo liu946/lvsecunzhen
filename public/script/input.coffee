@@ -75,6 +75,7 @@ putmodel = (object,inputs) ->
 		type = b.type
 		unit = b.unit
 		items = b.items
+		condition = b.showin
 
 		if onlyincity == true
 			special = 'onlyincity'
@@ -83,7 +84,8 @@ putmodel = (object,inputs) ->
 		
 		inputs = getinputname fieldid,inputs
 
-		mend = ''
+		mend = "style='"
+		insert = ""
 
 		if unit == undefined
 			unit = ''
@@ -96,7 +98,7 @@ putmodel = (object,inputs) ->
 							<div class='content'><p>#{i}</p></div>
 							<div class='datavalue'><input type='text' name='#{fieldid}_#{i}'>#{unit}</div>
 						</li>"
-				mend = "style='height:1049px'"
+				mend += "height:1049px;"
 			str += "</ul>"
 		else if type == 'list'
 			str = "<select name='#{fieldid}' class='#{fieldid}'>"
@@ -121,9 +123,16 @@ putmodel = (object,inputs) ->
 		
 		else
 			str = "<input type='text' id='#{fieldid}' name='#{fieldid}' />#{unit}"
-			mend = ''
+			mend += "'"
 			
-		html += "<div class='list #{special}' #{mend}>
+		if condition isnt undefined
+			mend += "display:none;'"
+			insert = condition
+		else
+			mend += "'"
+			insert = ""
+
+		html += "<div class='list #{special} #{insert}' #{mend}>
 					<div class='note'>
 						<h3>#{fieldname}</h3>
 					</div>
@@ -195,7 +204,37 @@ inputs = putmodel value,inputs
 
 # 获取数据库的存入的值	
 getDBvalue "/input/get/#{modelname}/#{id}", inputs
-	
+
+# 监听点击，出现相应的表单
+if $("input[value=1]").prop 'checked'
+		for i in $(".zhenqu")
+			$(i).css 'display','block'
+	else
+		for i in $(".zhenqu")
+			$(i).css 'display','none'
+
+if $("input[value=2]").prop 'checked'
+		for i in $(".cunzhuang")
+			$(i).css 'display','block'
+	else
+		for i in $(".cunzhuang")
+			$(i).css 'display','none'
+			
+$("input[value=1]").on 'click',()->
+	if $(this).prop 'checked'
+		for i in $(".zhenqu")
+			$(i).css 'display','block'
+	else
+		for i in $(".zhenqu")
+			$(i).css 'display','none'
+$("input[value=2]").on 'click',()->
+	if $(this).prop 'checked'
+		for i in $(".cunzhuang")
+			$(i).css 'display','block'
+	else
+		for i in $(".cunzhuang")
+			$(i).css 'display','none'
+
 
 # 保存功能
 $('.save').on 'click',() ->
@@ -205,14 +244,4 @@ $('.save').on 'click',() ->
 		alert '保存成功'
 		getDBvalue "/input/get/#{modelname}", inputs
 
-# 提交功能
-$('.submit').on 'click',() ->
-	target = getformvalue(inputs)
-	value = target.data
-	if target.flag
-		alert "没有填写完整，请检查"
-	else
-		$.post "/input/update/#{modelname}", value, (data) ->
-			 alert "提交成功"
-			 location.href = "/input/index/#{modelname}"
 
