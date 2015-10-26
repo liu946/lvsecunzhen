@@ -12,7 +12,7 @@ var sys = require("../func/sys.js")
 
 var tb = sys.clone(model);
 
-tb.tablename = "XiangZhen";
+tb.tablename = "xiangzhen";
 tb.getall = function (callback) {
 	// body...
 	this.__proto__.getall.call(this,'id,ZhenMingChen',callback);

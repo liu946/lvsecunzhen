@@ -11,9 +11,9 @@ var sys = require("../func/sys.js")
 
 var tb = sys.clone(childmodel);
 
-tb.tablename = "ZhuHu";
+tb.tablename = "zhuhu";
 tb.father = {
-	tablename:'ZhenQuHuoCunZhuang',
+	tablename:'zhenquhuocunzhuang',
 	linkfield:'SuoShuCunZhuangHuoZhenQu'
 }
 tb.getall = function (callback) {
