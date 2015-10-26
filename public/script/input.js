@@ -85,7 +85,7 @@ getDBvalue = function(url, array) {
 };
 
 putmodel = function(object, inputs) {
-  var b, condition, data, datatype, fieldid, fieldname, html, i, id, insert, items, j, k, l, len, len1, len2, mend, o, onlyincity, p, ref, special, str, type, unit, v;
+  var b, condition, data, datatype, fieldid, fieldname, html, i, id, insert, items, j, k, l, len, len1, len2, mend, o, onlyincity, p, q, ref, special, str, type, unit, v;
   html = "";
   id = object["class"];
   html = "<div id='" + id + "_' class='content'>";
@@ -118,18 +118,25 @@ putmodel = function(object, inputs) {
         mend += "height:1049px;";
       }
       str += "</ul>";
+    } else if (type === 'time2005') {
+      str = "<ul class='yearinput'>";
+      for (i = o = 2005; o <= 2016; i = o += 1) {
+        str += "<li> <input type='hidden' class='time' name='" + fieldid + "' value='nothing'> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
+        mend += "height:1049px;";
+      }
+      str += "</ul>";
     } else if (type === 'list') {
       str = "<select name='" + fieldid + "' class='" + fieldid + "'>";
       if (modelname === 'zhenquhuocunzhuang') {
         data = getkeyvalue("/input/get/xiangzhen").responseJSON;
-        for (o = 0, len1 = data.length; o < len1; o++) {
-          i = data[o];
+        for (p = 0, len1 = data.length; p < len1; p++) {
+          i = data[p];
           str += "<option value='" + i.id + "'>" + i.ZhenMingChen + "</option>";
         }
       } else if (modelname === 'zhuhu') {
         data = getkeyvalue("/input/get/zhenquhuocunzhuang").responseJSON;
-        for (p = 0, len2 = data.length; p < len2; p++) {
-          i = data[p];
+        for (q = 0, len2 = data.length; q < len2; q++) {
+          i = data[q];
           str += "<option value='" + i.id + "'>" + i.MingChen + "</option>";
         }
       }
@@ -230,7 +237,7 @@ inputs = putmodel(value, inputs);
 
 getDBvalue("/input/get/" + modelname + "/" + id, inputs);
 
-if ($("input[value=1]").prop('checked')) {
+if ($("input.ZhenQuHuoCunZhuang[value=1]").prop('checked')) {
   ref = $(".zhenqu");
   for (j = 0, len = ref.length; j < len; j++) {
     i = ref[j];
@@ -244,7 +251,7 @@ if ($("input[value=1]").prop('checked')) {
   }
 }
 
-if ($("input[value=2]").prop('checked')) {
+if ($("input.ZhenQuHuoCunZhuang[value=2]").prop('checked')) {
   ref2 = $(".cunzhuang");
   for (o = 0, len2 = ref2.length; o < len2; o++) {
     i = ref2[o];
@@ -258,45 +265,39 @@ if ($("input[value=2]").prop('checked')) {
   }
 }
 
-$("input[value=1]").on('click', function() {
-  var len4, len5, q, r, ref4, ref5, results, results1;
+$("input.ZhenQuHuoCunZhuang[value=1]").on('click', function() {
+  var len4, len5, q, r, ref4, ref5, results;
   if ($(this).prop('checked')) {
     ref4 = $(".zhenqu");
-    results = [];
     for (q = 0, len4 = ref4.length; q < len4; q++) {
       i = ref4[q];
-      results.push($(i).css('display', 'block'));
+      $(i).css('display', 'block');
     }
-    return results;
-  } else {
-    ref5 = $(".zhenqu");
-    results1 = [];
+    ref5 = $(".cunzhuang");
+    results = [];
     for (r = 0, len5 = ref5.length; r < len5; r++) {
       i = ref5[r];
-      results1.push($(i).css('display', 'none'));
+      results.push($(i).css('display', 'none'));
     }
-    return results1;
+    return results;
   }
 });
 
-$("input[value=2]").on('click', function() {
-  var len4, len5, q, r, ref4, ref5, results, results1;
+$("input.ZhenQuHuoCunZhuang[value=2]").on('click', function() {
+  var len4, len5, q, r, ref4, ref5, results;
   if ($(this).prop('checked')) {
     ref4 = $(".cunzhuang");
-    results = [];
     for (q = 0, len4 = ref4.length; q < len4; q++) {
       i = ref4[q];
-      results.push($(i).css('display', 'block'));
+      $(i).css('display', 'block');
     }
-    return results;
-  } else {
-    ref5 = $(".cunzhuang");
-    results1 = [];
+    ref5 = $(".zhenqu");
+    results = [];
     for (r = 0, len5 = ref5.length; r < len5; r++) {
       i = ref5[r];
-      results1.push($(i).css('display', 'none'));
+      results.push($(i).css('display', 'none'));
     }
-    return results1;
+    return results;
   }
 });
 

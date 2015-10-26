@@ -100,6 +100,16 @@ putmodel = (object,inputs) ->
 						</li>"
 				mend += "height:1049px;"
 			str += "</ul>"
+		else if type == 'time2005'
+			str = "<ul class='yearinput'>"
+			for i in [2005..2016] by 1
+				str += "<li>
+							<input type='hidden' class='time' name='#{fieldid}' value='nothing'>
+							<div class='content'><p>#{i}</p></div>
+							<div class='datavalue'><input type='text' name='#{fieldid}_#{i}'>#{unit}</div>
+						</li>"
+				mend += "height:1049px;"
+			str += "</ul>"
 		else if type == 'list'
 			str = "<select name='#{fieldid}' class='#{fieldid}'>"
 
@@ -206,34 +216,34 @@ inputs = putmodel value,inputs
 getDBvalue "/input/get/#{modelname}/#{id}", inputs
 
 # 监听点击，出现相应的表单
-if $("input[value=1]").prop 'checked'
+if $("input.ZhenQuHuoCunZhuang[value=1]").prop 'checked'
 		for i in $(".zhenqu")
 			$(i).css 'display','block'
 	else
 		for i in $(".zhenqu")
 			$(i).css 'display','none'
 
-if $("input[value=2]").prop 'checked'
+if $("input.ZhenQuHuoCunZhuang[value=2]").prop 'checked'
 		for i in $(".cunzhuang")
 			$(i).css 'display','block'
 	else
 		for i in $(".cunzhuang")
 			$(i).css 'display','none'
 			
-$("input[value=1]").on 'click',()->
+$("input.ZhenQuHuoCunZhuang[value=1]").on 'click',()->
 	if $(this).prop 'checked'
 		for i in $(".zhenqu")
 			$(i).css 'display','block'
-	else
-		for i in $(".zhenqu")
+		for i in $(".cunzhuang")
 			$(i).css 'display','none'
-$("input[value=2]").on 'click',()->
+			
+$("input.ZhenQuHuoCunZhuang[value=2]").on 'click',()->
 	if $(this).prop 'checked'
 		for i in $(".cunzhuang")
 			$(i).css 'display','block'
-	else
-		for i in $(".cunzhuang")
+		for i in $(".zhenqu")
 			$(i).css 'display','none'
+		
 
 
 # 保存功能
