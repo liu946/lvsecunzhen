@@ -108,7 +108,7 @@ putmodel = (object,inputs) ->
 							<div class='content'><p>#{i}</p></div>
 							<div class='datavalue'><input type='text' name='#{fieldid}_#{i}'>#{unit}</div>
 						</li>"
-				mend += "height:1049px;"
+				mend += "height:400px;"
 			str += "</ul>"
 		else if type == 'list'
 			str = "<select name='#{fieldid}' class='#{fieldid}'>"

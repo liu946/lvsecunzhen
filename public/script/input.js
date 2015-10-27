@@ -122,7 +122,7 @@ putmodel = function(object, inputs) {
       str = "<ul class='yearinput'>";
       for (i = o = 2005; o <= 2016; i = o += 1) {
         str += "<li> <input type='hidden' class='time' name='" + fieldid + "' value='nothing'> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
-        mend += "height:1049px;";
+        mend += "height:400px;";
       }
       str += "</ul>";
     } else if (type === 'list') {
