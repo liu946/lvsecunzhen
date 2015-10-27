@@ -25,7 +25,7 @@ getDBvalue = (url,array) ->
 			if k == 'id'
 				continue
 			if typeof(v) == 'string'
-				if v.length >= 300
+				if v.length >= 150
 					v = JSON.parse v
 					for m,n of v
 						$("input[name=#{k}_#{m}]").val n

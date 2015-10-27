@@ -30,7 +30,7 @@ getDBvalue = function(url, array) {
         continue;
       }
       if (typeof v === 'string') {
-        if (v.length >= 300) {
+        if (v.length >= 150) {
           v = JSON.parse(v);
           for (m in v) {
             n = v[m];
