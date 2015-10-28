@@ -23,10 +23,11 @@ Windows 平台使用如下命令：
     "field": "JiMinDuiDaoLuJiaoTongSheShiManYiDu"
 },
 ```
-3. null 类型字段 显示大字标题，无输入，不提交
+3. null 类型字段 显示大字标题，无输入，不提交，注意也可能有showin字段
 ``` js
 {
-    "fieldname": "生态环境现状信息",
+    "fieldname": "村域土地现状",
+    "showin":"cunzhuang",
     "datatype": "null",
 },
 ```

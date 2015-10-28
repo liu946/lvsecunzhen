@@ -326,17 +326,15 @@ var field = {
                 "field": "MingChen"
             },
             {
+                "fieldname": "经济社会现状信息",
+                "datatype": "null",
+            },
+            {
                 "fieldname": "人口",
                 "datatype": "jsonstr",
                 "type": "time",
                 "unit": "人",
                 "field": "RenKou"
-            },
-            {
-                "fieldname": "绿地面积",
-                "datatype": "double",
-                "unit": "%",
-                "field": "LvDiMianJi"
             },
             {
                 "fieldname": "居民人均收入",
@@ -345,69 +343,9 @@ var field = {
                 "field": "ZhenQuJiMinRenJunShouRu"
             },
             {
-                "fieldname": "文体设施建筑用地面积",
-                "showin":"zhenqu",
-                "datatype": "int(11)",
-                "unit": "平方米",
-                "field": "WenTiSheShiJianZhuZongMianJi"
-            },
-            {
-                "fieldname": "建设用地总面积",
-                "datatype": "double",
-                "unit": "公顷",
-                "field": "JianSheYongDiZongMianJi"
-            },
-            {
-                "fieldname": "居住用地总面积",
-                "datatype": "double",
-                "unit": "公顷",
-                "field": "JuZhuYongDiZongMianJi"
-            },
-            {
-                "fieldname": "公共设施用地总面积",
-                "datatype": "double",
-                "unit": "公顷",
-                "field": "GongGongSheShiYongDiZongMianJi"
-            },
-            {
-                "fieldname": "生产设施用地总面积",
-                "datatype": "double",
-                "unit": "公顷",
-                "field": "ShengChanSheShiYongDiZongMianJi"
-            },
-            {
-                "fieldname": "道路广场用地总面积",
-                "datatype": "double",
-                "unit": "公顷",
-                "field": "DaoLuGuangChangYongDiZongMianJi"
-            },
-            {
-                "fieldname":"仓储用地面积",
-                "showin":"zhenqu",
-                "datatype":"double",
-                "unit":"公顷",
-                "field":"CangChuYongDiZongMianJi",
-            },
-            {
-                "fieldname":"对外交通用地面积",
-                "showin":"zhenqu",
-                "datatype":"double",
-                "unit":"公顷",
-                "field":"DuiWaiJiaoTongYongDiZongMianJi",
-            },
-            {
-                "fieldname":"工程设施用地面积",
-                "showin":"zhenqu",
-                "datatype":"double",
-                "unit":"公顷",
-                "field":"GongChengSheShiYongDiZongMianJi",
-            },
-            {
-                "fieldname":"商业用地面积",
-                "showin":"zhenqu",
-                "datatype":"double",
-                "unit":"公顷",
-                "field":"ShangYeYongDiZongMianJi",
+                "fieldname": "经济生产信息",
+                "showin":"cunzhuang",
+                "datatype": "null",
             },
             {
                 "fieldname":"玉米产量",
@@ -431,11 +369,92 @@ var field = {
                 "field":"DDChanLiang",
             },
             {
+                "fieldname": "现状用地信息",
+                "datatype": "null",
+            },
+            {
+                "fieldname": "文体设施建筑用地面积",
+                "showin":"zhenqu",
+                "datatype": "int(11)",
+                "unit": "平方米",
+                "field": "WenTiSheShiJianZhuZongMianJi"
+            },
+            {
+                "fieldname": "居住用地总面积",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "JuZhuYongDiZongMianJi"
+            },
+            {
+                "fieldname": "公共设施用地总面积",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "GongGongSheShiYongDiZongMianJi"
+            },
+            {
+                "fieldname": "生产设施用地总面积",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "ShengChanSheShiYongDiZongMianJi"
+            },
+            
+            {
+                "fieldname":"仓储用地面积",
+                "showin":"zhenqu",
+                "datatype":"double",
+                "unit":"公顷",
+                "field":"CangChuYongDiZongMianJi",
+            },
+            {
+                "fieldname":"对外交通用地面积",
+                "showin":"zhenqu",
+                "datatype":"double",
+                "unit":"公顷",
+                "field":"DuiWaiJiaoTongYongDiZongMianJi",
+            },
+            {
+                "fieldname": "道路广场用地总面积",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "DaoLuGuangChangYongDiZongMianJi"
+            },
+            {
+                "fieldname":"工程设施用地面积",
+                "showin":"zhenqu",
+                "datatype":"double",
+                "unit":"公顷",
+                "field":"GongChengSheShiYongDiZongMianJi",
+            },
+            {
+                "fieldname":"商业用地面积",
+                "showin":"zhenqu",
+                "datatype":"double",
+                "unit":"公顷",
+                "field":"ShangYeYongDiZongMianJi",
+            },
+            {
+                "fieldname": "建设用地总面积",
+                "datatype": "double",
+                "unit": "公顷",
+                "field": "JianSheYongDiZongMianJi"
+            },
+            {
+                "fieldname": "绿地面积",
+                "datatype": "double",
+                "unit": "%",
+                "field": "LvDiMianJi"
+            },
+            {
                 "fieldname":"水域面积",
                 "showin":"cunzhuang",
                 "datatype":"double",
                 "unit":"公顷",
                 "field":"SYMianJi",
+            },
+            {
+                "fieldname": "村域土地现状",
+                "showin":"cunzhuang",
+                "datatype": "null",
             },
             {
                 "fieldname":"增加耕地面积",
