@@ -66,10 +66,10 @@ var field = {
                 "field": "JianSheYongDiMianJi"
             },
             {
-                "fieldname": "镇域土地总面积",
+                "fieldname": "镇域总用地面积",
                 "datatype": "double",
                 "unit": "公顷",
-                "field": "ZhenYuTuDiZongMianJi"
+                "field": "ZhenYuZongYongDiMianJi"
             },
             {
                 "fieldname": "居民人均收入",
@@ -232,10 +232,10 @@ var field = {
                 "field": "TeShuYongDiMianJi"
             },
             {
-                "fieldname": "卫生设施千人病床数",
+                "fieldname": "镇域千人病床数",
                 "datatype": "int(11)",
                 "unit": "个",
-                "field": "WeiShengSheShiQianRenBingChuangShu"
+                "field": "ZhenYuQianRenBingChuangShu"
             },
             {
                 "fieldname": "年均降雨量",
