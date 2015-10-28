@@ -570,6 +570,18 @@ var field = {
                 "field": "NongYaoShiYongLiang"
             },
             {
+                "fieldname": "农产品剩余物有效利用率",
+                "datatype": "int(11)",
+                "unit": "%",
+                "field": "NongChanPingShengYuWuYouXiaoLiYongLv"
+            },
+            {
+                "fieldname": "日均短距离出行（步行、自行车、电动车）次数",
+                "datatype": "int(11)",
+                "unit": "次",
+                "field": "RiJunDuanJuLiLvSeChuXingCiShu"
+            }
+            {
                 "fieldname": "耕地规模",
                 "datatype": "double",
                 "unit": "亩",
@@ -594,25 +606,9 @@ var field = {
                 "field": "MuChaiJieGanXiaoHao"
             },
             {
-                "fieldname": "农产品剩余物有效利用率",
-                "datatype": "int(11)",
-                "unit": "%",
-                "field": "NongChanPingShengYuWuYouXiaoLiYongLv"
-            },
-            {
-                "fieldname": "是否直接倾倒污水",
-                "datatype": "bool",
-                "field": "ShiFuZhiJieQingDaoWuShui"
-            },
-            {
                 "fieldname": "长距离出行是否以公共交通方式为主",
                 "datatype": "bool",
                 "field": "ChangJuLiChuXingShiFuoGGJTWZ"
-            },
-            {
-                "fieldname": "是否使用自来水",
-                "datatype": "bool",
-                "field": "ShiFuShiYongZiLaiShui"
             },
             {
                 "fieldname": "户月均用电量",
@@ -625,12 +621,18 @@ var field = {
                 "datatype": "bool",
                 "field": "ShiFuCunZaiShuiTuLiuShi"
             },
+            
             {
-                "fieldname": "日均短距离出行（步行、自行车、电动车）次数",
-                "datatype": "int(11)",
-                "unit": "次",
-                "field": "RiJunDuanJuLiLvSeChuXingCiShu"
-            }
+                "fieldname": "是否直接倾倒污水",
+                "datatype": "bool",
+                "field": "ShiFuZhiJieQingDaoWuShui"
+            },
+            {
+                "fieldname": "是否使用自来水",
+                "datatype": "bool",
+                "field": "ShiFuShiYongZiLaiShui"
+            },
+            
         ],
         "class": "ZhuHu"
     }
