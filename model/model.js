@@ -34,13 +34,17 @@ var model = {
 	decodetype:function (data) {
 		var str='';
 			for (var j = 0; j < data.length ; j++) {
+				if (data[j]['datatype']=='null') continue;
 				str+=',';
 				str+=data[j]['field']+' ';
 				switch(data[j]['datatype'])
 				{
+
 					case 'select1-5':
-					case 'bool':
 						str+="varchar(20) ";
+					break;
+					case 'bool':
+						str+="int(4) ";
 					break;
 					case 'selectint(11)':
 						str+="int(11) ";

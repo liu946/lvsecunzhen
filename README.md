@@ -23,4 +23,10 @@ Windows 平台使用如下命令：
     "field": "JiMinDuiDaoLuJiaoTongSheShiManYiDu"
 },
 ```
-3.
+3. null 类型字段 显示大字标题，无输入，不提交
+``` js
+{
+    "fieldname": "生态环境现状信息",
+    "datatype": "null",
+},
+```
