@@ -483,36 +483,43 @@ var field = {
             },
             {
                 "fieldname": "居民对地区环境建设满意度",
+                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
                 "datatype": "select1-5",
                 "field": "JiMinDuiDiQuHuanJingJianSheManYiDu"
             },
             {
                 "fieldname": "居民对地区经济发展满意度",
+                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
                 "datatype": "select1-5",
                 "field": "JiMinDuiDiQuJingJiFaZhanManYiDu"
             },
             {
                 "fieldname": "居民对地区就业情况满意度",
+                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
                 "datatype": "select1-5",
                 "field": "JiMinDuiDiQuJiuYeQingKuangManYiDu"
             },
             {
                 "fieldname": "生活用水满意度",
+                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
                 "datatype": "select1-5",
                 "field": "ShengHuoYongShuiManYiDu"
             },
             {
                 "fieldname": "公共设施服务满意度",
+                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
                 "datatype": "select1-5",
                 "field": "GongGongSheShiFuWuManYiDu"
             },
             {
                 "fieldname": "居民对村镇水、电、垃圾基础设施满意度",
+                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
                 "datatype": "select1-5",
                 "field": "JiMinDuiCunZhenShuiDianLaJiJiChuSheShiManYiDu"
             },
             {
                 "fieldname": "居民对道路交通设施满意度",
+                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
                 "datatype": "select1-5",
                 "field": "JiMinDuiDaoLuJiaoTongSheShiManYiDu"
             },

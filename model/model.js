@@ -40,7 +40,7 @@ var model = {
 				{
 					case 'select1-5':
 					case 'bool':
-						str+="int(4) ";
+						str+="varchar(20) ";
 					break;
 					case 'selectint(11)':
 						str+="int(11) ";
