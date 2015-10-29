@@ -25,7 +25,7 @@ getDBvalue = (url,array) ->
 			if k == 'id'
 				continue
 			if typeof(v) == 'string'
-				if v.length >= 150
+				if v.length >= 60
 					v = JSON.parse v
 					for m,n of v
 						$("input[name=#{k}_#{m}]").val n
@@ -102,13 +102,13 @@ putmodel = (object,inputs) ->
 			str += "</ul>"
 		else if type == 'time2005'
 			str = "<ul class='yearinput'>"
-			for i in [2005..2016] by 1
+			for i in [2000..2016] by 1
 				str += "<li>
 							<input type='hidden' class='time' name='#{fieldid}' value='nothing'>
 							<div class='content'><p>#{i}</p></div>
 							<div class='datavalue'><input type='text' name='#{fieldid}_#{i}'>#{unit}</div>
 						</li>"
-				mend += "height:400px;"
+				mend += "height:550px;"
 			str += "</ul>"
 		else if type == 'list'
 			str = "<select name='#{fieldid}' class='#{fieldid}'>"
@@ -123,6 +123,15 @@ putmodel = (object,inputs) ->
 					str += "<option value='#{i.id}'>#{i.MingChen}</option>"
 
 			str += "</select>"
+		else if type == 'select'
+			str = "<select name='#{fieldid}' class='#{fieldid}'>"
+
+			data = ''
+			for i in data
+				str += "<option value='#{i}'>#{i}</option>"
+
+			str += "</select>"
+
 		else if datatype == 'bool'
 			str = "<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='1'/>是
 				<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='2'/>否"
@@ -142,14 +151,17 @@ putmodel = (object,inputs) ->
 			mend += "'"
 			insert = ""
 
-		html += "<div class='list #{special} #{insert}' #{mend}>
-					<div class='note'>
-						<h3>#{fieldname}</h3>
-					</div>
-					<div class='input'>
-						#{str}
-					</div>
-				</div>"
+		if b.null isnt undefined
+			html += "<h2>#{fieldname}</h2>"
+		else
+			html += "<div class='list #{special} #{insert}' #{mend}>
+						<div class='note'>
+							<h3>#{fieldname}</h3>
+						</div>
+						<div class='input'>
+							#{str}
+						</div>
+					</div>"
 
 	html += "</div>"
 	$('#J_form').append html
