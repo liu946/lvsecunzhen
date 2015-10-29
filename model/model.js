@@ -50,7 +50,7 @@ var model = {
 						str+="int(11) ";
 					break;
 					case 'jsonstr':
-						str+='varchar(500) ';
+						str+='varchar(1024) ';
 					break;
 					default:
 						str+=data[j]['datatype']+" ";
