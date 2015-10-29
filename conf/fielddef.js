@@ -10,7 +10,7 @@ var field = {
             },
             {
                 "fieldname": "经济社会现状信息",
-                "datatype": "null",
+                "datatype": "null"
             },
             {
                 "fieldname": "镇域人口",
@@ -161,7 +161,7 @@ var field = {
             },
             {
                 "fieldname": "土地利用现状信息",
-                "datatype": "null",
+                "datatype": "null"
             },
             {
                 "fieldname": "镇域总用地面积",
@@ -232,7 +232,7 @@ var field = {
             },
             {
                 "fieldname": "生态环境现状信息",
-                "datatype": "null",
+                "datatype": "null"
             },
             {
                 "fieldname": "农用化肥施用量",
@@ -327,7 +327,7 @@ var field = {
             },
             {
                 "fieldname": "经济社会现状信息",
-                "datatype": "null",
+                "datatype": "null"
             },
             {
                 "fieldname": "人口",
@@ -345,32 +345,32 @@ var field = {
             {
                 "fieldname": "经济生产信息",
                 "showin":"cunzhuang",
-                "datatype": "null",
+                "datatype": "null"
             },
             {
                 "fieldname":"玉米产量",
                 "showin":"cunzhuang",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"YMChanLiang",
+                "field":"YMChanLiang"
             },
             {
                 "fieldname":"水稻产量",
                 "showin":"cunzhuang",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"SDChanLiang",
+                "field":"SDChanLiang"
             },
             {
                 "fieldname":"大豆产量",
                 "showin":"cunzhuang",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"DDChanLiang",
+                "field":"DDChanLiang"
             },
             {
                 "fieldname": "现状用地信息",
-                "datatype": "null",
+                "datatype": "null"
             },
             {
                 "fieldname": "文体设施建筑用地面积",
@@ -403,14 +403,14 @@ var field = {
                 "showin":"zhenqu",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"CangChuYongDiZongMianJi",
+                "field":"CangChuYongDiZongMianJi"
             },
             {
                 "fieldname":"对外交通用地面积",
                 "showin":"zhenqu",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"DuiWaiJiaoTongYongDiZongMianJi",
+                "field":"DuiWaiJiaoTongYongDiZongMianJi"
             },
             {
                 "fieldname": "道路广场用地总面积",
@@ -423,14 +423,14 @@ var field = {
                 "showin":"zhenqu",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"GongChengSheShiYongDiZongMianJi",
+                "field":"GongChengSheShiYongDiZongMianJi"
             },
             {
                 "fieldname":"商业用地面积",
                 "showin":"zhenqu",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"ShangYeYongDiZongMianJi",
+                "field":"ShangYeYongDiZongMianJi"
             },
             {
                 "fieldname": "建设用地总面积",
@@ -449,40 +449,40 @@ var field = {
                 "showin":"cunzhuang",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"SYMianJi",
+                "field":"SYMianJi"
             },
             {
                 "fieldname": "村域土地现状",
                 "showin":"cunzhuang",
-                "datatype": "null",
+                "datatype": "null"
             },
             {
                 "fieldname":"增加耕地面积",
                 "showin":"cunzhuang",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"ZJGDMianJi",
+                "field":"ZJGDMianJi"
             },
             {
                 "fieldname":"林地面积",
                 "showin":"cunzhuang",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"LDMianJi",
+                "field":"LDMianJi"
             },
             {
                 "fieldname":"园地面积",
                 "showin":"cunzhuang",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"YDMianJi",
+                "field":"YDMianJi"
             },
             {
                 "fieldname":"水域及其他用地面积",
                 "showin":"cunzhuang",
                 "datatype":"double",
                 "unit":"公顷",
-                "field":"SYJQTYDMianJi",
+                "field":"SYJQTYDMianJi"
             },
 
         ],
