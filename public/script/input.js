@@ -30,7 +30,7 @@ getDBvalue = function(url, array) {
         continue;
       }
       if (typeof v === 'string') {
-        if (v.length >= 150) {
+        if (v.length >= 60) {
           v = JSON.parse(v);
           for (m in v) {
             n = v[m];
@@ -85,7 +85,7 @@ getDBvalue = function(url, array) {
 };
 
 putmodel = function(object, inputs) {
-  var b, condition, data, datatype, fieldid, fieldname, html, i, id, insert, items, j, k, l, len, len1, len2, mend, o, onlyincity, p, q, ref, special, str, type, unit, v;
+  var b, condition, data, datatype, fieldid, fieldname, html, i, id, insert, items, j, k, l, len, len1, len2, len3, mend, o, onlyincity, p, q, r, ref, special, str, type, unit, v;
   html = "";
   id = object["class"];
   html = "<div id='" + id + "_' class='content'>";
@@ -120,9 +120,9 @@ putmodel = function(object, inputs) {
       str += "</ul>";
     } else if (type === 'time2005') {
       str = "<ul class='yearinput'>";
-      for (i = o = 2005; o <= 2016; i = o += 1) {
+      for (i = o = 2000; o <= 2016; i = o += 1) {
         str += "<li> <input type='hidden' class='time' name='" + fieldid + "' value='nothing'> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
-        mend += "height:400px;";
+        mend += "height:550px;";
       }
       str += "</ul>";
     } else if (type === 'list') {
@@ -139,6 +139,14 @@ putmodel = function(object, inputs) {
           i = data[q];
           str += "<option value='" + i.id + "'>" + i.MingChen + "</option>";
         }
+      }
+      str += "</select>";
+    } else if (type === 'select') {
+      str = "<select name='" + fieldid + "' class='" + fieldid + "'>";
+      data = '';
+      for (r = 0, len3 = data.length; r < len3; r++) {
+        i = data[r];
+        str += "<option value='" + i + "'>" + i + "</option>";
       }
       str += "</select>";
     } else if (datatype === 'bool') {
@@ -160,7 +168,11 @@ putmodel = function(object, inputs) {
       mend += "'";
       insert = "";
     }
-    html += "<div class='list " + special + " " + insert + "' " + mend + "> <div class='note'> <h3>" + fieldname + "</h3> </div> <div class='input'> " + str + " </div> </div>";
+    if (b["null"] !== void 0) {
+      html += "<h2>" + fieldname + "</h2>";
+    } else {
+      html += "<div class='list " + special + " " + insert + "' " + mend + "> <div class='note'> <h3>" + fieldname + "</h3> </div> <div class='input'> " + str + " </div> </div>";
+    }
   }
   html += "</div>";
   $('#J_form').append(html);
