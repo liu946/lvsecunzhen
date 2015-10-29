@@ -580,7 +580,7 @@ var field = {
                 "datatype": "int(11)",
                 "unit": "次",
                 "field": "RiJunDuanJuLiLvSeChuXingCiShu"
-            }
+            },
             {
                 "fieldname": "耕地规模",
                 "datatype": "double",
