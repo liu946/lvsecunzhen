@@ -100,7 +100,7 @@ putmodel = (object,inputs) ->
 						</li>"
 				mend += "height:1049px;"
 			str += "</ul>"
-		else if type == 'time2005'
+		else if type == 'time2000'
 			str = "<ul class='yearinput'>"
 			for i in [2000..2016] by 1
 				str += "<li>
@@ -108,7 +108,7 @@ putmodel = (object,inputs) ->
 							<div class='content'><p>#{i}</p></div>
 							<div class='datavalue'><input type='text' name='#{fieldid}_#{i}'>#{unit}</div>
 						</li>"
-				mend += "height:550px;"
+				mend += "height:600px;"
 			str += "</ul>"
 		else if type == 'list'
 			str = "<select name='#{fieldid}' class='#{fieldid}'>"
@@ -123,12 +123,12 @@ putmodel = (object,inputs) ->
 					str += "<option value='#{i.id}'>#{i.MingChen}</option>"
 
 			str += "</select>"
-		else if type == 'select'
+		else if datatype == 'select1-5'
 			str = "<select name='#{fieldid}' class='#{fieldid}'>"
 
-			data = ''
-			for i in data
-				str += "<option value='#{i}'>#{i}</option>"
+			data = b.options
+			for k,v of data
+				str += "<option value='#{v}'>#{v}</option>"
 
 			str += "</select>"
 
@@ -151,7 +151,7 @@ putmodel = (object,inputs) ->
 			mend += "'"
 			insert = ""
 
-		if b.null isnt undefined
+		if datatype is 'null'
 			html += "<h2>#{fieldname}</h2>"
 		else
 			html += "<div class='list #{special} #{insert}' #{mend}>
