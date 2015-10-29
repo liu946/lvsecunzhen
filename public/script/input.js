@@ -10,8 +10,6 @@ getkeyvalue = function(url) {
     return data;
   }).fail(function() {
     return alert("获取失败！请刷新页面");
-  }).always(function() {
-    return console.log("complete");
   });
 };
 
@@ -21,8 +19,9 @@ getDBvalue = function(url, array) {
     dataType: 'text',
     async: true
   }).done(function(data) {
-    var a, b, i, j, k, len, m, n, v, zhenqustorge;
+    var a, b, i, j, k, len, m, n, tar, v, zhenqustorge;
     data = JSON.parse(data);
+    console.log(data);
     zhenqustorge = [];
     for (k in data) {
       v = data[k];
@@ -30,11 +29,14 @@ getDBvalue = function(url, array) {
         continue;
       }
       if (typeof v === 'string') {
-        if (v.length >= 60) {
-          v = JSON.parse(v);
-          for (m in v) {
-            n = v[m];
-            $("input[name=" + k + "_" + m + "]").val(n);
+        tar = $("input[name=" + k + "]");
+        if (tar.length > 0) {
+          if ($("input[name=" + k + "]").get(0).type === 'hidden') {
+            v = JSON.parse(v);
+            for (m in v) {
+              n = v[m];
+              $("input[name=" + k + "_" + m + "]").val(n);
+            }
           }
         }
       }
@@ -79,8 +81,6 @@ getDBvalue = function(url, array) {
     });
   }).fail(function() {
     return alert("数据库获取数据失败");
-  }).always(function() {
-    return console.log('DB_connect');
   });
 };
 
@@ -105,23 +105,25 @@ putmodel = function(object, inputs) {
     } else {
       special = '';
     }
-    inputs = getinputname(fieldid, inputs);
+    if (fieldid !== void 0) {
+      inputs = getinputname(fieldid, inputs);
+    }
     mend = "style='";
     insert = "";
     if (unit === void 0) {
       unit = '';
     }
     if (type === 'time') {
-      str = "<ul class='yearinput'>";
+      str = "<ul class='yearinput'><input type='hidden' class='time' name='" + fieldid + "' value='nothing'>";
       for (i = l = 1985; l <= 2016; i = l += 1) {
-        str += "<li> <input type='hidden' class='time' name='" + fieldid + "' value='nothing'> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
+        str += "<li> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
         mend += "height:1049px;";
       }
       str += "</ul>";
     } else if (type === 'time2000') {
-      str = "<ul class='yearinput'>";
+      str = "<ul class='yearinput'><input type='hidden' class='time2000' name='" + fieldid + "' value='nothing'>";
       for (i = o = 2000; o <= 2016; i = o += 1) {
-        str += "<li> <input type='hidden' class='time' name='" + fieldid + "' value='nothing'> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
+        str += "<li> <div class='content'><p>" + i + "</p></div> <div class='datavalue'><input type='text' name='" + fieldid + "_" + i + "'>" + unit + "</div> </li>";
         mend += "height:600px;";
       }
       str += "</ul>";
@@ -142,7 +144,7 @@ putmodel = function(object, inputs) {
       }
       str += "</select>";
     } else if (datatype === 'select1-5') {
-      str = "<select name='" + fieldid + "' class='" + fieldid + "'>";
+      str = "<select name='" + fieldid + "' id='" + fieldid + "'>";
       data = b.options;
       for (k in data) {
         v = data[k];
@@ -192,7 +194,7 @@ getinputname = function(value, target) {
 };
 
 getformvalue = function(array) {
-  var a, b, classname, data, flag, i, j, key, l, len, target, targettype, targetvalue, timedt;
+  var a, b, classname, data, flag, i, j, key, l, len, o, target, targettype, targetvalue, timedt;
   data = {
     "id": id
   };
@@ -204,20 +206,35 @@ getformvalue = function(array) {
     } else if (key === 'SuoShuCunZhuangHuoZhenQu') {
       target = $('select[name=SuoShuCunZhuangHuoZhenQu]');
     } else {
-      target = $("input[name=" + key + "]");
+      target = $("#" + key);
     }
     targettype = target.attr('class');
     targetvalue = target.val();
-    if (targettype !== void 0) {
-      classname = targettype.split(' ')[1];
-      if (classname === 'selecttext') {
-        targetvalue = $("input[name=" + key + "]:checked").val();
+    if (targettype === void 0) {
+      targettype = $("input[name=" + key + "]").attr('class');
+      if (targettype !== void 0) {
+        classname = targettype.split(' ')[1];
+        if (classname === 'selecttext') {
+          targetvalue = $("input[name=" + key + "]:checked").val();
+        }
       }
     }
     if (targettype === 'time') {
       timedt = {};
       flag = 1;
-      for (i = l = 1985; l < 2016; i = l += 1) {
+      for (i = l = 1985; l < 2017; i = l += 1) {
+        a = $("input[name=" + key + "_" + i + "]");
+        b = a.val();
+        timedt[i] = $("input[name=" + key + "_" + i + "]").val();
+        if (timedt[i] !== '') {
+          flag = 0;
+        }
+      }
+      data[key] = JSON.stringify(timedt);
+    } else if (targettype === 'time2000') {
+      timedt = {};
+      flag = 1;
+      for (i = o = 2000; o < 2017; i = o += 1) {
         a = $("input[name=" + key + "_" + i + "]");
         b = a.val();
         timedt[i] = $("input[name=" + key + "_" + i + "]").val();
@@ -317,8 +334,20 @@ $('.save').on('click', function() {
   var target;
   target = getformvalue(inputs);
   value = target.data;
+  console.log(value);
   return $.post("/input/update/" + modelname, value, function(data) {
-    alert('保存成功');
-    return getDBvalue("/input/get/" + modelname, inputs);
+    getDBvalue("/input/get/" + modelname, inputs);
+    return alert('保存成功');
+  });
+});
+
+$('.submit').on('click', function() {
+  var target;
+  target = getformvalue(inputs);
+  value = target.data;
+  return $.post("/input/update/" + modelname, value, function(data) {
+    getDBvalue("/input/get/" + modelname, inputs);
+    alert('提交成功');
+    return window.location = "/";
   });
 });

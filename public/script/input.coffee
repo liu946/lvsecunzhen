@@ -10,8 +10,6 @@ getkeyvalue = (url) ->
 		return data
 	.fail () ->
 		alert "获取失败！请刷新页面"
-	.always () ->
-		console.log "complete"
 
 getDBvalue = (url,array) ->
 	$.ajax
@@ -20,15 +18,19 @@ getDBvalue = (url,array) ->
 		async: true
 	.done (data) ->
 		data = JSON.parse data
+		console.log data
 		zhenqustorge = []
 		for k, v of data
 			if k == 'id'
 				continue
 			if typeof(v) == 'string'
-				if v.length >= 60
-					v = JSON.parse v
-					for m,n of v
-						$("input[name=#{k}_#{m}]").val n
+				tar = $("input[name=#{k}]")
+				if tar.length > 0
+					if $("input[name=#{k}]").get(0).type is 'hidden'
+						v = JSON.parse v
+						for m,n of v
+							$("input[name=#{k}_#{m}]").val n
+
 			a = $("##{k}")
 			if a.length > 0
 				a.val v
@@ -59,8 +61,6 @@ getDBvalue = (url,array) ->
 
 	.fail () ->
 		alert "数据库获取数据失败"
-	.always () ->
-		console.log 'DB_connect'
 
 # 将获得的数据插入dom树中
 putmodel = (object,inputs) ->
@@ -81,8 +81,9 @@ putmodel = (object,inputs) ->
 			special = 'onlyincity'
 		else
 			special = ''
-		
-		inputs = getinputname fieldid,inputs
+
+		if fieldid isnt undefined
+			inputs = getinputname fieldid,inputs
 
 		mend = "style='"
 		insert = ""
@@ -91,20 +92,18 @@ putmodel = (object,inputs) ->
 			unit = ''
 
 		if type == 'time'
-			str = "<ul class='yearinput'>"
+			str = "<ul class='yearinput'><input type='hidden' class='time' name='#{fieldid}' value='nothing'>"
 			for i in [1985..2016] by 1
 				str += "<li>
-							<input type='hidden' class='time' name='#{fieldid}' value='nothing'>
 							<div class='content'><p>#{i}</p></div>
 							<div class='datavalue'><input type='text' name='#{fieldid}_#{i}'>#{unit}</div>
 						</li>"
 				mend += "height:1049px;"
 			str += "</ul>"
 		else if type == 'time2000'
-			str = "<ul class='yearinput'>"
+			str = "<ul class='yearinput'><input type='hidden' class='time2000' name='#{fieldid}' value='nothing'>"
 			for i in [2000..2016] by 1
 				str += "<li>
-							<input type='hidden' class='time' name='#{fieldid}' value='nothing'>
 							<div class='content'><p>#{i}</p></div>
 							<div class='datavalue'><input type='text' name='#{fieldid}_#{i}'>#{unit}</div>
 						</li>"
@@ -124,7 +123,7 @@ putmodel = (object,inputs) ->
 
 			str += "</select>"
 		else if datatype == 'select1-5'
-			str = "<select name='#{fieldid}' class='#{fieldid}'>"
+			str = "<select name='#{fieldid}' id='#{fieldid}'>"
 
 			data = b.options
 			for k,v of data
@@ -185,20 +184,33 @@ getformvalue = (array) ->
 		else if key == 'SuoShuCunZhuangHuoZhenQu'
 			target = $('select[name=SuoShuCunZhuangHuoZhenQu]')
 		else
-			target = $("input[name=#{key}]")
+			target = $("##{key}")
 
 		targettype = target.attr 'class'
 		targetvalue = target.val()
 
-		if targettype != undefined
-			classname = targettype.split(' ')[1]
-			if classname == 'selecttext'
-				targetvalue = $("input[name=#{key}]:checked").val()
+		if targettype is undefined
+			targettype = $("input[name=#{key}]").attr 'class'
+			if targettype isnt undefined
+				classname = targettype.split(' ')[1]
+				if classname == 'selecttext'
+					targetvalue = $("input[name=#{key}]:checked").val()
 
 		if targettype == 'time'
 			timedt = {}
 			flag = 1
-			for i in [1985...2016] by 1
+			for i in [1985...2017] by 1
+				a = $("input[name=#{key}_#{i}]")
+				b = a.val()
+				timedt[i] = $("input[name=#{key}_#{i}]").val()
+				if timedt[i] != ''
+					flag = 0
+
+			data[key] = JSON.stringify timedt
+		else if targettype == 'time2000'
+			timedt = {}
+			flag = 1
+			for i in [2000...2017] by 1
 				a = $("input[name=#{key}_#{i}]")
 				b = a.val()
 				timedt[i] = $("input[name=#{key}_#{i}]").val()
@@ -262,8 +274,17 @@ $("input.ZhenQuHuoCunZhuang[value=2]").on 'click',()->
 $('.save').on 'click',() ->
 	target = getformvalue(inputs)
 	value = target.data
+	console.log value
 	$.post "/input/update/#{modelname}", value, (data) ->
-		alert '保存成功'
 		getDBvalue "/input/get/#{modelname}", inputs
+		alert '保存成功'
+
+$('.submit').on 'click',() ->
+	target = getformvalue(inputs)
+	value = target.data
+	$.post "/input/update/#{modelname}", value, (data) ->
+		getDBvalue "/input/get/#{modelname}", inputs
+		alert '提交成功'
+		window.location = "/"
 
 
