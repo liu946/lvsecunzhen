@@ -30,7 +30,7 @@ getDBvalue = function(url, array) {
         continue;
       }
       if (typeof v === 'string') {
-        if (v.length >= 150) {
+        if (v.length >= 50) {
           v = JSON.parse(v);
           for (m in v) {
             n = v[m];
@@ -205,7 +205,7 @@ getformvalue = function(array) {
     if (targettype === 'time') {
       timedt = {};
       flag = 1;
-      for (i = l = 1985; l < 2016; i = l += 1) {
+      for (i = l = 1985; l <= 2016; i = l += 1) {
         a = $("input[name=" + key + "_" + i + "]");
         b = a.val();
         timedt[i] = $("input[name=" + key + "_" + i + "]").val();
