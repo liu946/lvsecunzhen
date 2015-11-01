@@ -18,8 +18,6 @@ getDBvalue = (url,array) ->
 		async: true
 	.done (data) ->
 		data = JSON.parse data
-		console.log data
-		zhenqustorge = []
 		for k, v of data
 			if k == 'id'
 				continue
@@ -41,23 +39,19 @@ getDBvalue = (url,array) ->
 				else
 					$("option[value='#{v}']").prop 'selected',true
 
-		# 镇区和乡村选择
-		$("input.ZhenQuHuoCunZhuang[value=2]").on 'click',() ->
-			zhenqustorge = $(".onlyincity")
-			for i in zhenqustorge
-				$(i).remove()
-				
-		if $("input.ZhenQuHuoCunZhuang[value=2]").prop('checked')
-			zhenqustorge = $(".onlyincity")
-			for i in zhenqustorge
-				$(i).remove()		
+		if $("input.ZhenQuHuoCunZhuang[value=1]").prop 'checked'
+			for i in $(".zhenqu")
+				$(i).css 'display','block'
+		else
+			for i in $(".zhenqu")
+				$(i).css 'display','none'
 
-		$("input.ZhenQuHuoCunZhuang[value=1]").on 'click',() ->
-			value = ""
-			for i in zhenqustorge
-				$('#J_form').append i
-		
-			
+		if $("input.ZhenQuHuoCunZhuang[value=2]").prop 'checked'
+			for i in $(".cunzhuang")
+				$(i).css 'display','block'
+		else
+			for i in $(".cunzhuang")
+				$(i).css 'display','none'
 
 	.fail () ->
 		alert "数据库获取数据失败"
@@ -240,20 +234,6 @@ inputs = putmodel value,inputs
 getDBvalue "/input/get/#{modelname}/#{id}", inputs
 
 # 监听点击，出现相应的表单
-if $("input.ZhenQuHuoCunZhuang[value=1]").prop 'checked'
-		for i in $(".zhenqu")
-			$(i).css 'display','block'
-	else
-		for i in $(".zhenqu")
-			$(i).css 'display','none'
-
-if $("input.ZhenQuHuoCunZhuang[value=2]").prop 'checked'
-		for i in $(".cunzhuang")
-			$(i).css 'display','block'
-	else
-		for i in $(".cunzhuang")
-			$(i).css 'display','none'
-			
 $("input.ZhenQuHuoCunZhuang[value=1]").on 'click',()->
 	if $(this).prop 'checked'
 		for i in $(".zhenqu")
