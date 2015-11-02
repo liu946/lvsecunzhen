@@ -34,7 +34,7 @@ var field = {
             },
             {
                 "fieldname": "居民人均收入",
-                "datatype": "varchar(100)",
+                "datatype": "jsonstr",
                 "type" : "time2000",
                 "unit": "元",
                 "field": "JiMinRenJunShouRu"
