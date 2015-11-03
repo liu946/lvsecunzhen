@@ -50,7 +50,8 @@ var model = {
 						str+="int(11) ";
 					break;
 					case 'jsonstr':
-						str+='text ';
+					case 'selectmult':
+						str+='varchar(2048) ';
 					break;
 					default:
 						str+=data[j]['datatype']+" ";

@@ -165,8 +165,8 @@ var field = {
             },
             {
                 "fieldname": "镇域总用地面积",
-                "datatype": "int(11)",
-                "unit": "平方米",
+                "datatype": "double",
+                "unit": "公顷",
                 "field": "ZhenYuYongDiZongMianJi"
             },
             {
@@ -312,7 +312,7 @@ var field = {
                 "fieldname": "镇区或村庄",
                 "datatype": "int(4)",
                 "field": "ZhenQuHuoCunZhuang",
-                "items":{1:"镇区",2:"村庄"}
+                "items":{"1":"镇区","2":"村庄"}
             },
             {
                 "fieldname": "所属乡镇",
@@ -373,7 +373,7 @@ var field = {
                 "datatype": "null"
             },
             {
-                "fieldname": "文体设施建筑用地面积",
+                "fieldname": "文体设施用地面积",
                 "showin":"zhenqu",
                 "datatype": "int(11)",
                 "unit": "平方米",
@@ -504,133 +504,343 @@ var field = {
                 "field": "SuoShuCunZhuangHuoZhenQu"
             },
             {
-                "fieldname": "居民对地区环境建设满意度",
-                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
+                "fieldname":'户籍',
+                "options":{"1":"城镇户口","2":"农村户口"},
                 "datatype": "select1-5",
-                "field": "JiMinDuiDiQuHuanJingJianSheManYiDu"
+                "field":"huji",
             },
             {
-                "fieldname": "居民对地区经济发展满意度",
-                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
-                "datatype": "select1-5",
-                "field": "JiMinDuiDiQuJingJiFaZhanManYiDu"
+                "fieldname":'年龄',
+                "datatype": "int(11)",
+                "unit": "",
+                "field":"nianling",
             },
             {
-                "fieldname": "居民对地区就业情况满意度",
-                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
+                "fieldname":'性别',
+                "options":{"1":"男","2":"女"},
                 "datatype": "select1-5",
-                "field": "JiMinDuiDiQuJiuYeQingKuangManYiDu"
+                "field":"xingbie",
             },
             {
-                "fieldname": "生活用水满意度",
-                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
+                "fieldname":'职业',
+                "options":{ 
+                    "1":"务农",
+                    "2":"外出务工",
+                    "3":"小个体",
+                    "4":"政府公务员",
+                    "5":"其他"
+                },
                 "datatype": "select1-5",
-                "field": "ShengHuoYongShuiManYiDu"
+                "field":"zhiye",
             },
             {
-                "fieldname": "公共设施服务满意度",
-                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
+                "fieldname":'文化程度',
+                "options":{
+                    "1":"小学", 
+                    "2":"初中", 
+                    "3":"高中", 
+                    "4":"大专", 
+                    "5":"本科",
+
+                },
                 "datatype": "select1-5",
-                "field": "GongGongSheShiFuWuManYiDu"
+                "field":"wenhuachengdu",
             },
             {
-                "fieldname": "居民对村镇水、电、垃圾基础设施满意度",
-                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
-                "datatype": "select1-5",
-                "field": "JiMinDuiCunZhenShuiDianLaJiJiChuSheShiManYiDu"
+                "fieldname":'家庭共有人数',
+                "datatype": "int(11)",
+                "unit": "",
+                "field":"jiatinggongyou",
             },
             {
-                "fieldname": "居民对道路交通设施满意度",
-                "options":{1:"满意",2:"比较满意",3:"一般满意",4:'比较不满意',5:'不满意'},
-                "datatype": "select1-5",
-                "field": "JiMinDuiDaoLuJiaoTongSheShiManYiDu"
+                "fieldname":'常年在家人数',
+                "datatype": "int(11)",
+                "unit": "",
+                "field":"changnianzaijia",
             },
             {
-                "fieldname": "可支配年收入",
+                "fieldname":'外出务工人数',
+                "datatype": "int(11)",
+                "unit": "",
+                "field":"waichuwugong",
+            },
+            {
+                "fieldname":'收入来源',
+                "options":{
+
+                    "1":"养殖业", 
+                    "2":"种植业", 
+                    "3":"副业",  
+                    "4":"外出打工",    
+                    "5":"经营小企业",
+
+                },
+                "datatype": "select1-5",
+                "field":"shourulaiyuan",
+            },
+            {
+                "fieldname":'年均毛收入',
                 "datatype": "double",
-                "unit": "元",
-                "field": "KeZhiPeiNianShouRu"
+                "unit": "万元",
+                "field":"nianjunmaoshouru",
             },
             {
-                "fieldname": "宅基地面积",
-                "datatype": "int(11)",
-                "unit": "平方米",
-                "field": "ZhaiJiDiMianJi"
-            },
-            {
-                "fieldname": "化肥施用量",
-                "datatype": "int(11)",
-                "unit": "斤/亩",
-                "field": "HuaFeiShiYongLiang"
-            },
-            {
-                "fieldname": "农药施用量",
-                "datatype": "int(11)",
-                "unit": "斤/亩",
-                "field": "NongYaoShiYongLiang"
-            },
-            {
-                "fieldname": "农产品剩余物有效利用率",
-                "datatype": "int(11)",
-                "unit": "%",
-                "field": "NongChanPingShengYuWuYouXiaoLiYongLv"
-            },
-            {
-                "fieldname": "日均短距离出行（步行、自行车、电动车）次数",
-                "datatype": "int(11)",
-                "unit": "次",
-                "field": "RiJunDuanJuLiLvSeChuXingCiShu"
-            },
-            {
-                "fieldname": "耕地规模",
+                "fieldname":'消费支出',
                 "datatype": "double",
+                "unit": "万元",
+                "field":"xiaofeizhichu",
+            },
+            {
+                "fieldname":'福利保障条件满意度',
+                "options":{"1":"满意","2":"比较满意","3":"一般满意","4":'比较不满意',"5":'不满意'},
+                "datatype": "select1-5",
+                "field":"fulibaozhang",
+            },
+            {
+                "fieldname":'空气质量满意程度',
+                "options":{"1":"满意","2":"比较满意","3":"一般满意","4":'比较不满意',"5":'不满意'},
+                "datatype": "select1-5",
+                "field":"kongqizhiliang",
+            },
+            {
+                "fieldname":'化肥施用量',
+                "datatype": "double",
+                "unit": "千克/亩",
+                "field":"huafeishiyongliang",
+            },
+            {
+                "fieldname":'农药施用量',
+                "datatype": "double",
+                "unit": "千克/亩",
+                "field":"nongyaoshiyongliang",
+            },
+            {
+                "fieldname":'日均短距离出行次数',
+                "datatype": "int(11)",
+                "unit": "（步行、自行车、电动车）次",
+                "field":"rijunduanjuli",
+            },
+            {
+                "fieldname":'耕地规模',
+                "datatype": "int(11)",
                 "unit": "亩",
-                "field": "GengDiGuiMo"
+                "field":"gengdiguimo",
             },
             {
-                "fieldname": "农田劳作出行距离",
+                "fieldname":'农田劳作出行距离',
                 "datatype": "int(11)",
                 "unit": "米",
-                "field": "NongTianLaoZuoChuXingJuLi"
+                "field":"nongtianlaozuo",
             },
             {
-                "fieldname": "年煤炭消耗",
+                "fieldname":'年煤炭消耗',
                 "datatype": "int(11)",
-                "unit": "千克",
-                "field": "NianMeiTanXiaoHao"
+                "unit": "吨",
+                "field":"nianmeitan",
             },
             {
-                "fieldname": "木柴、秸秆消耗",
+                "fieldname":'木柴秸秆消耗',
                 "datatype": "int(11)",
-                "unit": "千克",
-                "field": "MuChaiJieGanXiaoHao"
+                "unit": "吨",
+                "field":"mucaijieganxiaohao",
             },
             {
-                "fieldname": "长距离出行是否以公共交通方式为主",
-                "datatype": "bool",
-                "field": "ChangJuLiChuXingShiFuoGGJTWZ"
+                "fieldname":'主要外出交通方式',
+                "options":{
+                    "1":"公交车",
+                    "2":"汽车",
+                    "3":"电瓶车或摩托车",
+                    "4":"自行车",
+                    "5":"步行",
+                },
+                "datatype": "select1-5",
+                "field":"waichujiaotongfangshi",
             },
             {
-                "fieldname": "户月均用电量",
+                "fieldname":'冬季供暖消耗量（折合标煤）',
                 "datatype": "int(11)",
-                "unit": "度",
-                "field": "HuYueJunYongDianLiang"
+                "unit": "吨",
+                "field":"dongjigongnuanxiaohao",
             },
             {
-                "fieldname": "是否存在水土流失",
-                "datatype": "bool",
-                "field": "ShiFuCunZaiShuiTuLiuShi"
-            },
-            
-            {
-                "fieldname": "是否直接倾倒污水",
-                "datatype": "bool",
-                "field": "ShiFuZhiJieQingDaoWuShui"
+                "fieldname":'每月电费',
+                "datatype": "int(11)",
+                "unit": "元",
+                "field":"meiyuedianfei",
             },
             {
-                "fieldname": "是否使用自来水",
-                "datatype": "bool",
-                "field": "ShiFuShiYongZiLaiShui"
+                "fieldname":'是否存在水土流失',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"shuituliushi",
+            },
+            {
+                "fieldname":'是否直接倾倒污水',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"zhijieqingdaowushui",
+            },
+            {
+                "fieldname":'是否使用自来水',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"shiyongzilaishui",
+            },
+            {
+                "fieldname":'我镇对外交通是否便利、通畅',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"duiwaijiaotongshifou",
+            },
+            {
+                "fieldname":'对镇灾害预防及应对措施是否满意',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"zaihaiyufang",
+            },
+            {
+                "fieldname":'周边环境是否对您有影响',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"zhoubianhuanjing",
+            },
+            {
+                "fieldname":'家附近是否有垃圾箱',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"lajixiang",
+            },
+            {
+                "fieldname":'供水情况是否满意',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"gongshuiqingkuang",
+            },
+            {
+                "fieldname":'下雨时是否有内涝',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"xiayu",
+            },
+            {
+                "fieldname":'教育条件是否满意',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"jiaoyutiaojian",
+            },
+            {
+                "fieldname":'医疗条件是否满意',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"yiliaotiaojian",
+            },
+            {
+                "fieldname":'道路都存在哪些问题',
+                "options":{
+                    "1":"雨天道路泥泞",
+                    "2":"道路缺少路灯",
+                    "3":"沥青硬化路面少",
+                    "4":"部分地区未通道路",
+                    "5":"冬季积雪阻塞",
+
+                },
+                "datatype": "selectmult",
+                "field":"daoludoucunzai",
+            },
+            {
+                "fieldname":'希望增加哪些设施',
+                "options":{"1":"运动健身","2":"文化娱乐","3":"休闲活动"},
+                "datatype": "selectmult",
+                "field":"xiwangzengjia",
+            },
+            {
+                "fieldname":'希望增加哪些商业服务设施',
+                "options":{
+
+                    "1":"集市",   
+                    "2":"零售商业",   
+                    "3":"农产品与生产资料市场",
+                    "4":"小型金融网点",  
+                    "5":"服务类商业",         
+
+                },
+                "datatype": "selectmult",
+                "field":"shangyefuwu",
+            },
+            {
+                "fieldname":'种子饲料在哪购买',
+                "options":{
+
+                    "1":"村",
+                    "2":"镇区",
+                    "3":"县市",
+                    "4":"其他", 
+
+                },
+                "datatype": "select1-5",
+                "field":"zongzisiliao",
+            },
+            {
+                "fieldname":'供水状况存在哪些问题',
+                "options":{
+
+                        "1":"供水间断",   
+                        "2":"供水管线受损断裂",   
+                        "3":"冬季供水管冻裂",
+                        "4":"部分人家没有供水管线",   
+                        "5":"水质污浊",
+                        "6":"无问题",                
+
+                },
+                "datatype": "selectmult",
+                "field":"gongshuiqingkuangcunzaiwenti",
+            },
+            {
+                "fieldname":'采用的做饭燃料形式',
+                "options":{
+                    
+                    "1":"燃气管道",  
+                    "2":"沼气", 
+                    "3":"木柴", 
+                    "4":"秸秆",
+                    "5":"煤气罐",
+                    "6":"电器",       
+
+                },
+                "datatype": "selectmult",
+                "field":"zuofanranliaoxingshi",
+            },
+            {
+                "fieldname":'污水处理方式',
+                "options":{
+                    
+                    "1":"污水排放系统",  
+                    "2":"渗水池",  
+                    "3":"倒院内",  
+                    "4":"倒街道",  
+                    "5":"街道明沟",   
+                    "6":"其他",          
+
+                },
+                "datatype": "select1-5",
+                "field":"wushuichulifangshi",
+            },
+            {
+                "fieldname":'粪便如何处理',
+                "options":{
+                    "1":"直接排入村镇污水管网系统",    
+                    "2":"与沼气池联通",    
+                    "3":"自己运至耕地",    
+                    "4":"其他",          
+                },
+                "datatype": "select1-5",
+                "field":"fenbian",
+            },
+            {
+                "fieldname":'农产品剩余物是否有效利用',
+                "options":{"1":"是","2":"否"},
+                "datatype": "select1-5",
+                "field":"nongchanpinshengyu",
             },
             
         ],
