@@ -33,9 +33,14 @@ getDBvalue = (url,array) ->
 			if a.length > 0
 				a.val v
 			else
+				match = /\,/
 				b = $("input.#{k}[value='#{v}']")
 				if b.length > 0
 					b.prop 'checked', true
+				else if match.test v
+					values = v.split ','
+					for i in values
+						$("input.#{k}[value='#{i}']").prop 'checked',true
 				else
 					$("option[value='#{v}']").prop 'selected',true
 
@@ -197,7 +202,7 @@ getformvalue = (array) ->
 					targetvalue = ""
 					for dom in $("input.selectmult[name=#{key}]")
 						if $(dom).prop 'checked'
-							targetvalue += $(dom).val() + "&"
+							targetvalue += $(dom).val() + ","
 
 		if targettype == 'time'
 			timedt = {}

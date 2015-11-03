@@ -19,7 +19,7 @@ getDBvalue = function(url, array) {
     dataType: 'text',
     async: true
   }).done(function(data) {
-    var a, b, i, j, k, l, len, len1, len2, len3, m, n, o, p, ref, ref1, ref2, ref3, results, results1, tar, v;
+    var a, b, i, j, k, l, len, len1, len2, len3, len4, m, match, n, o, p, q, ref, ref1, ref2, ref3, results, results1, tar, v, values;
     data = JSON.parse(data);
     for (k in data) {
       v = data[k];
@@ -42,9 +42,16 @@ getDBvalue = function(url, array) {
       if (a.length > 0) {
         a.val(v);
       } else {
+        match = /\,/;
         b = $("input." + k + "[value='" + v + "']");
         if (b.length > 0) {
           b.prop('checked', true);
+        } else if (match.test(v)) {
+          values = v.split(',');
+          for (j = 0, len = values.length; j < len; j++) {
+            i = values[j];
+            $("input." + k + "[value='" + i + "']").prop('checked', true);
+          }
         } else {
           $("option[value='" + v + "']").prop('selected', true);
         }
@@ -52,30 +59,30 @@ getDBvalue = function(url, array) {
     }
     if ($("input.ZhenQuHuoCunZhuang[value=1]").prop('checked')) {
       ref = $(".zhenqu");
-      for (j = 0, len = ref.length; j < len; j++) {
-        i = ref[j];
+      for (l = 0, len1 = ref.length; l < len1; l++) {
+        i = ref[l];
         $(i).css('display', 'block');
       }
     } else {
       ref1 = $(".zhenqu");
-      for (l = 0, len1 = ref1.length; l < len1; l++) {
-        i = ref1[l];
+      for (o = 0, len2 = ref1.length; o < len2; o++) {
+        i = ref1[o];
         $(i).css('display', 'none');
       }
     }
     if ($("input.ZhenQuHuoCunZhuang[value=2]").prop('checked')) {
       ref2 = $(".cunzhuang");
       results = [];
-      for (o = 0, len2 = ref2.length; o < len2; o++) {
-        i = ref2[o];
+      for (p = 0, len3 = ref2.length; p < len3; p++) {
+        i = ref2[p];
         results.push($(i).css('display', 'block'));
       }
       return results;
     } else {
       ref3 = $(".cunzhuang");
       results1 = [];
-      for (p = 0, len3 = ref3.length; p < len3; p++) {
-        i = ref3[p];
+      for (q = 0, len4 = ref3.length; q < len4; q++) {
+        i = ref3[q];
         results1.push($(i).css('display', 'none'));
       }
       return results1;
@@ -230,7 +237,7 @@ getformvalue = function(array) {
           for (l = 0, len1 = ref.length; l < len1; l++) {
             dom = ref[l];
             if ($(dom).prop('checked')) {
-              targetvalue += $(dom).val() + "&";
+              targetvalue += $(dom).val() + ",";
             }
           }
         }
