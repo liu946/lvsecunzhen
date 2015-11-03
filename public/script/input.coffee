@@ -128,6 +128,10 @@ putmodel = (object,inputs) ->
 		else if datatype == 'bool'
 			str = "<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='1'/>是
 				<input type='radio' class='#{fieldid} selecttext' name='#{fieldid}' value='2'/>否"
+		else if datatype == 'selectmult'
+			str = ""
+			for k,v of b.options
+				str += "<input type='checkbox' value='#{v}' name='#{fieldid}' class='#{fieldid} selectmult'>#{v}"			
 		else if items != undefined
 			str = ""
 			for k,v of items
@@ -189,6 +193,11 @@ getformvalue = (array) ->
 				classname = targettype.split(' ')[1]
 				if classname == 'selecttext'
 					targetvalue = $("input[name=#{key}]:checked").val()
+				else if classname == 'selectmult'
+					targetvalue = ""
+					for dom in $("input.selectmult[name=#{key}]")
+						if $(dom).prop 'checked'
+							targetvalue += $(dom).val() + "&"
 
 		if targettype == 'time'
 			timedt = {}

@@ -86,7 +86,7 @@ getDBvalue = function(url, array) {
 };
 
 putmodel = function(object, inputs) {
-  var b, condition, data, datatype, fieldid, fieldname, html, i, id, insert, items, j, k, l, len, len1, len2, mend, o, onlyincity, p, q, ref, special, str, type, unit, v;
+  var b, condition, data, datatype, fieldid, fieldname, html, i, id, insert, items, j, k, l, len, len1, len2, mend, o, onlyincity, p, q, ref, ref1, special, str, type, unit, v;
   html = "";
   id = object["class"];
   html = "<div id='" + id + "_' class='content'>";
@@ -154,6 +154,13 @@ putmodel = function(object, inputs) {
       str += "</select>";
     } else if (datatype === 'bool') {
       str = "<input type='radio' class='" + fieldid + " selecttext' name='" + fieldid + "' value='1'/>是 <input type='radio' class='" + fieldid + " selecttext' name='" + fieldid + "' value='2'/>否";
+    } else if (datatype === 'selectmult') {
+      str = "";
+      ref1 = b.options;
+      for (k in ref1) {
+        v = ref1[k];
+        str += "<input type='checkbox' value='" + v + "' name='" + fieldid + "' class='" + fieldid + " selectmult'>" + v;
+      }
     } else if (items !== void 0) {
       str = "";
       for (k in items) {
@@ -195,7 +202,7 @@ getinputname = function(value, target) {
 };
 
 getformvalue = function(array) {
-  var a, b, classname, data, flag, i, j, key, l, len, o, target, targettype, targetvalue, timedt;
+  var a, b, classname, data, dom, flag, i, j, key, l, len, len1, o, p, ref, target, targettype, targetvalue, timedt;
   data = {
     "id": id
   };
@@ -217,13 +224,22 @@ getformvalue = function(array) {
         classname = targettype.split(' ')[1];
         if (classname === 'selecttext') {
           targetvalue = $("input[name=" + key + "]:checked").val();
+        } else if (classname === 'selectmult') {
+          targetvalue = "";
+          ref = $("input.selectmult[name=" + key + "]");
+          for (l = 0, len1 = ref.length; l < len1; l++) {
+            dom = ref[l];
+            if ($(dom).prop('checked')) {
+              targetvalue += $(dom).val() + "&";
+            }
+          }
         }
       }
     }
     if (targettype === 'time') {
       timedt = {};
       flag = 1;
-      for (i = l = 1985; l < 2017; i = l += 1) {
+      for (i = o = 1985; o < 2017; i = o += 1) {
         a = $("input[name=" + key + "_" + i + "]");
         b = a.val();
         timedt[i] = $("input[name=" + key + "_" + i + "]").val();
@@ -235,7 +251,7 @@ getformvalue = function(array) {
     } else if (targettype === 'time2000') {
       timedt = {};
       flag = 1;
-      for (i = o = 2000; o < 2017; i = o += 1) {
+      for (i = p = 2000; p < 2017; i = p += 1) {
         a = $("input[name=" + key + "_" + i + "]");
         b = a.val();
         timedt[i] = $("input[name=" + key + "_" + i + "]").val();
