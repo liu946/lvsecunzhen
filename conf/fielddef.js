@@ -511,8 +511,8 @@ var field = {
             },
             {
                 "fieldname":'年龄',
-                "datatype": "int(11)",
-                "unit": "",
+                "options":{1:"20以下",2:"21-30",3:"31-40",4:"41-50",5:"50以上"},
+                "datatype": "select1-5",
                 "field":"nianling",
             },
             {
