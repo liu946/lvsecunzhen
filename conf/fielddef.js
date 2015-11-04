@@ -573,9 +573,10 @@ var field = {
                     "3":"副业",  
                     "4":"外出打工",    
                     "5":"经营小企业",
+                    "6":'其他',
 
                 },
-                "datatype": "select1-5",
+                "datatype": "selectmult",
                 "field":"shourulaiyuan",
             },
             {
@@ -603,16 +604,10 @@ var field = {
                 "field":"kongqizhiliang",
             },
             {
-                "fieldname":'化肥施用量',
+                "fieldname":'农药/化肥施用量',
                 "datatype": "double",
                 "unit": "千克/亩",
                 "field":"huafeishiyongliang",
-            },
-            {
-                "fieldname":'农药施用量',
-                "datatype": "double",
-                "unit": "千克/亩",
-                "field":"nongyaoshiyongliang",
             },
             {
                 "fieldname":'日均短距离出行次数',
