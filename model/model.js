@@ -122,7 +122,8 @@ var model = {
 					callback(rows[0].id);
 				}
 			sqlhelper.exsqllist(["USE "+global.conf.dbname+";",insertsql,getmaxsql],[,,maxhandle]);
-	}
+	},
+
 }
 
 module.exports = model;
