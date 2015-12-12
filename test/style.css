@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  padding: 20px;
+}
+body ul {
+  margin: 0;
+}
+body header .title {
+  width: 100%;
+  height: 30px;
+}
+body header .title span {
+  width: 120px;
+  height: 30px;
+  background: url("logo.png");
+  float: left;
+}
+body header .title p {
+  float: left;
+  font-size: 24px;
+  line-height: 30px;
+  display: inline-block;
+  margin: 0 0 0 30px;
+}
+body header .navigation {
+  width: 100%;
+  height: 30px;
+  background: #265ba3;
+  margin: 0;
+}
+body header .navigation ul {
+  width: 100%;
+}
+body header .navigation ul li {
+  width: 80px;
+  text-align: center;
+  height: 30px;
+  background: #265ba3;
+  border-right: 1px solid #fff;
+  line-height: 30px;
+  font-size: 14px;
+  float: left;
+  list-style-type: none;
+}
+body header .navigation ul li a {
+  width: 80px;
+  height: 30px;
+  color: #fff;
+  text-decoration: none;
+}
+body header .navigation ul li:active {
+  background: #000;
+}
+body header .selector {
+  width: 100%;
+  height: 30px;
+  background: #ccc;
+  margin: 0;
+}
+body header .selector ul li {
+  float: left;
+  width: 120px;
+  text-align: center;
+  line-height: 30px;
+  list-style-type: none;
+  font-size: 14px;
+}
+body header .selector ul li a {
+  text-decoration: none;
+}
+body header .search {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+body header .search input {
+  display: inline-block;
+}
+body header .search input[type=text] {
+  width: 350px;
+  height: 20px;
+  margin-right: 10px;
+}
+body .board {
+  width: 100%;
+}
+body .board .aside {
+  width: 20%;
+  float: left;
+  margin: 30px 5% 0 0;
+  background: #def3f6;
+}
+body .board .aside .title {
+  width: 100%;
+  height: 30px;
+}
+body .board .aside .title h3 {
+  margin: 0;
+  line-height: 30px;
+  font-size: 18px;
+  background: #265ba3;
+  color: #fff;
+  padding-left: 5px;
+}
+body .board .aside .sec-title {
+  width: 95%;
+  margin: 0 2.5%;
+  background: #fff;
+}
+body .board .aside .sec-title h4 {
+  width: 100%;
+  height: 20px;
+  background: #ccc;
+  font-size: 16px;
+  line-height: 20px;
+  padding-left: 5px;
+}
+body .board .main {
+  width: 75%;
+  margin: 30px 0;
+  float: left;
+}
+body .board .main .title {
+  width: 100%;
+  height: 30px;
+}
+body .board .main .title h3 {
+  margin: 0;
+  line-height: 30px;
+  font-size: 18px;
+  background: #265ba3;
+  color: #fff;
+  padding-left: 5px;
+}
+body .board .main .content {
+  width: 95%;
+  margin: 30px 2.5%;
+}
