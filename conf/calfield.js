@@ -21,7 +21,6 @@
           'M>=120':0.5,
           'def':1,
         },
-        comment:''
       }
     },
     //{
@@ -59,7 +58,7 @@
     {
       namezh:'镇域交通设施密度',
       calinfo:'',
-      reference:'',
+      reference:'所有乡镇均值',
       type:'value',
       unit:'',
       sign:'Z11',
@@ -79,7 +78,7 @@
     {
       namezh:'人均耕地面积',
       calinfo:'',
-      reference:'',
+      reference:'所有乡镇均值',
       type:'value',
       unit:'',
       sign:'Z13',
@@ -126,19 +125,33 @@
     fields:[
     {
       namezh:'居民对地区福利保障条件满意度',
-      calinfo:'',
+      calinfo:'根据问卷"很不满意"至"满意"（0、25、50、75、100）平均得分',
       reference:'',
       type:'value',
-      unit:'',
-      sign:'Z20'
+      unit:'%',
+      sign:'Z20',
+      score:{
+        judge:{
+          'M>=0.95':1,
+          'def':'(M-Min)/(0.95-Min)',
+        },
+        comment:'所有乡镇均值',
+      }
     },
     {
       namezh:'镇区绿化覆盖率',
       calinfo:'',
       reference:'',
       type:'value',
-      unit:'',
-      sign:'Z21'
+      unit:'%',
+      sign:'Z21',
+      score:{
+        judge:{
+          'M>=0.12':1,
+          'def':'(M-Min)/(0.12-Min)',
+        },
+        comment:'',
+      }
     },
     {
       namezh:'村镇人口密度',
@@ -159,7 +172,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z26'
+      sign:'Z26',
+      score:{
+        judge:{
+          'def':'(M-Min)/(Max-Min)',
+        },
+        comment:'所有乡镇均值',
+      }
     },
     {
       namezh:'村庄人均建设用地面积',
@@ -167,15 +186,28 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z30'
+      sign:'Z30',
+      score:{
+        judge:{
+          'M<=80':1,
+          'def':'(Max-M)/(Max-80)',
+        },
+        comment:'',
+      }
     },
     {
       namezh:'镇区与村庄人均收入比值',
       calinfo:'',
-      reference:'',
+      reference:'所有乡镇均值',
       type:'value',
       unit:'',
-      sign:'Z32'
+      sign:'Z32',
+      score:{
+        judge:{
+          'def':'(Max-M)/(Max-Min)',
+        },
+        comment:'',
+      }
     },
     {
       namezh:'镇区人均建设用地面积',
@@ -183,7 +215,14 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z34'
+      sign:'Z34',
+      score:{
+        judge:{
+          'M<=100':1,
+          'def':'(Max-M)/(Max-100)',
+        },
+        comment:'',
+      }
     },
     ],
   },
@@ -193,10 +232,15 @@
     {
       namezh:'城镇化率',
       calinfo:'',
-      reference:'',
+      reference:'所有乡镇均值',
       type:'value',
       unit:'',
-      sign:'Z36'
+      sign:'Z36',
+      score:{
+        judge:{
+          'def':'(Max-M)/(Max-Min)',
+        },
+      }
     },
     {
       namezh:'人口10年间平均变化率',
@@ -221,8 +265,14 @@
       calinfo:'',
       reference:'',
       type:'value',
-      unit:'',
-      sign:'Z43'
+      unit:'公斤/公顷',
+      sign:'Z43',
+      score:{
+        judge:{
+          'M<=250':1,
+          'def':'(Max-M)/(Max-250)',
+        },
+      }
     },
     {
       namezh:'农产品剩余物综合利用率',
@@ -230,7 +280,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z45'
+      sign:'Z45',
+      score:{
+        judge:{
+          'M>=0.90':1,
+          'def':'(M-Min)/(0.90-Min)',
+        },
+      }
     },
     {
       namezh:'绿色无公害农产品种植面积比例',
@@ -238,7 +294,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z46'
+      sign:'Z46',
+      score:{
+        judge:{
+          'M>=0.60':1,
+          'def':'(M-Min)/(0.60-Min)',
+        },
+      }
     },
     ],
   },
@@ -251,7 +313,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z48'
+      sign:'Z48',
+      score:{
+        judge:{
+          'M<=3500':1,
+          'def':'(Max-M)/(Max-3500)',
+        },
+      }
     },
     {
       namezh:'农业劳作平均出行距离',
@@ -259,7 +327,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z54'
+      sign:'Z54',
+      score:{
+        judge:{
+          'M<=250':1,
+          'def':'(Max-M)/(Max-250)',
+        },
+      }
     },
     {
       namezh:'二三产业GDP贡献率',
@@ -267,7 +341,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z55'
+      sign:'Z55',
+      score:{
+        judge:{
+          'def':'(M-Min)/(Max-Min)',
+        },
+      }
     },
     {
       namezh:'人均农业劳动生产力',
@@ -275,7 +354,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z56'
+      sign:'Z56',
+      score:{
+        judge:{
+          'def':'(M-Min)/(Max-Min)',
+        },
+      }
     },
     {
       namezh:'二、三产业从业人员比例',
@@ -283,7 +367,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z58'
+      sign:'Z58',
+      score:{
+        judge:{
+          'def':'(M-Min)/(Max-Min)',
+        },
+      }
     },
     ],
   },
@@ -301,7 +390,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z63'
+      sign:'Z63',
+      score:{
+        judge:{
+          'M>=0.80':1,
+          'def':'(M-Min)/(0.80-Min)',
+        },
+      }
     },
     {
       namezh:'木柴、秸秆在取暖燃料中的比例',
@@ -309,7 +404,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z64'
+      sign:'Z64',
+      score:{
+        judge:{
+          'def':'(Max-M)/(Max-Min)',
+        },
+      }
     },
 
     {
@@ -318,7 +418,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z66'
+      sign:'Z66',
+      score:{
+        judge:{
+          'def':'(M-Min)/(1-Min)',
+        },
+      }
     },
     {
       namezh:'垃圾收集设施覆盖率',
@@ -326,7 +431,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z67'
+      sign:'Z67',
+      score:{
+        judge:{
+          'def':'(M-Min)/(1-Min)',
+        },
+      }
     },
     {
       namezh:'居民绿色出行方式比例',
@@ -334,7 +444,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z68'
+      sign:'Z68',
+      score:{
+        judge:{
+          'M<=250':1,
+          'def':'(M-Min)/(Max-Min)',
+        },
+      }
     },
 
     {
@@ -343,7 +459,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z70'
+      sign:'Z70',
+      score:{
+        judge:{
+          'M>=0.70':1,
+          'def':'(M-Min)/(0.70-Min)',
+        },
+      }
     },
 
     {
@@ -352,7 +474,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z72'
+      sign:'Z72',
+      score:{
+        judge:{
+          'def':'(Max-M)/(Max-Min)',
+        },
+      }
     },
     {
       namezh:'自来水普及率',
@@ -360,7 +487,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z73'
+      sign:'Z73',
+      score:{
+        judge:{
+          'M>=0.90':1,
+          'def':'(M-Min)/(0.90-Min)',
+        },
+      }
     },
     ],
   },
@@ -372,24 +505,40 @@
       calinfo:'',
       reference:'',
       type:'value',
-      unit:'',
-      sign:'Z74'
+      unit:'公里/平方公里*人',
+      sign:'Z74',
+      score:{
+        judge:{
+          'def':'(Max-M)/(Max-Min)',
+        },
+      }
     },
     {
       namezh:'户均用电量',
       calinfo:'',
       reference:'',
       type:'value',
-      unit:'',
-      sign:'Z76'
+      unit:'KWH',
+      sign:'Z76',
+      score:{
+        judge:{
+          'def':'(Max-M)/(Max-Min)',
+        },
+      }
     },
     {
       namezh:'村镇道路硬化率',
       calinfo:'',
       reference:'',
       type:'value',
-      unit:'',
-      sign:'Z77'
+      unit:'%',
+      sign:'Z77',
+      score:{
+        judge:{
+          'M>=0.95':1,
+          'def':'(M-Min)/(0.95-Min)',
+        },
+      }
     },
     {
       namezh:'道路交通设施满意度',
@@ -397,7 +546,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z79'
+      sign:'Z79',
+      score:{
+        judge:{
+          'M>=0.95':1,
+          'def':'(M-Min)/(0.95-Min)',
+        },
+      }
     },
     ],
   },
@@ -414,16 +569,30 @@
       calinfo:'',
       reference:'',
       type:'value',
-      unit:'',
-      sign:'Z84'
+      unit:'平方米/学生',
+      sign:'Z84',
+      score:{
+        judge:{
+          'M>=5.6 && M<=10.1':1,
+          'M<5.6':'(M-Min)/(5.6-Min)',
+          'def':'(Max-M)/(Max-10.1)'
+        },
+      }
     },
     {
       namezh:'小学生均学校建筑面积',
       calinfo:'',
       reference:'',
       type:'value',
-      unit:'',
-      sign:'Z86'
+      unit:'平方米/学生',
+      sign:'Z86',
+      score:{
+        judge:{
+          'M>=5.6 && M<=10.1':1,
+          'M<5.6':'(M-Min)/(5.6-Min)',
+          'def':'(Max-M)/(Max-10.1)'
+        },
+      }
     },
     ],
   },
@@ -436,7 +605,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z88'
+      sign:'Z88',
+      score:{
+        judge:{
+          'M>=0.95':1,
+          'def':'(M-Min)/(0.95-Min)',
+        },
+      }
     },
     {
       namezh:'医疗公共设施服务满意度',
@@ -444,15 +619,28 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z89'
+      sign:'Z89',
+      score:{
+        judge:{
+          'M>=0.95':1,
+          'def':'(M-Min)/(0.95-Min)',
+        },
+      }
     },
     {
       namezh:'人均卫生设施建筑面积',
       calinfo:'',
       reference:'',
       type:'value',
-      unit:'',
-      sign:'Z90'
+      unit:'平方米/人',
+      sign:'Z90',
+      score:{
+        judge:{
+          'M>=0.08 && M<=0.1':1,
+          'M<0.08':'(M-Min)/(0.08-Min)',
+          'def':'(Max-M)/(Max-0.1)'
+        },
+      }
     },
 
     {
@@ -461,7 +649,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z92'
+      sign:'Z92',
+      score:{
+        judge:{
+          'M>=12':1,
+          'def':'(M-Min)/(12-Min)',
+        },
+      }
     },
 
     {
@@ -470,7 +664,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z94'
+      sign:'Z94',
+      score:{
+        judge:{
+          'M>=1.6':1,
+          'def':'(M-Min)/(1.6-Min)',
+        },
+      }
     },
     ],
   },
@@ -488,7 +688,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z99'
+      sign:'Z99',
+      score:{
+        judge:{
+          'def':'(M-Min)/(Max-Min)',
+        },
+      }
     },
     ],
   },
@@ -501,7 +706,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z102'
+      sign:'Z102',
+      score:{
+        judge:{
+          'def':'(M-Min)/(Max-Min)',
+        },
+      }
     },
     {
       namezh:'灾害易发度',
@@ -509,7 +719,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z105'
+      sign:'Z105',
+      score:{
+        judge:{
+          'def':'(M-Min)/(Max-Min)',
+        },
+      }
     },
     ],
   },
@@ -522,7 +737,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z107'
+      sign:'Z107',
+      score:{
+        judge:{
+          'def':'(M-Min)/(Max-Min)',
+        },
+      }
     },
 
     ],
@@ -536,7 +756,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z109'
+      sign:'Z109',
+      score:{
+        judge:{
+          'def':'(M-Min)/(Max-Min)',
+        },
+      }
     },
     {
       namezh:'年均无霜期',
@@ -544,7 +769,12 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z110'
+      sign:'Z110',
+      score:{
+        judge:{
+          'def':'(M-Min)/(Max-Min)',
+        },
+      }
     },
     ],
   },
@@ -557,7 +787,14 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z111'
+      sign:'Z111',
+      score:{
+        judge:{
+          '0.75<=M':1,
+          'M<0.18':0,
+          'def':'(M-0.18)/0.57',
+        },
+      }
     },
     {
       namezh:'本地木本植物指数',
@@ -565,7 +802,14 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z113'
+      sign:'Z113',
+      score:{
+        judge:{
+          '0.9<=M':1,
+          'M<0.7':0,
+          'def':'(M-0.7)/0.002',
+        },
+      }
     },
     ],
   },

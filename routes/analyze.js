@@ -38,14 +38,19 @@ function calculateMiddleData(){
     if(Zfield.hasOwnProperty('score')){
       var MAX = null;
       var MIN = null;
+      var SUM = 0;
+      var NUM = 0;
       for(var i in GlobalAnalyzeData){
         dataItem = GlobalAnalyzeData[i];
+
+        SUM+=dataItem[Zfield.sign];
+        NUM++;
         if(MAX===null || dataItem[Zfield.sign]>MAX)
           MAX=dataItem[Zfield.sign];
         if(MIN===null || dataItem[Zfield.sign]<MIN)
           MIN=dataItem[Zfield.sign];
       }
-      GlobalMutipleStat[Zfield.sign] = {MAX:MAX,MIN:MIN};
+      GlobalMutipleStat[Zfield.sign] = {MAX:MAX,MIN:MIN,SUM:SUM,NUM:NUM};
     }
   })
 }
