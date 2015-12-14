@@ -1,15 +1,39 @@
+//- 处理前端输出的不规范值
+- var judgevalue = function(str){
+-   if(str === null || str === 'null' || str === '' || str === undefined){
+-       str = ''; 
+-   }
+-   return str;
+- }
 //- 获取第三层表格多个值的html
 - var gettablehtml = function(object){
--   var html="";
--   for(var i=1,L=object.length;i<L;i++){
--       html += "<tr><td>"+object[i].calinfo+"</td><td>"+object[i].sign+"</td><td>"+object[i].unit+"</td><td>"+object[i].score+"</td><td>"+object[i].reference+"</td><td>"+object[i].comment+"</td></tr>";
+-   var html="<tr><td rowspan='"+ object.fields.length +"'>"+ object.namezh +"</td>";
+-   var fields = object.fields;
+-   for(var i=0,L=fields.length;i<L;i++){
+-       var calinfo = judgevalue(fields[i].calinfo);
+-       var sign = judgevalue(fields[i].sign);
+-       var score = "";
+-       var max = "";
+-       var min = "";
+-       if (sign != ""){
+-           score = judgevalue(score[sign]);
+-           if (middle[sign] != undefined){
+-               max = judgevalue(middle[sign].MAX);
+-               min = judgevalue(middle[sign].MIN);
+-           }
+-           sign = judgevalue(origin[sign]);
+-       }
+-       var unit = judgevalue(fields[i].unit);
+-       var reference = judgevalue(fields[i].reference);
+-       var comment = judgevalue(fields[i].comment);
+-       if(i==0){
+-           html += "<td>"+calinfo+"</td><td>"+sign+"</td><td>"+unit+"</td><td>"+score+"</td><td>"+ min +"</td><td>"+ max +"</td><td>"+reference+"</td><td>"+comment+"</td></tr>";
+-       }else{
+-           html += "<tr><td>"+calinfo+"</td><td>"+sign+"</td><td>"+unit+"</td><td>"+score+"</td><td>"+ min +"</td><td>"+ max +"</td><td>"+reference+"</td><td>"+comment+"</td></tr>";  
+-       }
 -   }
 -   return html;
 - }
-
-p=JSON.stringify(origin)
-p=JSON.stringify(middle)
-p=JSON.stringify(score)
 
 doctype html
 html
@@ -86,7 +110,7 @@ html
                             each cal in calculateFields
                                 tbody
                                     tr
-                                        td(colspan="7")
+                                        td(colspan="9")
                                             p
                                                 strong=cal.namezh
                                     tr
@@ -98,19 +122,20 @@ html
                                             | 计算结果
                                         td
                                             | 评估结果
+                                        td(colspan="2")
+                                            | 指标评判阈值
                                         td
                                             | 评估依据
                                         td
                                             | 备注
+                                    tr
+                                        td(colspan="5")
+                                        td
+                                            | MIN
+                                        td
+                                            | MAX
+                                        td(colspan="2")
                                     each field in cal.fields
                                         tr
-                                            td(rowspan=""+ field.fields.length +"")=field.namezh
-                                            td=field.fields[0].calinfo
-                                            td=field.fields[0].sign
-                                            td=field.fields[0].unit
-                                            td=field.fields[0].score
-                                            td=field.fields[0].reference
-                                            td=field.fields[0].comment
-                                        !{gettablehtml(field.fields)}                                        
-
+                                            !{gettablehtml(field)}
             div(style="clear:both;")
