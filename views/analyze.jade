@@ -1,20 +1,116 @@
+//- 获取第三层表格多个值的html
+- var gettablehtml = function(object){
+-   var html="";
+-   for(var i=1,L=object.length;i<L;i++){
+-       html += "<tr><td>"+object[i].calinfo+"</td><td>"+object[i].sign+"</td><td>"+object[i].unit+"</td><td>"+object[i].score+"</td><td>"+object[i].reference+"</td><td>"+object[i].comment+"</td></tr>";
+-   }
+-   return html;
+- }
 
 p=JSON.stringify(origin)
 p=JSON.stringify(middle)
 p=JSON.stringify(score)
-p=JSON.stringify(calculateFields)
-p=JSON.stringify(xiangzhenList)
-
 
 doctype html
 html
-  head
-    meta(http-equiv="Content-Type",content="text/html; charset=UTF-8")
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible",content="IE=Edge,chrome=1")
-    meta(name="viewport",content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    head
+        meta(http-equiv="Content-Type",content="text/html; charset=UTF-8")
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible",content="IE=Edge,chrome=1")
+        meta(name="viewport",content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 
-    title= title
-    link(rel='stylesheet', href='/stylesheets/analyze.css')
-    link(rel='stylesheet', href='/stylesheets/component/icono.min.css')
-  body
+        title
+            | 分析结果
+        link(rel='stylesheet', href='/stylesheets/analyze.css')
+    body
+        header
+            .title
+                span
+                p
+                    | 严寒地区绿色村镇体系数据库系统
+            .navigation
+                ul
+                    li
+                        a(href="#")
+                            | 主页
+                    li
+                        a(href="#")
+                            | 信息
+                    li
+                        a(href="#")
+                            | 联系我们
+                    li
+                        a(href="#")
+                            | 网站地图
+                    li
+                        a(href="#")
+                            | 问题反馈
+                    li
+                        a(href="#")
+                            | 帮助
+            .selector
+                ul
+                    li
+                        a(href="/")
+                            | 村镇数据录入
+                    li
+                        a(href="#")
+                            | 基础数据库
+                    li
+                        a(href="#")
+                            | 标准数据库
+                    li
+                        a(href="/analyze/1")
+                            | 绿色指标评估
+            .search
+                input(type="text",placeholder="搜索绿色村镇体系数据库")
+                input(type='submit',value='搜索')
+        .board
+            .aside
+                .title
+                    h3
+                        | 限定范围
+                .sec-title
+                    h4
+                        | 村镇选择
+                    ul
+                        each cunzhen in xiangzhenList
+                            li
+                                !{"<a href='/analyze/"+cunzhen.id+"''>"+cunzhen.ZhenMingChen+"</a>"}
+            .main
+                .title
+                    h3
+                        | 分析结果
+                    .content
+                        table
+                            each cal in calculateFields
+                                tbody
+                                    tr
+                                        td(colspan="7")
+                                            p
+                                                strong=cal.namezh
+                                    tr
+                                        td
+                                            | 计算指标
+                                        td
+                                            | 计算方式
+                                        td(colspan="2")
+                                            | 计算结果
+                                        td
+                                            | 评估结果
+                                        td
+                                            | 评估依据
+                                        td
+                                            | 备注
+                                    each field in cal.fields
+                                        tr
+                                            td(rowspan=""+ field.fields.length +"")=field.namezh
+                                            td=field.fields[0].calinfo
+                                            td=field.fields[0].sign
+                                            td=field.fields[0].unit
+                                            td=field.fields[0].score
+                                            td=field.fields[0].reference
+                                            td=field.fields[0].comment
+                                        !{gettablehtml(field.fields)}                                        
+
+            div(style="clear:both;")

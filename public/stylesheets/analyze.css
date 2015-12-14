@@ -104,7 +104,7 @@ body .board .aside .title h3 {
 }
 body .board .aside .sec-title {
   width: 95%;
-  margin: 0 2.5%;
+  margin: 10px 2.5%;
   background: #fff;
 }
 body .board .aside .sec-title h4 {
@@ -114,6 +114,17 @@ body .board .aside .sec-title h4 {
   font-size: 16px;
   line-height: 20px;
   padding-left: 5px;
+}
+body .board .aside .sec-title ul li a {
+  text-decoration: none;
+  color: #000;
+  margin: 0.25em;
+}
+body .board .aside .sec-title ul li a:active {
+  color: #265ba3;
+}
+body .board .aside .sec-title ul li a:hover {
+  color: #4e83cb;
 }
 body .board .main {
   width: 75%;
@@ -135,4 +146,15 @@ body .board .main .title h3 {
 body .board .main .content {
   width: 95%;
   margin: 30px 2.5%;
+}
+body .board .main .content table {
+  width: 100%;
+  border: 2px solid #000;
+}
+body .board .main .content table tr {
+  border: 1px solid #777;
+}
+body .board .main .content table tr td {
+  border: 1px solid #777;
+  text-align: center;
 }
