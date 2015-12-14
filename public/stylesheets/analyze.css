@@ -126,6 +126,9 @@ body .board .aside .sec-title ul li a:active {
 body .board .aside .sec-title ul li a:hover {
   color: #4e83cb;
 }
+body .board .aside .sec-title ul li .hover {
+  color: #4e83cb;
+}
 body .board .main {
   width: 75%;
   margin: 30px 0;

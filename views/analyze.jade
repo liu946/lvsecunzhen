@@ -78,10 +78,10 @@ html
                         a(href="/")
                             | 村镇数据录入
                     li
-                        a(href="#")
+                        a(href="/analyze/origin/1")
                             | 基础数据库
                     li
-                        a(href="#")
+                        a(href="/analyze/standerd")
                             | 标准数据库
                     li
                         a(href="/analyze/1")
@@ -100,7 +100,11 @@ html
                     ul
                         each cunzhen in xiangzhenList
                             li
-                                !{"<a href='/analyze/"+cunzhen.id+"''>"+cunzhen.ZhenMingChen+"</a>"}
+                                - var judge = (id==cunzhen.id)?true:false
+                                if judge
+                                    !{"<a class='hover' href='/analyze/"+cunzhen.id+"''>"+cunzhen.ZhenMingChen+"</a>"}
+                                else
+                                    !{"<a href='/analyze/"+cunzhen.id+"''>"+cunzhen.ZhenMingChen+"</a>"}
             .main
                 .title
                     h3

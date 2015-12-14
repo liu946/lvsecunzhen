@@ -1,3 +1,80 @@
-p=JSON.stringify(xiangzhenList)
 p=JSON.stringify(originData)
 p=JSON.stringify(fields)
+
+doctype html
+html
+    head
+        meta(http-equiv="Content-Type",content="text/html; charset=UTF-8")
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible",content="IE=Edge,chrome=1")
+        meta(name="viewport",content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+        title
+            | 分析结果
+        link(rel='stylesheet', href='/stylesheets/analyze.css')
+    body
+        header
+            .title
+                span
+                p
+                    | 严寒地区绿色村镇体系数据库系统
+            .navigation
+                ul
+                    li
+                        a(href="#")
+                            | 主页
+                    li
+                        a(href="#")
+                            | 信息
+                    li
+                        a(href="#")
+                            | 联系我们
+                    li
+                        a(href="#")
+                            | 网站地图
+                    li
+                        a(href="#")
+                            | 问题反馈
+                    li
+                        a(href="#")
+                            | 帮助
+            .selector
+                ul
+                    li
+                        a(href="/")
+                            | 村镇数据录入
+                    li
+                        a(href="/analyze/origin/1")
+                            | 基础数据库
+                    li
+                        a(href="/analyze/standerd")
+                            | 标准数据库
+                    li
+                        a(href="/analyze/1")
+                            | 绿色指标评估
+            .search
+                input(type="text",placeholder="搜索绿色村镇体系数据库")
+                input(type='submit',value='搜索')
+        .board
+            .aside
+                .title
+                    h3
+                        | 限定范围
+                .sec-title
+                    h4
+                        | 村镇选择
+                    ul
+                        each cunzhen in xiangzhenList
+                            li
+                                - var judge = (id==cunzhen.id)?true:false
+                                if judge
+                                    !{"<a class='hover' href='/analyze/"+cunzhen.id+"''>"+cunzhen.ZhenMingChen+"</a>"}
+                                else
+                                    !{"<a href='/analyze/"+cunzhen.id+"''>"+cunzhen.ZhenMingChen+"</a>"}
+            .main
+                .title
+                    h3
+                        | 分析结果
+                    .content
+                        
+            div(style="clear:both;")
