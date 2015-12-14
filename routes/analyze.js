@@ -72,8 +72,8 @@ function calculateScore(){
 }
 function initialAnalyzeData(cb){
   var model = sys.M('xiangzhen');
-  model.getIdList(function(idList){
-    GlobalXiangzhenList = idList;
+  model.getIdList(function(idList,list){
+    GlobalXiangzhenList = list;
     var SearchList = [];
     for(var i in idList){
       SearchList.push((function(k){
