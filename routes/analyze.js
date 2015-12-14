@@ -6,8 +6,9 @@ var router = express.Router();
 var calcualteField = require('../conf/calculateFields');
 var calfield = require('../conf/calfield')
 var sys = require('../func/sys');
+var field = require('../conf/fielddef');
 var GlobalAnalyzeData = null;
-
+var GlobalOriginData = {};
 var GlobalMutipleStat = {};// 保存中间值，每个字段全部数据的MAX ,MIN等
 var GlobalAnalyzeScore = {};// 保存每个数据每项得分
 var GlobalXiangzhenList = {};
@@ -30,6 +31,7 @@ function getZdataOf(index,cb){
     forEveryZField(function(ZField){
       zSet[ZField.sign] = calset.get(ZField.sign);
     })
+    GlobalOriginData[index.toString()] = calset.data;
     cb(zSet);
   });
 }
@@ -95,6 +97,23 @@ function initialAnalyzeData(cb){
   })
 }
 
+router.get('/origin/:id', function (req, res, next) {
+  if(!GlobalAnalyzeData){
+    GlobalAnalyzeData={};
+    initialAnalyzeData(function(){
+      calculateMiddleData();
+      calculateScore();
+      return res.redirect(req.originalUrl);
+    });
+  }else{
+    return res.render('origin',{
+      xiangzhenList:GlobalXiangzhenList,
+      originData:GlobalOriginData[req.params.id],
+      fields:field,
+    });
+  }
+})
+
 
 router.get('/:id', function(req, res, next) {
   if(!GlobalAnalyzeData){
@@ -114,5 +133,6 @@ router.get('/:id', function(req, res, next) {
     });
   }
 });
+
 
 module.exports = router;

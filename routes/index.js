@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
 
 var input = require('./input');
 var dbgenerator = require('./dbgenerator');
-var analyze = require('./analyze')
+var analyze = require('./analyze');
+
 
 var routes = function(app){
   app.use('/', router);
