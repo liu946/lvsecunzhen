@@ -52,7 +52,7 @@ tb.getWithChild = function(id,cb){
 
 tb.getIdList = function(cb){
 	sqlhelper.exsqllist([	"USE "+global.conf.dbname+";",
-												'SELECT id FROM '+this.tablename+' ;'],
+												'SELECT id,ZhenMingCheng FROM '+this.tablename+' ;'],
 											[,function(rows){
 													cb(rows.map(function(x){return x.id}))
 											}]

@@ -10,7 +10,7 @@ var GlobalAnalyzeData = null;
 
 var GlobalMutipleStat = {};// 保存中间值，每个字段全部数据的MAX ,MIN等
 var GlobalAnalyzeScore = {};// 保存每个数据每项得分
-
+var GlobalXiangzhenList = {};
 
 function forEveryZField(cb){
   for(var i in calfield){
@@ -73,7 +73,7 @@ function calculateScore(){
 function initialAnalyzeData(cb){
   var model = sys.M('xiangzhen');
   model.getIdList(function(idList){
-    // todo ??
+    GlobalXiangzhenList = idList;
     var SearchList = [];
     for(var i in idList){
       SearchList.push((function(k){
@@ -101,7 +101,7 @@ router.get('/:id', function(req, res, next) {
     });
   }else{
     return res.render('analyze',{
-
+      xiangzhenList:GlobalXiangzhenList,
       origin:GlobalAnalyzeData[req.params.id],
       middle:GlobalMutipleStat,
       score:GlobalAnalyzeScore[req.params.id],
