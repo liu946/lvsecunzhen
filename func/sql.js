@@ -58,6 +58,7 @@ var sql = {
 				throw err;
 				return;
 			}
+			if(results.length)console.log('->'+results.length);
 			if (typeof(handle) != "undefined") {
 				// callback
 				handle(results,fields);

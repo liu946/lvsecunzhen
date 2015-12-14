@@ -21,6 +21,14 @@
 		};
 		var model = require('../model/'+modelname+'.js');
 		return model;
+	},
+	syncexe:function (cblist){
+		if(cblist.length !== 0){
+			var foo = cblist.shift();
+			foo(function(){
+				sys.syncexe(cblist);
+			});
+		}
 	}
 }
 

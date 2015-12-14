@@ -2,7 +2,7 @@
  * Created by liu on 15/12/8.
  */
  module.exports = [
- {
+  {
   namezh:'土地利用相关数据',
   fields:[
   {
@@ -14,16 +14,24 @@
       reference:'绿色低碳重点小城镇建设评价指标（试行）',
       type:'value',
       unit:'㎡/人',
-      sign:'Z4'
+      sign:'Z4',
+      score:{
+        judge:{
+          'M>=140':0,
+          'M>=120':0.5,
+          'def':1,
+        },
+        comment:''
+      }
     },
-    {
-      namezh:'各村镇人均建设用地面积',
-      calinfo:'B1/A30、C17/A30',
-      reference:'严寒地区绿色村镇体系指标体系',
-      type:'table',
-      unit:'㎡/人',
-      sign:'Z5'
-    },
+    //{
+    //  namezh:'各村镇人均建设用地面积',
+    //  calinfo:'B1/A30、C17/A30',
+    //  reference:'严寒地区绿色村镇体系指标体系',
+    //  type:'table',
+    //  unit:'㎡/人',
+    //  sign:'Z5'
+    //},
     ]
   },
   {
@@ -35,9 +43,14 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z6'
+      sign:'Z6',
+      score:{
+        judge:{
+          'def':'(Max-M)/(Max-Min)',
+        },
+        comment:'所有乡镇均值',
+      }
     },
-
     ],
   },
   {
@@ -49,7 +62,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z11'
+      sign:'Z11',
+      score:{
+        judge:{
+          'def':'(Max-M)/(Max-Min)',
+        },
+        comment:'所有乡镇均值',
+      }
     },
 
     ],
@@ -63,7 +82,13 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z13'
+      sign:'Z13',
+      score:{
+        judge:{
+          'def':'(Max-M)/(Max-Min)',
+        },
+        comment:'所有乡镇均值',
+      }
     },
     {
       namezh:'年平均变化率',
@@ -71,21 +96,29 @@
       reference:'',
       type:'value',
       unit:'',
-      sign:'Z14'
+      sign:'Z14',
+      score:{
+        judge:{
+          'Math.abs(M)>=0.05':0,
+          'Math.abs(M)>=0.03':0.5,
+          'def':1,
+        },
+        comment:'所有乡镇均值',
+      }
     },
-    {
-      namezh:'各村镇人均耕地面积',
-      calinfo:'',
-      reference:'',
-      type:'table',
-      unit:'',
-      sign:'Z15'
-    },
+    //{
+    //  namezh:'各村镇人均耕地面积',
+    //  calinfo:'',
+    //  reference:'',
+    //  type:'table',
+    //  unit:'',
+    //  sign:'Z15'
+    //},
     ],
   },
   ]
 },
-{
+  {
   namezh:'居民点系统',
   fields:[
   {
@@ -177,7 +210,7 @@
   },
   ],
 },
-{
+  {
   namezh:'产业生产系统',
   fields:[
   {
@@ -256,7 +289,7 @@
   },
   ],
 },
-{
+  {
   namezh:'能耗与基础设施系统',
   fields:[
   {
@@ -370,7 +403,7 @@
   },
   ],
 },
-{
+  {
   namezh:'公共设施系统',
   fields:[
   {
@@ -443,7 +476,7 @@
   },
   ],
 },
-{
+  {
   namezh:'气候与生态环境相关数据',
   fields:[
   {
