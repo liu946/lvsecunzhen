@@ -1,6 +1,60 @@
-p=JSON.stringify(originData)
-p=JSON.stringify(fields)
+- var border = ""
+ //- 生成一个随机的id
+- var randomid = function(){
+-    var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+-　　var maxPos = chars.length;
+-　　var pwd = '';
+-　　for (i = 0; i < 32; i++) {
+-　　　　pwd += chars.charAt(Math.floor(Math.random() * maxPos));
+-　　}
+-　　return pwd;
+- }
+//- 判断获取值的结果，渲染到前端
+- var getvalue = function(data,type){
+-   if(data === undefined || data === "null" ){
+-        return "<p></p>"; 
+-   }else if (type === 'value'){
+-       data = originData[data];
+-       if (typeof(data) === 'string') {
+-           var id = randomid();
+-           border += addborder(data,id);
+-           return "<button data-id="+id+">详细</button>";
+-       }else if (typeof(data) === 'object'){
+-           if(typeof(data[0]) === 'string'){
+-               var v = "";
+-               data.forEach(function(e){
+-                   var id = randomid();
+-                   border += addborder(e,id);
+-                   v += "<button data-id="+id+">详细</button>";                   
+-               });
+-               return "<p>"+v+"</p>";
+-           }else{
+-               var data2 = "";
+-               data.forEach(function(e){
+-                   data2 += e+" ";
+-               });
+-               return "<p>"+data2+"</p>";
+-           }
+-       }else{
+-           return "<p>"+data+"</p>";
+-       }
+-   }else{
+-       return "<p>"+data+"</p>";
+-   }
+- }
+//- 添加到popup上
+- var addborder = function(data,id){
+-    var html = "<div id="+id+" class='bodercast'><div class='box'><div class='close'><a>x</a></div><div class='content'><table><tbody>";
+-    data = JSON.parse(data);
+-    for(var time in data){
+-       html += "<tr><td>"+ time +"</td><td>"+ data[time] +"</td></tr>";
+-    }
+-    html += "</tbody></table></div></div></div>";
+-    return html;
+- }
 
+p= JSON.stringify(fields)
+p= JSON.stringify(originData)
 doctype html
 html
     head
@@ -68,13 +122,140 @@ html
                             li
                                 - var judge = (id==cunzhen.id)?true:false
                                 if judge
-                                    !{"<a class='hover' href='/analyze/"+cunzhen.id+"''>"+cunzhen.ZhenMingChen+"</a>"}
+                                    !{"<a class='hover' href='/analyze/origin/"+cunzhen.id+"''>"+cunzhen.ZhenMingChen+"</a>"}
                                 else
-                                    !{"<a href='/analyze/"+cunzhen.id+"''>"+cunzhen.ZhenMingChen+"</a>"}
+                                    !{"<a href='/analyze/origin/"+cunzhen.id+"''>"+cunzhen.ZhenMingChen+"</a>"}
             .main
                 .title
                     h3
                         | 分析结果
+                    .select
+                        a(href="#xiangzhen",data-target="xiangzhen")
+                            | 乡镇数据
+                        a(href="#zhenquhuocunzhuang",data-target="zhenquhuocunzhuang")
+                            | 镇区或村庄数据
+                        a(href="#zhuhu",data-target="zhuhu")
+                            | 住户数据
                     .content
-                        
+                        table#xiangzhen(style="display:none")
+                            tbody
+                                tr
+                                    td(colspan="3")
+                                        p
+                                            strong= fields.xiangzhen.classname
+                                tr
+                                    td
+                                        p
+                                            strong
+                                                | 选项
+                                    td
+                                        p
+                                            strong
+                                                | 值
+                                    td
+                                        p
+                                            strong
+                                                | 单位
+                                each unit in fields.xiangzhen.childfield
+                                    tr
+                                        td= unit.fieldname
+                                        td
+                                            !{getvalue(unit.sign,'value')}
+                                        td
+                                            !{getvalue(unit.unit,'unit')}
+
+                        table#zhenquhuocunzhuang(style="display:none")
+                            tbody
+                                tr
+                                    td(colspan="3")
+                                        p
+                                            strong= fields.zhenquhuocunzhuang.classname
+                                tr
+                                    td
+                                        p
+                                            strong
+                                                | 选项
+                                    td
+                                        p
+                                            strong
+                                                | 值
+                                    td
+                                        p
+                                            strong
+                                                | 单位
+                                each unit in fields.zhenquhuocunzhuang.childfield
+                                    tr
+                                        td= unit.fieldname
+                                        td
+                                            !{getvalue(unit.sign,'value')}
+                                        td
+                                            !{getvalue(unit.unit,'unit')}
+                        table#zhuhu(style="display:none")
+                            tbody
+                                tr
+                                    td(colspan="3")
+                                        p
+                                            strong= fields.zhuhu.classname
+                                tr
+                                    td
+                                        p
+                                            strong
+                                                | 选项
+                                    td
+                                        p
+                                            strong
+                                                | 值
+                                    td
+                                        p
+                                            strong
+                                                | 单位
+                                each unit in fields.zhuhu.childfield
+                                    tr
+                                        td= unit.fieldname
+                                        td
+                                            !{getvalue(unit.sign,'value')}
+                                        td
+                                            !{getvalue(unit.unit,'unit')}
             div(style="clear:both;")
+
+        !{border}
+        script(src="/script/jquery.min.js")
+        script.
+            $(".main .title .select a").each(function(){
+                $(this).on('click',function(){
+                    var target = $(this).data('target');
+                    if (target === 'zhenquhuocunzhuang'){
+                        $("#zhenquhuocunzhuang").css('display','block');
+                        $("#xiangzhen").css('display','none');
+                        $("#zhuhu").css('display','none');
+                    }else if (target === 'xiangzhen'){
+                        $("#zhenquhuocunzhuang").css('display','none');
+                        $("#xiangzhen").css('display','block'); 
+                        $("#zhuhu").css('display','none');                       
+                    }else if (target === 'zhuhu'){
+                        $("#zhenquhuocunzhuang").css('display','none');
+                        $("#xiangzhen").css('display','none'); 
+                        $("#zhuhu").css('display','block'); 
+                    }else{
+                        $("#zhenquhuocunzhuang").css('display','none');
+                        $("#xiangzhen").css('display','none');
+                        $("#zhuhu").css('display','none'); 
+                    }
+                });
+            });
+             //- 对button按钮的监听
+            var buttons = $('button');
+            var bindevent = function(id,target){
+                target.on('click',function(){
+                    $("#"+id).css('display','block');
+                    //- 关闭popup
+                    $("#"+id+" .box .close a").on('click',function(){
+                        $("#"+id).css('display','none');
+                    });
+                });
+            }
+            for(var i=0,L=buttons.length;i<L;i++){
+                var target = $(buttons[i]);
+                var id = target.data('id');
+                bindevent(id,target);
+            }
