@@ -44,7 +44,7 @@ html
                         a(href="/analyze/origin/1")
                             | 基础数据库
                     li
-                        a(href="/analyze/standerd")
+                        a(href="/analyze/standerd",style="color:orange")
                             | 标准数据库
                     li
                         a(href="/analyze/1")
@@ -56,16 +56,65 @@ html
             .aside
                 .title
                     h3
-                        | 限定范围
+                        | 标准类型选择
                 .sec-title
                     h4
                         | 村镇选择
                     ul
+                        li
+                            a(href='#',data-target="cunzhuang")
+                                | 村庄相关标准
+                        li
+                            a(href='#',data-target="xiangzhen")
+                                | 乡镇相关标准
                         
             .main
                 .title
                     h3
-                        | 分析结果
+                        | 标准
                     .content
+                        #cunzhuang(style="display:none")
+                            h3
+                                | 村庄相关标准
+                            h4
+                                | 国家级生态村创建标准（2006）
+                            img(src="/image/村庄标准/国家级生态村创建标准（2006）.jpg",width="700px")
+                            h4
+                                | 国家生态文明建设示范村指标（2014）
+                            img(src="/image/村庄标准/国家生态文明建设示范村指标（2014）.jpg",width="700px")
+                            h4
+                                | 农业部“美丽乡村”创建目标体系（2014）
+                            img(src="/image/村庄标准/农业部“美丽乡村”创建目标体系（2014）.jpg",width="700px")
+                        #xiangzhen(style="display:none")
+                            h3
+                                | 乡镇相关标准
+                            h4
+                                | 国家级生态乡镇标准环发（2010）
+                            img(src="/image/乡镇标准/国家级生态乡镇标准环发（2010）.jpg",width="700px")
+                            h4
+                                | 国家生态文明建设示范乡镇指标（2014）
+                            img(src="/image/乡镇标准/国家生态文明建设示范乡镇指标（2014）.jpg",width="700px")
+                            h4
+                                | 美丽宜居小镇示范指导性要求（2013）
+                            img(src="/image/乡镇标准/美丽宜居小镇示范指导性要求（2013）.jpg",width="700px")
                        
             div(style="clear:both;")
+        script(src="/script/jquery.min.js")
+        script.
+            $(".sec-title ul li a").each(function(){
+                $(this).on('click',function(){
+                    var target = $(this).data('target');
+                    if (target === 'cunzhuang'){
+                        $("#cunzhuang").css('display','block');
+                        $("#xiangzhen").css('display','none');
+                    }else if (target === 'xiangzhen'){
+                        $("#cunzhuang").css('display','none');
+                        $("#xiangzhen").css('display','block');
+                    }else{
+                        $("#cunzhuang").css('display','none');
+                        $("#xiangzhen").css('display','none');
+                    }
+                });
+            });
+            
+            
