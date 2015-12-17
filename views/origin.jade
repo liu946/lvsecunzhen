@@ -31,11 +31,12 @@
 -           }else{
 -               var data2 = "";
 -               data.forEach(function(e){
+-                   if(e === 'null'){e='';}
 -                   data2 += e+" ";
 -               });
 -               return "<p>"+data2+"</p>";
 -           }
--       }else if(!data){
+-       }else if(!data || data==='null'){
 -           return "<p></p>"; 
 -       }else{
 -           return "<p>"+data+"</p>";
