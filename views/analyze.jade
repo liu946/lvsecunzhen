@@ -1,7 +1,9 @@
 //- 处理前端输出的不规范值
 - var judgevalue = function(str){
--   if(str === null || str === 'null' || str === '' || str === undefined){
+-   if(!str){
 -       str = ''; 
+-   }else if (typeof(str) === 'number'){
+-       str = str.toFixed(2);
 -   }
 -   return str;
 - }

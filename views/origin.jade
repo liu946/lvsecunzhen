@@ -11,16 +11,16 @@
 - }
 //- 判断获取值的结果，渲染到前端
 - var getvalue = function(data,type){
--   if(data === undefined || data === "null" ){
+-   if(!data){
 -        return "<p></p>"; 
 -   }else if (type === 'value'){
 -       data = originData[data];
--       if (typeof(data) === 'string') {
+-       if (typeof(data) === 'string' && data.length > 20) {
 -           var id = randomid();
 -           border += addborder(data,id);
 -           return "<button data-id="+id+">详细</button>";
 -       }else if (typeof(data) === 'object'){
--           if(typeof(data[0]) === 'string'){
+-           if(typeof(data[0]) === 'string' && data[0].length > 20){
 -               var v = "";
 -               data.forEach(function(e){
 -                   var id = randomid();
@@ -35,6 +35,8 @@
 -               });
 -               return "<p>"+data2+"</p>";
 -           }
+-       }else if(!data){
+-           return "<p></p>"; 
 -       }else{
 -           return "<p>"+data+"</p>";
 -       }
@@ -53,8 +55,6 @@
 -    return html;
 - }
 
-p= JSON.stringify(fields)
-p= JSON.stringify(originData)
 doctype html
 html
     head
@@ -66,6 +66,8 @@ html
         title
             | 分析结果
         link(rel='stylesheet', href='/stylesheets/analyze.css')
+        style.
+            tbody{width:100%}
     body
         header
             .title
