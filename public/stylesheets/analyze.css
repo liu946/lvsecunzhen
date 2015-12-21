@@ -21,6 +21,7 @@ body header .title p {
   line-height: 30px;
   display: inline-block;
   margin: 0 0 0 30px;
+  font-family: '微软雅黑';
 }
 body header .navigation {
   width: 100%;
@@ -119,6 +120,7 @@ body .board .aside .sec-title ul li a {
   text-decoration: none;
   color: #000;
   margin: 0.25em;
+  line-height: 1.5em;
 }
 body .board .aside .sec-title ul li a:active {
   color: #265ba3;
@@ -172,8 +174,9 @@ body .board .main .content {
   margin: 30px 2.5%;
 }
 body .board .main .content table {
-  width: 100%;
+  width: 600px;
   border: 2px solid #000;
+  margin: 0 auto;
 }
 body .board .main .content table tr {
   border: 1px solid #777;
@@ -181,6 +184,7 @@ body .board .main .content table tr {
 body .board .main .content table tr td {
   border: 1px solid #777;
   text-align: center;
+  width: 198px;
 }
 .bodercast {
   top: 0;
