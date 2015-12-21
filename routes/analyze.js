@@ -12,7 +12,7 @@ var GlobalOriginData = {};
 var GlobalMutipleStat = {};// 保存中间值，每个字段全部数据的MAX ,MIN等
 var GlobalAnalyzeScore = {};// 保存每个数据每项得分
 var GlobalXiangzhenList = {};
-
+var GlobalReduceList = [];
 function forEveryZField(cb) {
   for (var i in calfield) {
     for (var j in calfield[i].fields) {
@@ -30,10 +30,10 @@ function getZdataOf(index, cb) {
     var calset = new calcualteField(dataSet);
     forEveryZField(function (ZField) {
       zSet[ZField.sign] = calset.get(ZField.sign);
-    })
+    });
     GlobalOriginData[index.toString()] = calset.data;
     cb(zSet);
-  });
+  },GlobalReduceList);
 }
 function calculateMiddleData() {
   forEveryZField(function (Zfield) {
@@ -83,8 +83,12 @@ function initialAnalyzeData(cb) {
     GlobalXiangzhenList = list;
     var SearchList = [];
     for (var i in idList) {
+      GlobalReduceList[idList[i]] = {}
+      GlobalReduceList[idList[i]].xiangzhen = list[i];
+      GlobalReduceList[idList[i]].cunzhuang = [];
       SearchList.push((function (k) {
         return function (cb) {
+
           getZdataOf(idList[k], function (zSet) {
             GlobalAnalyzeData[k.toString()] = zSet;
             cb();
@@ -135,7 +139,8 @@ router.get('/:id', function (req, res, next) {
       origin: GlobalAnalyzeData[req.params.id],
       middle: GlobalMutipleStat,
       score: GlobalAnalyzeScore[req.params.id],
-      calculateFields: calfield
+      calculateFields: calfield,
+      reduceList: GlobalReduceList,
     });
   }
 });

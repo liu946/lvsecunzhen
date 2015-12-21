@@ -17,7 +17,7 @@ tb.getall = function (callback) {
 	this.__proto__.getall.call(this,'id,ZhenMingChen',callback);
 };
 
-tb.getWithChild = function(id,cb){
+tb.getWithChild = function(id,cb,addingZhenqu){
 	var dataSet = {};
 	var zhenquIdList = [];
 	var bindingXiangZhen = function(results,fields){
@@ -25,20 +25,24 @@ tb.getWithChild = function(id,cb){
 	};
 	var bindingZhenqu = function(results,fields){
 		dataSet['zhenqu'] = results;
+
 		for(var i in results){
+			addingZhenqu[id].cunzhuang.push({id: results[i].id,name: results[i].MingChen})
 			zhenquIdList.push(results[i].id);
 		}
 	};
 	var bindingCunzhuang = function(results,fields){
 		dataSet['cunzhuang'] = results;
+
 		for(var i in results){
+			addingZhenqu[id].cunzhuang.push({id: results[i].id,name: results[i].MingChen})
 			zhenquIdList.push(results[i].id);
 		}
 		sqlhelper.exsqllist([	"USE "+global.conf.dbname+";",
 				'SELECT * FROM '+zhuhudb.tablename+
 				' WHERE '+zhuhudb.father.linkfield+' IN ('+zhenquIdList.toString()+');'],
 			[,bindingZhuHu]);
-	}
+	};
 	var bindingZhuHu = function(results,fields){
 		dataSet['zhuhu'] = results;
 		cb(dataSet);
@@ -56,6 +60,15 @@ tb.getIdList = function(cb){
 											[,function(rows){
 													cb(rows.map(function(x){return x.id}),rows);
 											}]
+	);
+};
+
+tb.getIdListAndName = function(cb){
+	sqlhelper.exsqllist([	"USE "+global.conf.dbname+";",
+			'SELECT id,ZhenMingChen FROM '+this.tablename+' ;'],
+		[,function(rows){
+			cb(rows.map(function(x){return {id:x.id,name: x.ZhenMingChen}}),rows);
+		}]
 	);
 };
 

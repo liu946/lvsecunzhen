@@ -182,7 +182,7 @@ var field = {
                 "unit": "个",
                 "field": "ZhenYuQianRenBingChuangShu",
                 'sign':'A24'
-            },d
+            },
             {
                 "fieldname": "土地利用现状信息",
                 "datatype": "null"

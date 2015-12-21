@@ -112,6 +112,7 @@ html
                     h3
                         | 分析结果
                     .content
+                        p=JSON.stringify(reduceList)
                         table
                             each cal in calculateFields
                                 tbody
