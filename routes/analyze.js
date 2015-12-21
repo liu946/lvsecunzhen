@@ -119,10 +119,21 @@ router.get('/origin/:id', function (req, res, next) {
       xiangzhenList: GlobalXiangzhenList,
       originData: GlobalOriginData[req.params.id],
       fields: field,
+      reduceList: GlobalReduceList,
     });
   }
-})
-
+});
+router.get('/get/zhenquhuocunzhuang/:id',function (req ,res ,next){
+  var model = sys.M('zhenquhuocunzhuang');
+  model.getitem(req.params.id,'*',function (obj){
+    res.render('cundata', {
+      reduceList: GlobalReduceList,
+      id: req.params.id,
+      fields: field['zhenquhuocunzhuang'],
+      originData: obj,
+    });
+  });
+});
 
 router.get('/:id', function (req, res, next) {
   if (!GlobalAnalyzeData) {
@@ -140,7 +151,6 @@ router.get('/:id', function (req, res, next) {
       middle: GlobalMutipleStat,
       score: GlobalAnalyzeScore[req.params.id],
       calculateFields: calfield,
-      reduceList: GlobalReduceList,
     });
   }
 });

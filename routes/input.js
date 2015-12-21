@@ -46,7 +46,7 @@ router.get('/new/:modelname',function(req ,res ,next){
 // 获得编辑页面
 router.get('/edit/:modelname/:id',function (req ,res ,next){
 	res.render('edit'+req.params.modelname,{id:req.params.id,modelname: req.params.modelname})
-})
+});
 
 // 获得对应表格数据列表json
 router.get('/get/:modelname',function (req, res, next){
