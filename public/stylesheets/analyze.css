@@ -172,6 +172,8 @@ body .board .main .title .select .hover {
 body .board .main .content {
   width: 95%;
   margin: 30px 2.5%;
+  height: 400px;
+  overflow-y: auto;
 }
 body .board .main .content table {
   width: 600px;
@@ -185,6 +187,7 @@ body .board .main .content table tr td {
   border: 1px solid #777;
   text-align: center;
   width: 198px;
+  height: 40px;
 }
 .bodercast {
   top: 0;
