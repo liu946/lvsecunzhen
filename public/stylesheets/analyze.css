@@ -8,6 +8,7 @@ body ul {
 body header .title {
   width: 100%;
   height: 30px;
+  margin-bottom: 1em;
 }
 body header .title span {
   width: 120px;
@@ -21,6 +22,7 @@ body header .title p {
   line-height: 30px;
   display: inline-block;
   margin: 0 0 0 30px;
+  font-family: '微软雅黑';
 }
 body header .navigation {
   width: 100%;
@@ -68,19 +70,6 @@ body header .selector ul li {
 body header .selector ul li a {
   text-decoration: none;
 }
-body header .search {
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-}
-body header .search input {
-  display: inline-block;
-}
-body header .search input[type=text] {
-  width: 350px;
-  height: 20px;
-  margin-right: 10px;
-}
 body .board {
   width: 100%;
 }
@@ -92,11 +81,11 @@ body .board .aside {
 }
 body .board .aside .title {
   width: 100%;
-  height: 30px;
+  height: 35px;
 }
 body .board .aside .title h3 {
   margin: 0;
-  line-height: 30px;
+  line-height: 35px;
   font-size: 18px;
   background: #265ba3;
   color: #fff;
@@ -104,21 +93,23 @@ body .board .aside .title h3 {
 }
 body .board .aside .sec-title {
   width: 95%;
-  margin: 10px 2.5%;
+  margin: 20px 2.5%;
   background: #fff;
+  padding-bottom: 20px;
 }
 body .board .aside .sec-title h4 {
   width: 100%;
-  height: 20px;
+  height: 25px;
   background: #ccc;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 25px;
   padding-left: 5px;
 }
 body .board .aside .sec-title ul li a {
   text-decoration: none;
   color: #000;
   margin: 0.25em;
+  line-height: 1.5em;
 }
 body .board .aside .sec-title ul li a:active {
   color: #265ba3;
@@ -136,11 +127,11 @@ body .board .main {
 }
 body .board .main .title {
   width: 100%;
-  height: 30px;
+  height: 35px;
 }
 body .board .main .title h3 {
   margin: 0;
-  line-height: 30px;
+  line-height: 35px;
   font-size: 18px;
   background: #265ba3;
   color: #fff;
@@ -149,14 +140,14 @@ body .board .main .title h3 {
 body .board .main .title .select {
   background: #ccc;
   width: 100%;
-  height: 20px;
+  height: 25px;
 }
 body .board .main .title .select a {
   text-decoration: none;
   color: #000;
   margin: 0.25em;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 25px;
 }
 body .board .main .title .select a:active {
   color: #265ba3;
@@ -170,10 +161,13 @@ body .board .main .title .select .hover {
 body .board .main .content {
   width: 95%;
   margin: 30px 2.5%;
+  height: 400px;
+  overflow-y: auto;
 }
 body .board .main .content table {
-  width: 100%;
+  width: 600px;
   border: 2px solid #000;
+  margin: 0 auto;
 }
 body .board .main .content table tr {
   border: 1px solid #777;
@@ -181,6 +175,22 @@ body .board .main .content table tr {
 body .board .main .content table tr td {
   border: 1px solid #777;
   text-align: center;
+  width: 198px;
+  height: 40px;
+  font-size: 13px;
+}
+body .board .main .content table tr td .column {
+  height: 20px;
+  width: 80px;
+  float: left;
+}
+body .board .main .content table tr td .column div {
+  height: 20px;
+  background: #ccc;
+}
+body .board .main .content table tr td p {
+  float: left;
+  margin: 0;
 }
 .bodercast {
   top: 0;
