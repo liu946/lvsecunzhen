@@ -7,31 +7,35 @@
 -   }
 -   return str;
 - }
+- var judgecolumn = function(str){
+-   if(!str || str==='null'){
+-       str = 0; 
+-   }else if (typeof(str) === 'number'){
+-       str = str.toFixed(2);
+-   }
+-   return str;
+- }
 //- 获取第三层表格多个值的html
 - var gettablehtml = function(object){
 -   var html="<tr><td rowspan='"+ object.fields.length +"'>"+ object.namezh +"</td>";
 -   var fields = object.fields;
 -   for(var i=0,L=fields.length;i<L;i++){
+-       var name = fields[i].namezh;
 -       var calinfo = judgevalue(fields[i].calinfo);
 -       var sign = judgevalue(fields[i].sign);
--       var score = "";
--       var max = "";
--       var min = "";
+-       var judge = "<div class='column'><div ";
 -       if (sign != ""){
--           score = judgevalue(score[sign]);
--           if (middle[sign] != undefined){
--               max = judgevalue(middle[sign].MAX);
--               min = judgevalue(middle[sign].MIN);
--           }
+-           value = judgecolumn(score[sign])*100 + "%";
+-           judge += "style='width:"+value+"'></div></div><p>"+value+"</p>";
 -           sign = judgevalue(origin[sign]);
 -       }
 -       var unit = judgevalue(fields[i].unit);
 -       var reference = judgevalue(fields[i].reference);
 -       var comment = judgevalue(fields[i].comment);
 -       if(i==0){
--           html += "<td>"+calinfo+"</td><td>"+sign+"</td><td>"+unit+"</td><td>"+score+"</td><td>"+ min +"</td><td>"+ max +"</td><td>"+reference+"</td><td>"+comment+"</td></tr>";
+-           html += "<td>"+ name +"</td><td>"+sign+"</td><td>"+unit+"</td><td style='width:150px'>"+judge+"</td><td>"+reference+"</td></tr>";
 -       }else{
--           html += "<tr><td>"+calinfo+"</td><td>"+sign+"</td><td>"+unit+"</td><td>"+score+"</td><td>"+ min +"</td><td>"+ max +"</td><td>"+reference+"</td><td>"+comment+"</td></tr>";  
+-           html += "<tr><td>"+ name +"</td><td>"+sign+"</td><td>"+unit+"</td><td style='width:150px'>"+judge+"</td><td>"+reference+"</td></tr>";  
 -       }
 -   }
 -   return html;
@@ -108,36 +112,23 @@ html
                 .title
                     h3
                         | 分析结果
-                    .content
-                        table
+                    .content(style="width:100%")
+                        table(style="width:90%")
                             each cal in calculateFields
                                 tbody
                                     tr
-                                        td(colspan="9")
+                                        td(colspan="7")
                                             p
                                                 strong=cal.namezh
                                     tr
-                                        td
+                                        td(colspan="2")
                                             | 计算指标
-                                        td
-                                            | 计算方式
                                         td(colspan="2")
                                             | 计算结果
-                                        td
+                                        td(style="width:150px")
                                             | 评估结果
-                                        td(colspan="2")
-                                            | 指标评判阈值
                                         td
                                             | 评估依据
-                                        td
-                                            | 备注
-                                    tr
-                                        td(colspan="5")
-                                        td
-                                            | MIN
-                                        td
-                                            | MAX
-                                        td(colspan="2")
                                     each field in cal.fields
                                         tr
                                             !{gettablehtml(field)}
