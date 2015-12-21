@@ -177,6 +177,7 @@ body .board .main .content table tr td {
   text-align: center;
   width: 198px;
   height: 40px;
+  font-size: 13px;
 }
 .bodercast {
   top: 0;
