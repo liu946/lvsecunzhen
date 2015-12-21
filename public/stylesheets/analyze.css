@@ -179,6 +179,19 @@ body .board .main .content table tr td {
   height: 40px;
   font-size: 13px;
 }
+body .board .main .content table tr td .column {
+  height: 20px;
+  width: 80px;
+  float: left;
+}
+body .board .main .content table tr td .column div {
+  height: 20px;
+  background: #ccc;
+}
+body .board .main .content table tr td p {
+  float: left;
+  margin: 0;
+}
 .bodercast {
   top: 0;
   position: fixed;
