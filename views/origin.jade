@@ -30,10 +30,11 @@
 -               return "<p>"+v+"</p>";
 -           }else{
 -               var data2 = "";
--               data.forEach(function(e){
--                   if(e === 'null'){e='';}
--                   data2 += e+" ";
--               });
+-               if (data === null){}else{
+-                   for(var i in data){
+-                       data2 += "<p>"+i+":"+(data[i]*100).toFixed(2)+"%</p>"
+-                   }
+-               }
 -               return "<p>"+data2+"</p>";
 -           }
 -       }else if(!data || data==='null'){
