@@ -21,6 +21,7 @@
 -   var fields = object.fields;
 -   for(var i=0,L=fields.length;i<L;i++){
 -       var name = fields[i].namezh;
+-       console.log(fields[i]);
 -       var calinfo = judgevalue(fields[i].calinfo);
 -       var sign = judgevalue(fields[i].sign);
 -       var judge = "<div class='column'><div ";
@@ -33,7 +34,7 @@
 -       var unit = judgevalue(fields[i].unit);
 -       var reference = judgevalue(fields[i].reference);
 -       var comment = judgevalue(fields[i].comment);
--       if(i==0){
+-       if(i===0){
 -           html += "<td>"+ name +"</td><td>"+sign+"</td><td>"+unit+"</td><td style='width:150px'>"+judge+"</td><td>"+reference+"</td></tr>";
 -       }else if(fields[i].visible === false){
 -           html += "";
