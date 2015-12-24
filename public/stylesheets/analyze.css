@@ -96,6 +96,8 @@ body .board .aside .sec-title {
   margin: 20px 2.5%;
   background: #fff;
   padding-bottom: 20px;
+  height: 400px;
+  overflow-y: auto;
 }
 body .board .aside .sec-title h4 {
   width: 100%;
@@ -187,10 +189,6 @@ body .board .main .content table tr td .column {
 body .board .main .content table tr td .column div {
   height: 20px;
   background: #ccc;
-}
-body .board .main .content table tr td p {
-  float: left;
-  margin: 0;
 }
 .bodercast {
   top: 0;

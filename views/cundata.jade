@@ -140,19 +140,15 @@ html
                         | 分析结果
                     .select
                         a(href="#xiangzhen",data-target="xiangzhen")
-                            | 镇域数据
-                        a(href="#zhenquhuocunzhuang",data-target="zhenquhuocunzhuang")
-                            | 镇区数据
-                        a(href="#zhuhu",data-target="zhuhu")
-                            | 问卷信息
+                            | 村庄数据
                     .content
-                        table#xiangzhen(style="display:none")
+                        table#xiangzhen()
                             tbody
                                 tr
                                     td(colspan="3")
                                         p
-                                            strong= fields.xiangzhen.classname
-                                each unit in fields.xiangzhen.childfield
+                                            strong= fields.classname
+                                each unit in fields.childfield
                                     if unit.datatype === 'null'
                                         tr
                                             td(colspan='3')
@@ -176,75 +172,7 @@ html
                                         tr
                                             td= unit.fieldname
                                             td
-                                                !{getvalue(unit.sign,'value')}
-                                            td
-                                                !{getvalue(unit.unit,'unit')}
-
-                        table#zhenquhuocunzhuang(style="display:none")
-                            tbody
-                                tr
-                                    td(colspan="3")
-                                        p
-                                            strong= fields.zhenquhuocunzhuang.classname
-                                each unit in fields.zhenquhuocunzhuang.childfield
-                                    if unit.datatype === 'null'
-                                        tr
-                                            td(colspan='3')
-                                                p
-                                                    strong= unit.fieldname
-                                        tr
-                                            td
-                                                p
-                                                    strong
-                                                        | 内容名称
-                                            td
-                                                p
-                                                    strong
-                                                        | 值
-                                            td
-                                                p
-                                                    strong
-                                                        | 单位
-
-                                    else
-                                        tr
-                                            td= unit.fieldname
-                                            td
-                                                !{getvalue(unit.sign,'value')}
-                                            td
-                                                !{getvalue(unit.unit,'unit')}
-
-                        table#zhuhu(style="display:none")
-                            tbody
-                                tr
-                                    td(colspan="3")
-                                        p
-                                            strong= fields.zhuhu.classname
-                                each unit in fields.zhuhu.childfield
-                                    if unit.datatype === 'null'
-                                        tr
-                                            td(colspan='3')
-                                                p
-                                                    strong= unit.fieldname
-                                        tr
-                                            td
-                                                p
-                                                    strong
-                                                        | 内容名称
-                                            td
-                                                p
-                                                    strong
-                                                        | 值
-                                            td
-                                                p
-                                                    strong
-                                                        | 单位
-
-                                    else
-                                        tr
-                                            td= unit.fieldname
-                                            td
-                                                !{getvalue(unit.sign,'value')}
+                                                !{getvalue(unit.field,'value')}
                                             td
                                                 !{getvalue(unit.unit,'unit')}
 
