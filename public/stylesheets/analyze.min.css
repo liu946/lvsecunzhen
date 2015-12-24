@@ -1,0 +1,234 @@
+body {
+  margin: 0;
+  padding: 20px;
+}
+body ul {
+  margin: 0;
+}
+body header .title {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 1em;
+}
+body header .title span {
+  width: 120px;
+  height: 30px;
+  background: url("logo.png");
+  float: left;
+}
+body header .title p {
+  float: left;
+  font-size: 24px;
+  line-height: 30px;
+  display: inline-block;
+  margin: 0 0 0 30px;
+  font-family: '微软雅黑';
+}
+body header .navigation {
+  width: 100%;
+  height: 30px;
+  background: #265ba3;
+  margin: 0;
+}
+body header .navigation ul {
+  width: 100%;
+}
+body header .navigation ul li {
+  width: 80px;
+  text-align: center;
+  height: 30px;
+  background: #265ba3;
+  border-right: 1px solid #fff;
+  line-height: 30px;
+  font-size: 14px;
+  float: left;
+  list-style-type: none;
+}
+body header .navigation ul li a {
+  width: 80px;
+  height: 30px;
+  color: #fff;
+  text-decoration: none;
+}
+body header .navigation ul li:active {
+  background: #000;
+}
+body header .selector {
+  width: 100%;
+  height: 30px;
+  background: #ccc;
+  margin: 0;
+}
+body header .selector ul li {
+  float: left;
+  width: 120px;
+  text-align: center;
+  line-height: 30px;
+  list-style-type: none;
+  font-size: 14px;
+}
+body header .selector ul li a {
+  text-decoration: none;
+}
+body .board {
+  width: 100%;
+}
+body .board .aside {
+  width: 20%;
+  float: left;
+  margin: 30px 5% 0 0;
+  background: #def3f6;
+}
+body .board .aside .title {
+  width: 100%;
+  height: 35px;
+}
+body .board .aside .title h3 {
+  margin: 0;
+  line-height: 35px;
+  font-size: 18px;
+  background: #265ba3;
+  color: #fff;
+  padding-left: 5px;
+}
+body .board .aside .sec-title {
+  width: 95%;
+  margin: 20px 2.5%;
+  background: #fff;
+  padding-bottom: 20px;
+  height: 400px;
+  overflow-y: auto;
+}
+body .board .aside .sec-title h4 {
+  width: 100%;
+  height: 25px;
+  background: #ccc;
+  font-size: 16px;
+  line-height: 25px;
+  padding-left: 5px;
+}
+body .board .aside .sec-title ul li a {
+  text-decoration: none;
+  color: #000;
+  margin: 0.25em;
+  line-height: 1.5em;
+}
+body .board .aside .sec-title ul li a:active {
+  color: #265ba3;
+}
+body .board .aside .sec-title ul li a:hover {
+  color: #4e83cb;
+}
+body .board .aside .sec-title ul li .hover {
+  color: #4e83cb;
+}
+body .board .main {
+  width: 75%;
+  margin: 30px 0;
+  float: left;
+}
+body .board .main .title {
+  width: 100%;
+  height: 35px;
+}
+body .board .main .title h3 {
+  margin: 0;
+  line-height: 35px;
+  font-size: 18px;
+  background: #265ba3;
+  color: #fff;
+  padding-left: 5px;
+}
+body .board .main .title .select {
+  background: #ccc;
+  width: 100%;
+  height: 25px;
+}
+body .board .main .title .select a {
+  text-decoration: none;
+  color: #000;
+  margin: 0.25em;
+  font-size: 14px;
+  line-height: 25px;
+}
+body .board .main .title .select a:active {
+  color: #265ba3;
+}
+body .board .main .title .select a:hover {
+  color: #4e83cb;
+}
+body .board .main .title .select .hover {
+  color: #4e83cb;
+}
+body .board .main .content {
+  width: 95%;
+  margin: 30px 2.5%;
+  height: 500px;
+  overflow-y: auto;
+}
+body .board .main .content table {
+  width: 600px;
+  border: 2px solid #000;
+  margin: 0 auto;
+}
+body .board .main .content table tr {
+  border: 1px solid #777;
+}
+body .board .main .content table tr td {
+  border: 1px solid #777;
+  text-align: center;
+  width: 198px;
+  height: 40px;
+  font-size: 13px;
+}
+body .board .main .content table tr td .column {
+  height: 20px;
+  width: 80px;
+  float: left;
+}
+body .board .main .content table tr td .column div {
+  height: 20px;
+  background: #ccc;
+}
+.bodercast {
+  top: 0;
+  position: fixed;
+  z-index: 2;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+.bodercast .box {
+  margin: 20px auto;
+  width: 400px;
+  height: 600px;
+  overflow-y: auto;
+  background: #fff;
+  border: 2px solid #777;
+}
+.bodercast .box .close {
+  width: 100%;
+  height: 20px;
+  border-bottom: 1px solid #aaa;
+}
+.bodercast .box .close a {
+  float: right;
+  font-size: 16px;
+  margin: 5px;
+  cursor: pointer;
+}
+.bodercast .box .content {
+  width: 100%;
+}
+.bodercast .box .content table {
+  width: 100%;
+  border: 2px solid #000;
+}
+.bodercast .box .content table tr {
+  border: 1px solid #777;
+}
+.bodercast .box .content table tr td {
+  border: 1px solid #777;
+  text-align: center;
+}
