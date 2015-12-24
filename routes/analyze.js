@@ -148,7 +148,7 @@ router.get('/get/zhenquhuocunzhuang/:id',function (req ,res ,next){
 function p_pct(dataList){
     if(dataList[0]){
       if(typeof(dataList[0])==='number'){
-        return dataList.reduce(function(x,y){return x+y;},0);
+        return dataList.reduce(function(x,y){return x+y;},0)/dataList.length;
       }else{
         var pct = {};
         for(var i in dataList){
