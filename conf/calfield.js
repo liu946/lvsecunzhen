@@ -3,7 +3,7 @@
  */
  module.exports = [
   {
-  namezh:'土地利用相关数据',
+  namezh:'土地利用系统',
   fields:[
   {
     namezh:'建设用地集约性',
@@ -677,7 +677,7 @@
   ],
 },
   {
-  namezh:'气候与生态环境相关数据',
+  namezh:'气候与生态环境系统',
   fields:[
   {
     namezh:'水土保持指数',

@@ -1,4 +1,5 @@
 - var border = ""
+- var logotitle = ""
  //- 生成一个随机的id
 - var randomid = function(){
 -    var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
@@ -122,59 +123,62 @@ html
                             li
                                 - if(!block){continue}
                                 - var judge = (id==block.xiangzhen.id)?true:false
+                                - var flag = 0
                                 if judge
                                     !{"<a class='hover' href='/analyze/origin/"+block.xiangzhen.id+"''>"+block.xiangzhen.ZhenMingChen+"</a>"}
                                 else
                                     !{"<a href='/analyze/origin/"+block.xiangzhen.id+"''>"+block.xiangzhen.ZhenMingChen+"</a>"}
                                 ul
                                     each cunzhuang in block.cunzhuang
+                                        - flag ++
+                                        - if (flag === 1){logotitle = 'zhengqu'}else{logotitle = 'cunzhuang'}
                                         li
                                             - var judge = (id==cunzhuang.id)?true:false
                                             if judge
-                                                !{"<a class='hover' href='/analyze/get/zhenquhuocunzhuang/"+cunzhuang.id+"''>"+cunzhuang.name+"</a>"}
+                                                !{"<a class='hover' href='/analyze/get/zhenquhuocunzhuang/"+cunzhuang.id+"#"+ logotitle +"'>"+cunzhuang.name+"</a>"}
                                             else
-                                                !{"<a href='/analyze/get/zhenquhuocunzhuang/"+cunzhuang.id+"''>"+cunzhuang.name+"</a>"}
+                                                !{"<a href='/analyze/get/zhenquhuocunzhuang/"+cunzhuang.id+"#"+ logotitle +"'>"+cunzhuang.name+"</a>"}
             .main
                 .title
                     h3
                         | 分析结果
                     .select
-                        a(href="#xiangzhen",data-target="xiangzhen")
-                            | 村庄数据
                     .content
                         table#xiangzhen()
                             tbody
-                                tr
-                                    td(colspan="3")
-                                        p
-                                            strong= fields.classname
+                                
                                 each unit in fields.childfield
-                                    if unit.datatype === 'null'
-                                        tr
-                                            td(colspan='3')
-                                                p
-                                                    strong= unit.fieldname
-                                        tr
-                                            td
-                                                p
-                                                    strong
-                                                        | 内容名称
-                                            td
-                                                p
-                                                    strong
-                                                        | 值
-                                            td
-                                                p
-                                                    strong
-                                                        | 单位
-
+                                    - var type = unit.showin
+                                    - if (type===undefined){type = ""}
+                                    if unit.visible === false
+                                        continue
                                     else
-                                        tr
-                                            td= unit.fieldname
-                                            td
-                                                !{getvalue(unit.field,'value')}
-                                            td
-                                                !{getvalue(unit.unit,'unit')}
+                                        if unit.datatype === 'null'
+                                            tr(class=""+type)
+                                                td(colspan='3')
+                                                    p
+                                                        strong= unit.fieldname
+                                            tr(class=""+type)
+                                                td
+                                                    p
+                                                        strong
+                                                            | 内容名称
+                                                td
+                                                    p
+                                                        strong
+                                                            | 值
+                                                td
+                                                    p
+                                                        strong
+                                                            | 单位
+
+                                        else
+                                            tr(class=""+type)
+                                                td= unit.fieldname
+                                                td
+                                                    !{getvalue(unit.field,'value')}
+                                                td
+                                                    !{getvalue(unit.unit,'unit')}
 
             div(style="clear:both;")
 
@@ -203,6 +207,15 @@ html
                     }
                 });
             });
+            var hash = location.hash;
+            if (hash === '#zhengqu'){
+                $('.select').html("<a href='#'>镇区数据</a>");
+                $('.cunzhuang').each(function(){$(this).css('display','none')});
+                }
+            else{
+                $('.select').html("<a href='#'>村庄数据</a>");
+                $('.zhenqu').each(function(){$(this).css('display','none')});
+            }
              //- 对button按钮的监听
             var buttons = $('button');
             var bindevent = function(id,target){

@@ -25,15 +25,18 @@
 -       var sign = judgevalue(fields[i].sign);
 -       var judge = "<div class='column'><div ";
 -       if (sign != ""){
--           value = judgecolumn(score[sign])*100 + "%";
+-           var number = parseFloat(judgecolumn(score[sign]));
+-           value = (number*100).toFixed(0) + "%";
 -           judge += "style='width:"+value+"'></div></div><p>"+value+"</p>";
 -           sign = judgevalue(origin[sign]);
 -       }
 -       var unit = judgevalue(fields[i].unit);
 -       var reference = judgevalue(fields[i].reference);
 -       var comment = judgevalue(fields[i].comment);
--       if(i==0){
+-       if(i===0){
 -           html += "<td>"+ name +"</td><td>"+sign+"</td><td>"+unit+"</td><td style='width:150px'>"+judge+"</td><td>"+reference+"</td></tr>";
+-       }else if(fields[i].visible === false){
+-           html += "";
 -       }else{
 -           html += "<tr><td>"+ name +"</td><td>"+sign+"</td><td>"+unit+"</td><td style='width:150px'>"+judge+"</td><td>"+reference+"</td></tr>";  
 -       }
