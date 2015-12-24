@@ -146,20 +146,19 @@ html
                     .content
                         table#xiangzhen()
                             tbody
-                                tr
-                                    td(colspan="3")
-                                        p
-                                            strong= fields.classname
+                                
                                 each unit in fields.childfield
+                                    - var type = unit.showin
+                                    - if (type===undefined){type = ""}
                                     if unit.visible === false
                                         continue
                                     else
                                         if unit.datatype === 'null'
-                                            tr
+                                            tr(class=""+type)
                                                 td(colspan='3')
                                                     p
                                                         strong= unit.fieldname
-                                            tr
+                                            tr(class=""+type)
                                                 td
                                                     p
                                                         strong
@@ -174,7 +173,7 @@ html
                                                             | 单位
 
                                         else
-                                            tr
+                                            tr(class=""+type)
                                                 td= unit.fieldname
                                                 td
                                                     !{getvalue(unit.field,'value')}
@@ -211,9 +210,11 @@ html
             var hash = location.hash;
             if (hash === '#zhengqu'){
                 $('.select').html("<a href='#'>镇区数据</a>");
+                $('.cunzhuang').each(function(){$(this).css('display','none')});
                 }
             else{
                 $('.select').html("<a href='#'>村庄数据</a>");
+                $('.zhenqu').each(function(){$(this).css('display','none')});
             }
              //- 对button按钮的监听
             var buttons = $('button');

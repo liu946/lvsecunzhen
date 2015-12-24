@@ -25,7 +25,8 @@
 -       var sign = judgevalue(fields[i].sign);
 -       var judge = "<div class='column'><div ";
 -       if (sign != ""){
--           value = judgecolumn(score[sign])*100 + "%";
+-           var number = parseFloat(judgecolumn(score[sign]));
+-           value = (number*100).toFixed(0) + "%";
 -           judge += "style='width:"+value+"'></div></div><p>"+value+"</p>";
 -           sign = judgevalue(origin[sign]);
 -       }

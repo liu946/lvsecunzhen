@@ -428,7 +428,7 @@ var field = {
             },
             {
 
-                "fieldname": "镇区现状用地信息",
+                "fieldname": "现状用地信息",
                 "cunzhuangfield":"村庄居民点现状信息",
                 "datatype": "null",
             },
@@ -514,7 +514,7 @@ var field = {
                 'sign':'C23',
             },
             {
-                "fieldname": "镇区建设用地总面积",
+                "fieldname": "建设用地总面积",
                 "cunzhuangfield":"村庄建设用地面积",
                 "datatype": "double",
                 "unit": "公顷",
@@ -528,7 +528,8 @@ var field = {
                 "datatype":"double",
                 "unit":"公顷",
                 "field":"SYMianJi",
-                'sign':'C24'
+                'sign':'C24',
+                'visible':false
             },
             {
                 "fieldname":"耕地面积",
