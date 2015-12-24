@@ -35,6 +35,8 @@
 -       var comment = judgevalue(fields[i].comment);
 -       if(i==0){
 -           html += "<td>"+ name +"</td><td>"+sign+"</td><td>"+unit+"</td><td style='width:150px'>"+judge+"</td><td>"+reference+"</td></tr>";
+-       }else if(fields[i].visible === false){
+-           html += "";
 -       }else{
 -           html += "<tr><td>"+ name +"</td><td>"+sign+"</td><td>"+unit+"</td><td style='width:150px'>"+judge+"</td><td>"+reference+"</td></tr>";  
 -       }
