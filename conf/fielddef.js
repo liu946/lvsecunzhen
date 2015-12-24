@@ -358,22 +358,25 @@ var field = {
                 "fieldname": "镇区/村庄",
                 "datatype": "int(4)",
                 "field": "ZhenQuHuoCunZhuang",
-                "items":{"1":"镇区","2":"村庄"}
+                "items":{"1":"镇区","2":"村庄"},
+                'visible':false,
             },
             {
                 "fieldname": "所属乡镇",
                 "datatype": "int(11)",
                 "type": "list",
-                "field": "SuoShuXiangZhen"
+                "field": "SuoShuXiangZhen",
+                'visible':false,
 
             },
             {
                 "fieldname": "名称",
                 "datatype": "varchar(100)",
-                "field": "MingChen"
+                "field": "MingChen",
+                'visible':false,
             },
             {
-                "fieldname": "镇区基本信息",
+                "fieldname": "基本信息",
                 "cunzhuangfield":"村庄基本信息",
                 "datatype": "null"
             },
@@ -915,6 +918,6 @@ var field = {
         ],
         "class": "ZhuHu"
     }
-}
+};
 
 module.exports = field;

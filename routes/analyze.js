@@ -13,6 +13,7 @@ var GlobalMutipleStat = {};// 保存中间值，每个字段全部数据的MAX ,
 var GlobalAnalyzeScore = {};// 保存每个数据每项得分
 var GlobalXiangzhenList = {};
 var GlobalReduceList = [];
+
 function forEveryZField(cb) {
   for (var i in calfield) {
     for (var j in calfield[i].fields) {
@@ -23,6 +24,7 @@ function forEveryZField(cb) {
     }
   }
 }
+
 function getZdataOf(index, cb) {
   var model = sys.M('xiangzhen');
   var zSet = {};
@@ -35,6 +37,7 @@ function getZdataOf(index, cb) {
     cb(zSet);
   },GlobalReduceList);
 }
+
 function calculateMiddleData() {
   forEveryZField(function (Zfield) {
     if (Zfield.hasOwnProperty('score')) {
@@ -56,6 +59,7 @@ function calculateMiddleData() {
     }
   })
 }
+
 function calculateScore() {
   forEveryZField(function (Zfield) {
     if (Zfield.hasOwnProperty('score')) {
@@ -77,6 +81,7 @@ function calculateScore() {
     }
   })
 }
+
 function initialAnalyzeData(cb) {
   var model = sys.M('xiangzhen');
   model.getIdList(function (idList, list) {
@@ -121,8 +126,7 @@ router.get('/origin/:id', function (req, res, next) {
       fields: field,
     });
   }
-})
-
+});
 
 router.get('/:id', function (req, res, next) {
   if (!GlobalAnalyzeData) {
@@ -144,6 +148,5 @@ router.get('/:id', function (req, res, next) {
     });
   }
 });
-
 
 module.exports = router;
