@@ -13,6 +13,7 @@ var GlobalMutipleStat = {};// 保存中间值，每个字段全部数据的MAX ,
 var GlobalAnalyzeScore = {};// 保存每个数据每项得分
 var GlobalXiangzhenList = {};
 var GlobalReduceList = [];
+var GlobalidList;
 
 function forEveryZField(cb) {
   for (var i in calfield) {
@@ -87,6 +88,7 @@ function initialAnalyzeData(cb) {
   model.getIdList(function (idList, list) {
     GlobalXiangzhenList = list;
     var SearchList = [];
+    GlobalidList = idList;
     for (var i in idList) {
       GlobalReduceList[idList[i]] = {}
       GlobalReduceList[idList[i]].xiangzhen = list[i];
@@ -116,9 +118,11 @@ router.get('/origin/:id', function (req, res, next) {
     initialAnalyzeData(function () {
       calculateMiddleData();
       calculateScore();
+      Percent(GlobalOriginData);
       return res.redirect(req.originalUrl);
     });
   } else {
+    //return res.json(GlobalOriginData);
     return res.render('origin', {
       id: req.params.id,
       xiangzhenList: GlobalXiangzhenList,
@@ -141,6 +145,37 @@ router.get('/get/zhenquhuocunzhuang/:id',function (req ,res ,next){
   });
 });
 
+function p_pct(dataList){
+    if(dataList[0]){
+      if(typeof(dataList[0])==='number'){
+        return dataList.reduce(function(x,y){return x+y;},0);
+      }else{
+        var pct = {};
+        for(var i in dataList){
+          if(!pct.hasOwnProperty(dataList[i])){
+            pct[dataList[i]]=0;
+          }
+          pct[dataList[i]]++;
+        }
+        for(var i in pct){
+          pct[i]/=dataList.length;
+        }
+        return pct;
+      }
+    }
+  return 0;
+}
+
+function Percent(data){
+  for(var xid in data){
+    for(var sign in data[xid]){
+      if(sign[0]==='D'){
+        GlobalOriginData[xid][sign] = p_pct(GlobalOriginData[xid][sign]);
+      }
+    }
+  }
+}
+
 router.get('/:id', function (req, res, next) {
   if (!GlobalAnalyzeData) {
     GlobalAnalyzeData = {};
@@ -150,12 +185,13 @@ router.get('/:id', function (req, res, next) {
       return res.redirect(req.originalUrl);
     });
   } else {
+    var index =  GlobalidList.indexOf(Number(req.params.id));
     return res.render('analyze', {
       id: req.params.id,
       xiangzhenList: GlobalXiangzhenList,
-      origin: GlobalAnalyzeData[req.params.id],
+      origin: GlobalAnalyzeData[index],
       middle: GlobalMutipleStat,
-      score: GlobalAnalyzeScore[req.params.id],
+      score: GlobalAnalyzeScore[index],
       calculateFields: calfield,
     });
   }

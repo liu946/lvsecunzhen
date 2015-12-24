@@ -693,7 +693,8 @@
         judge:{
           'def':'(M-Min)/(Max-Min)',
         },
-      }
+      },
+      visible:false,
     },
     ],
   },

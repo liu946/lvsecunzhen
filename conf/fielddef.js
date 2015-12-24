@@ -585,19 +585,22 @@ var field = {
                 "fieldname":'受访者户籍',
                 "options":{"1":"城镇户口","2":"农村户口"},
                 "datatype": "select1-5",
-                "field":"huji"
+                "field":"huji",
+                "sign":'D1'
             },
             {
                 "fieldname":'受访者年龄',
                 "options":{1:"20以下",2:"21-30",3:"31-40",4:"41-50",5:"50以上"},
                 "datatype": "select1-5",
-                "field":"nianling"
+                "field":"nianling",
+                "sign":'D2'
             },
             {
                 "fieldname":'受访者性别',
                 "options":{"1":"男","2":"女"},
                 "datatype": "select1-5",
-                "field":"xingbie"
+                "field":"xingbie",
+                "sign":'D3'
             },
             {
                 "fieldname":'受访者职业',
@@ -609,7 +612,8 @@ var field = {
                     "5":"其他"
                 },
                 "datatype": "select1-5",
-                "field":"zhiye"
+                "field":"zhiye",
+                "sign":'D4'
             },
             {
                 "fieldname":'受访者文化程度',
@@ -622,25 +626,29 @@ var field = {
 
                 },
                 "datatype": "select1-5",
-                "field":"wenhuachengdu"
+                "field":"wenhuachengdu",
+                "sign":'D5'
             },
             {
                 "fieldname":'家庭共有人数',
                 "datatype": "int(11)",
                 "unit": "",
-                "field":"jiatinggongyou"
+                "field":"jiatinggongyou",
+                "sign":'D6'
             },
             {
                 "fieldname":'常年在家人数',
                 "datatype": "int(11)",
                 "unit": "",
-                "field":"changnianzaijia"
+                "field":"changnianzaijia",
+                "sign":'D7'
             },
             {
                 "fieldname":'外出务工人数',
                 "datatype": "int(11)",
                 "unit": "",
-                "field":"waichuwugong"
+                "field":"waichuwugong",
+                "sign":'D8'
             },
             {
                 "fieldname":'家庭收入来源',
@@ -655,19 +663,22 @@ var field = {
 
                 },
                 "datatype": "selectmult",
-                "field":"shourulaiyuan"
+                "field":"shourulaiyuan",
+                "sign":'D9'
             },
             {
                 "fieldname":'家庭年毛收入',
                 "datatype": "double",
                 "unit": "万元",
-                "field":"nianjunmaoshouru"
+                "field":"nianjunmaoshouru",
+                "sign":'D10'
             },
             {
                 "fieldname":'家庭年消费支出',
                 "datatype": "double",
                 "unit": "万元",
-                "field":"xiaofeizhichu"
+                "field":"xiaofeizhichu",
+                "sign":'D11'
             },
             {
                 "fieldname":'福利保障条件满意度',
@@ -680,7 +691,8 @@ var field = {
                 "fieldname":'空气质量满意程度',
                 "options":{"1":"满意","2":"比较满意","3":"一般满意","4":'比较不满意',"5":'不满意'},
                 "datatype": "select1-5",
-                "field":"kongqizhiliang"
+                "field":"kongqizhiliang",
+                "sign":'D13'
             },
             {
                 "fieldname":'农田劳作出行距离',
@@ -762,13 +774,15 @@ var field = {
                 "fieldname":'对灾害预防及应对措施是否满意',
                 "options":{"1":"是","2":"否"},
                 "datatype": "select1-5",
-                "field":"zaihaiyufang"
+                "field":"zaihaiyufang",
+                "sign":'D29'
             },
             {
                 "fieldname":'周边环境是否对您有影响',
                 "options":{"1":"是","2":"否"},
                 "datatype": "select1-5",
-                "field":"zhoubianhuanjing"
+                "field":"zhoubianhuanjing",
+                "sign":'D30'
             },
             {
                 "fieldname":'家附近是否有垃圾箱（房）',
@@ -788,7 +802,8 @@ var field = {
                 "fieldname":'下雨时是否有内涝',
                 "options":{"1":"是","2":"否"},
                 "datatype": "select1-5",
-                "field":"xiayu"
+                "field":"xiayu",
+                "sign":'D33'
             },
             {
                 "fieldname":'教育条件是否满意',
@@ -816,13 +831,15 @@ var field = {
                     "7":"冬季交通事故多"
                 },
                 "datatype": "selectmult",
-                "field":"daoludoucunzai"
+                "field":"daoludoucunzai",
+                "sign":'D36'
             },
             {
                 "fieldname":'希望增加哪些设施',
                 "options":{"1":"运动健身","2":"文化娱乐","3":"休闲活动"},
                 "datatype": "selectmult",
-                "field":"xiwangzengjia"
+                "field":"xiwangzengjia",
+                "sign":'D37'
             },
             {
                 "fieldname":'希望增加哪些商业服务设施',
@@ -836,7 +853,8 @@ var field = {
 
                 },
                 "datatype": "selectmult",
-                "field":"shangyefuwu"
+                "field":"shangyefuwu",
+                "sign":'D38'
             },
             {
                 "fieldname":'种子饲料在哪购买',
@@ -849,7 +867,8 @@ var field = {
 
                 },
                 "datatype": "select1-5",
-                "field":"zongzisiliao"
+                "field":"zongzisiliao",
+                "sign":'D39'
             },
             {
                 "fieldname":'供水状况存在哪些问题',
@@ -864,7 +883,8 @@ var field = {
 
                 },
                 "datatype": "selectmult",
-                "field":"gongshuiqingkuangcunzaiwenti"
+                "field":"gongshuiqingkuangcunzaiwenti",
+                "sign":'D40'
             },
             {
                 "fieldname":'做饭采用的燃料形式',
@@ -879,7 +899,8 @@ var field = {
 
                 },
                 "datatype": "selectmult",
-                "field":"zuofanranliaoxingshi"
+                "field":"zuofanranliaoxingshi",
+                "sign":'D41'
             },
             {
                 "fieldname":'污水处理方式',
@@ -894,7 +915,8 @@ var field = {
 
                 },
                 "datatype": "select1-5",
-                "field":"wushuichulifangshi"
+                "field":"wushuichulifangshi",
+                "sign":'D42'
             },
             {
                 "fieldname":'粪便如何处理',
@@ -905,7 +927,8 @@ var field = {
                     "4":"其他"
                 },
                 "datatype": "select1-5",
-                "field":"fenbian"
+                "field":"fenbian",
+                "sign":'D43'
             },
             {
                 "fieldname":'农产品剩余物是否有效利用',
