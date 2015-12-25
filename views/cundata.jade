@@ -122,12 +122,8 @@ html
                         each block in reduceList
                             li
                                 - if(!block){continue}
-                                - var judge = (id==block.xiangzhen.id)?true:false
                                 - var flag = 0
-                                if judge
-                                    !{"<a class='hover' href='/analyze/origin/"+block.xiangzhen.id+"''>"+block.xiangzhen.ZhenMingChen+"</a>"}
-                                else
-                                    !{"<a href='/analyze/origin/"+block.xiangzhen.id+"''>"+block.xiangzhen.ZhenMingChen+"</a>"}
+                                !{"<a href='/analyze/origin/"+block.xiangzhen.id+"''>"+block.xiangzhen.ZhenMingChen+"</a>"}
                                 ul
                                     each cunzhuang in block.cunzhuang
                                         - flag ++

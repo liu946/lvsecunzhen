@@ -133,11 +133,7 @@ html
                                         - flag ++
                                         - if (flag === 1){logotitle = 'zhengqu'}else{logotitle = 'cunzhuang'}
                                         li
-                                            - var judge = (id==cunzhuang.id)?true:false
-                                            if judge
-                                                !{"<a class='hover' href='/analyze/get/zhenquhuocunzhuang/"+cunzhuang.id+"#"+ logotitle +"'>"+cunzhuang.name+"</a>"}
-                                            else
-                                                !{"<a href='/analyze/get/zhenquhuocunzhuang/"+cunzhuang.id+"#"+ logotitle +"'>"+cunzhuang.name+"</a>"}
+                                            !{"<a href='/analyze/get/zhenquhuocunzhuang/"+cunzhuang.id+"#"+ logotitle +"'>"+cunzhuang.name+"</a>"}
             .main
                 .title
                     h3
