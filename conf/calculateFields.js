@@ -92,6 +92,7 @@ module.exports = function (dataSet) {
     for(var i in cunzhuangFields){
       var field = cunzhuangFields[i];
       if (field.hasOwnProperty('sign')) {
+
         for(var item_i in dataSet['cunzhuang']){
           var item = dataSet['cunzhuang'][item_i];
           this.fieldPush(field.sign,item[field.field]);
@@ -174,13 +175,15 @@ module.exports = function (dataSet) {
   this.Z32 = function () {
     var B2 = this.get('B2');
     var C18 = this.get('C18');
-    return (B2)/sum(C18);
+    return (B2)/sum(C18)*C18.length;
   };
   this.Z34 = function () {
-    return this.get('B12')*10000/this.get('B1');
+    var B12 = this.get('B12');
+    var B1 = getLastYearData(this.get('B1'));
+    return B12 * 10000 / B1;
   };
   this.Z36 = function () {
-    return this.get('B1')/getLastYearData(this.get('A1'));
+    return getLastYearData(this.get('B1'))/getLastYearData(this.get('A1'));
   };
   this.Z38 = function () {
     return changeRate(this.get('A1'));
@@ -189,7 +192,8 @@ module.exports = function (dataSet) {
     return 1000*this.get('A36')/getLastYearData(this.get('A26'));
   };
   this.Z45 = function () {
-    return div(this.get('D44'),'是');
+    var D44 = this.get('D44');
+    return div(D44,'是');
   }
   this.Z46 = function () {
     return this.get('A3')/getLastYearData(this.get('A26'));
@@ -243,16 +247,21 @@ module.exports = function (dataSet) {
     return div(this.get('D31'),'是');
   }
   this.Z68 = function () {
-    var lvse = ['步行','自行车','公交车'];
+    var regx = /(步行|自行车|公交车)/;
     var c = 0;
-    for(var i in lvse){
-      c+= div(this.get('D22'),lvse[i]);
-    }
-    return c;
+
+    this.get('D22').map(function(x){
+      if(x.match(regx)){
+        c++;
+      }
+    });
+
+    return c/this.get('D22').length;
   }
 
   this.Z70 = function () {
-    return div(this.get('D26'),'否');
+    var D26 = this.get('D26');
+    return div(D26,'否');
   }
 
   this.Z72 = function () {
@@ -265,9 +274,9 @@ module.exports = function (dataSet) {
 
     var A17 = this.get('A17');
     var A25 = this.get('A25');
-    var A1 = this.get('A1');
+    var A1 = getLastYearData(this.get('A1'));
 
-    return A17/(A25*A1);
+    return A17/(A25*A1)*1000*100;
   }
 
   this.Z76 = function () {
@@ -276,7 +285,7 @@ module.exports = function (dataSet) {
   this.Z77 = function () {
 
     var A18 = this.get('A18');
-    var A17 = this.get('A27');
+    var A17 = this.get('A17');
     return A18/A17;
   }
 
@@ -300,11 +309,11 @@ module.exports = function (dataSet) {
     return div(this.get('D34'),'是');
   };
   this.Z90 = function () {
-    return this.get('A23')/this.get('A1');
+    return this.get('A23')/getLastYearData(this.get('A1'));
   };
 
   this.Z92 = function () {
-    return this.get('B5')/this.get('B12')
+    return this.get('B5')/this.get('B12')*100;
   };
 
   this.Z94 = function () {
@@ -317,8 +326,8 @@ module.exports = function (dataSet) {
   this.Z102 = function () {
     var A39 = this.get('A39');
     var A40 = this.get('A40');
-    var A41 = this.get('A41');
-    return 10000*(A39-A40)/A41;
+    var A25 = this.get('A25');
+    return 10000*(A39-A40)/A25;
   };
   this.Z105 = function () {
     var A41 = this.get('A41');
@@ -326,9 +335,9 @@ module.exports = function (dataSet) {
     return A41*A42*A42;
   };
   this.Z107 = function () {
-        var A32 = this.get('A32');
+    var A32 = this.get('A32');
     var A25 = this.get('A25');
-    return A32/A25;
+    return A32/A25 *1000;
   };
   this.Z109 = function () {
     return this.get('A43');

@@ -146,9 +146,11 @@ router.get('/get/zhenquhuocunzhuang/:id',function (req ,res ,next){
 });
 
 function p_pct(dataList){
-    if(dataList[0]){
+    if(dataList[0] || dataList[0]===0){
       if(typeof(dataList[0])==='number'){
-        return dataList.reduce(function(x,y){return x+y;},0)/dataList.length;
+        var rt = dataList.reduce(function(x,y){return x+y;},0)/dataList.length;
+        console.log(rt);
+        return rt;
       }else{
         var pct = {};
         for(var i in dataList){
@@ -171,6 +173,7 @@ function Percent(data){
     for(var sign in data[xid]){
       if(sign[0]==='D'){
         GlobalOriginData[xid][sign] = p_pct(GlobalOriginData[xid][sign]);
+
       }
     }
   }

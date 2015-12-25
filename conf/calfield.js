@@ -316,8 +316,7 @@
       sign:'Z48',
       score:{
         judge:{
-          'M<=3500':1,
-          'def':'(Max-M)/(Max-3500)',
+          'def':'(Max-M)/(Max-Min)',
         },
       }
     },
@@ -331,7 +330,7 @@
       score:{
         judge:{
           'M<=250':1,
-          'def':'(Max-M)/(Max-250)',
+          'def':'(Max-M)/(Max-3500)',
         },
       }
     },
@@ -505,7 +504,7 @@
       calinfo:'',
       reference:'',
       type:'value',
-      unit:'公里/平方公里*人',
+      unit:'米/平方公里*人',
       sign:'Z74',
       score:{
         judge:{
@@ -648,7 +647,7 @@
       calinfo:'',
       reference:'',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z92',
       score:{
         judge:{
@@ -680,25 +679,6 @@
   namezh:'气候与生态环境系统',
   fields:[
   {
-    namezh:'水土保持指数',
-    fields:[
-    {
-      namezh:'水土保持能力',
-      calinfo:'',
-      reference:'',
-      type:'value',
-      unit:'',
-      sign:'Z99',
-      score:{
-        judge:{
-          'def':'(M-Min)/(Max-Min)',
-        },
-      },
-      visible:false,
-    },
-    ],
-  },
-  {
     namezh:'生态脆弱指数',
     fields:[
     {
@@ -723,7 +703,7 @@
       sign:'Z105',
       score:{
         judge:{
-          'def':'(M-Min)/(Max-Min)',
+          'def':'(Max-M)/(Max-Min)',
         },
       }
     },
@@ -737,7 +717,7 @@
       calinfo:'',
       reference:'',
       type:'value',
-      unit:'',
+      unit:'‰',
       sign:'Z107',
       score:{
         judge:{
@@ -808,7 +788,7 @@
         judge:{
           '0.9<=M':1,
           'M<0.7':0,
-          'def':'(M-0.7)/0.002',
+          'def':'(M-0.7)/0.2',
         },
       }
     },

@@ -33,7 +33,6 @@ tb.getWithChild = function(id,cb,addingZhenqu){
 	};
 	var bindingCunzhuang = function(results,fields){
 		dataSet['cunzhuang'] = results;
-
 		for(var i in results){
 			addingZhenqu[id].cunzhuang.push({id: results[i].id,name: results[i].MingChen})
 			zhenquIdList.push(results[i].id);
