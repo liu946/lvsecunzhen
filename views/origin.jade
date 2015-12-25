@@ -150,10 +150,6 @@ html
                     .content
                         table#xiangzhen(style="display:none")
                             tbody
-                                tr
-                                    td(colspan="3")
-                                        p
-                                            strong= fields.xiangzhen.classname
                                 each unit in fields.xiangzhen.childfield
                                     if unit.datatype === 'null'
                                         tr
@@ -173,7 +169,7 @@ html
                                                 p
                                                     strong
                                                         | 单位
-
+                                    else if unit.fieldname === '镇名称'
                                     else
                                         tr
                                             td= unit.fieldname
