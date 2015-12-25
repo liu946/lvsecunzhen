@@ -60,7 +60,7 @@
       calinfo:'',
       reference:'所有乡镇均值',
       type:'value',
-      unit:'',
+      unit:'公顷/平方公里',
       sign:'Z11',
       score:{
         judge:{

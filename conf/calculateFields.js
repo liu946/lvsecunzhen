@@ -136,7 +136,7 @@ module.exports = function (dataSet) {
   };
 
   this.Z11 = function(){
-    return this.get('A30')/this.get('A25');
+    return this.get('A30')/this.get('A25')*100;
   };
   this.Z13 = function(){
     return getLastYearData(this.get('A26'))/this.get('A1');
