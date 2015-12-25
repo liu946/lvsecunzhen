@@ -80,7 +80,7 @@
       calinfo:'',
       reference:'所有乡镇均值',
       type:'value',
-      unit:'',
+      unit:'亩/人',
       sign:'Z13',
       score:{
         judge:{
@@ -132,8 +132,8 @@
       sign:'Z20',
       score:{
         judge:{
-          'M>=0.95':1,
-          'def':'(M-Min)/(0.95-Min)',
+          'M>=95':1,
+          'def':'(M-Min)/(95-Min)',
         },
         comment:'所有乡镇均值',
       }

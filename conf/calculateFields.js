@@ -6,10 +6,10 @@ function getLastYearData(jsonStr){
   var jsonobj = JSON.parse(jsonStr);
   for(var i= 2016;i>1980;i--){
     if(jsonobj[i.toString()]){
-      return jsonobj[i.toString()];
+      return parseInt(jsonobj[i.toString()]);
     }
   }
-  throw 'No getable Value!';
+  return 1;
 };
 function changeRate(jsonStr){
   var jsonobj = removeBlank(JSON.parse(jsonStr));
@@ -139,7 +139,8 @@ module.exports = function (dataSet) {
     return this.get('A30')/this.get('A25')*100;
   };
   this.Z13 = function(){
-    return getLastYearData(this.get('A26'))/this.get('A1');
+    var a26 = getLastYearData(this.get('A26'));
+    return a26/getLastYearData(this.get('A1'))*15;
   };
   this.Z14 = function() {
     return changeRate(this.get('A26'));
@@ -150,7 +151,7 @@ module.exports = function (dataSet) {
     for(var i in ManyiList){
       t += count[ManyiList[i]];
     }
-    return ManyiList.reduce(function(p,c){return p+count[c];},0)/ManyiList.length;
+    return t/ManyiList.length;
   };
   this.Z20 = function () {
     return this.manYidiv(this.get('D12'));
@@ -162,16 +163,12 @@ module.exports = function (dataSet) {
     return this.get('A25')/getLastYearData(this.get('A1'));
   };
   this.Z26 = function () {
-    var B2 = this.get('B2');
-    var B1 = this.get('B1');
-    var C18 = this.get('C18');
-    var C17 = this.get('C17');
-
-    return (B2*B1+sum(mul(C17,C18)))/(B1+sum(C17));
+    var A4 = getLastYearData(this.get('A4'))
+    return A4;
   };
   this.Z30 = function () {
     var C25 = this.get('C25');
-    var C17 = this.get('C17');
+    var C17 = this.get('C17').map(getLastYearData);
     return (sum(C25)*10000)/sum(C17);
   };
   this.Z32 = function () {
