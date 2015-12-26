@@ -697,6 +697,7 @@
       visible:false,
     },
     ],
+    visible:false,
   },
   {
     namezh:'生态脆弱指数',

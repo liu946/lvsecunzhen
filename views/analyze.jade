@@ -18,6 +18,7 @@
 //- 获取第三层表格多个值的html
 - var gettablehtml = function(object){
 -   var html="<tr><td rowspan='"+ object.fields.length +"'>"+ object.namezh +"</td>";
+-   if(object.visible === false){html = "";}
 -   var fields = object.fields;
 -   for(var i=0,L=fields.length;i<L;i++){
 -       var name = fields[i].namezh;
@@ -32,10 +33,10 @@
 -       }
 -       var unit = judgevalue(fields[i].unit);
 -       var reference = judgevalue(fields[i].reference);
--       if(i===0){
--           html += "<td>"+ name +"</td><td>"+sign+"</td><td>"+unit+"</td><td style='width:150px'>"+judge+"</td><td>"+reference+"</td></tr>";
--       }else if(fields[i].visible === false){
+-       if(fields[i].visible===false){
 -           html += "";
+-       }else if(i===0){
+-           html += "<td>"+ name +"</td><td>"+sign+"</td><td>"+unit+"</td><td style='width:150px'>"+judge+"</td><td>"+reference+"</td></tr>";
 -       }else{
 -           html += "<tr><td>"+ name +"</td><td>"+sign+"</td><td>"+unit+"</td><td style='width:150px'>"+judge+"</td><td>"+reference+"</td></tr>";  
 -       }

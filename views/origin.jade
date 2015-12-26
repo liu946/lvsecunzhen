@@ -38,7 +38,9 @@
 -               return "<p>"+data2+"</p>";
 -           }
 -       }else if(!data || data==='null'){
--           return "<p></p>"; 
+-           return "<p></p>";
+-       }else if (typeof(data)==='number'){
+-           return "<p>"+data.toFixed(2)+"</p>";
 -       }else{
 -           return "<p>"+data+"</p>";
 -       }
@@ -166,6 +168,7 @@ html
                                                     strong
                                                         | 单位
                                     else if unit.fieldname === '镇名称'
+                                    else if unit.visible === false
                                     else
                                         tr
                                             td= unit.fieldname
