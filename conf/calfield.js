@@ -39,9 +39,9 @@
     {
       namezh:'镇域生态容量指标',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z6',
       score:{
         judge:{
@@ -58,9 +58,9 @@
     {
       namezh:'镇域交通设施密度',
       calinfo:'',
-      reference:'所有乡镇均值',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'公顷/平方公里',
+      unit:'%',
       sign:'Z11',
       score:{
         judge:{
@@ -78,9 +78,9 @@
     {
       namezh:'人均耕地面积',
       calinfo:'',
-      reference:'所有乡镇均值',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'亩/人',
+      unit:'平方米/人',
       sign:'Z13',
       score:{
         judge:{
@@ -92,9 +92,9 @@
     {
       namezh:'年平均变化率',
       calinfo:'',
-      reference:'',
+      reference:'生态农村评价指标体系',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z14',
       score:{
         judge:{
@@ -126,14 +126,14 @@
     {
       namezh:'居民对地区福利保障条件满意度',
       calinfo:'根据问卷"很不满意"至"满意"（0、25、50、75、100）平均得分',
-      reference:'',
+      reference:'生态村镇满意度评价一般取值参考',
       type:'value',
       unit:'%',
       sign:'Z20',
       score:{
         judge:{
-          'M>=95':1,
-          'def':'(M-Min)/(95-Min)',
+          'M>=0.95':1,
+          'def':'(M-Min)/(0.95-Min)',
         },
         comment:'所有乡镇均值',
       }
@@ -141,7 +141,7 @@
     {
       namezh:'镇区绿化覆盖率',
       calinfo:'',
-      reference:'',
+      reference:'镇规划标准',
       type:'value',
       unit:'%',
       sign:'Z21',
@@ -156,9 +156,9 @@
     {
       namezh:'村镇人口密度',
       calinfo:'',
-      reference:'',
+      reference:'参考指标 不做比较',
       type:'value',
-      unit:'',
+      unit:'人/平方公里',
       sign:'Z23'
     },
     ],
@@ -169,9 +169,9 @@
     {
       namezh:'人均收入',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'元/年',
       sign:'Z26',
       score:{
         judge:{
@@ -183,9 +183,9 @@
     {
       namezh:'村庄人均建设用地面积',
       calinfo:'',
-      reference:'',
+      reference:'黑龙江省新农村村庄建设标准（试行）',
       type:'value',
-      unit:'',
+      unit:'平方米',
       sign:'Z30',
       score:{
         judge:{
@@ -198,9 +198,9 @@
     {
       namezh:'镇区与村庄人均收入比值',
       calinfo:'',
-      reference:'所有乡镇均值',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'数值',
       sign:'Z32',
       score:{
         judge:{
@@ -212,9 +212,9 @@
     {
       namezh:'镇区人均建设用地面积',
       calinfo:'',
-      reference:'',
+      reference:'镇规划标准',
       type:'value',
-      unit:'',
+      unit:'平方米',
       sign:'Z34',
       score:{
         judge:{
@@ -231,10 +231,10 @@
     fields:[
     {
       namezh:'城镇化率',
-      calinfo:'',
+      calinfo:'根据所有乡镇数据综合评估',
       reference:'所有乡镇均值',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z36',
       score:{
         judge:{
@@ -245,9 +245,9 @@
     {
       namezh:'人口10年间平均变化率',
       calinfo:'',
-      reference:'',
+      reference:'参考指标 不作比较',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z38'
     },
     ],
@@ -263,7 +263,7 @@
     {
       namezh:'化肥施用强度',
       calinfo:'',
-      reference:'',
+      reference:'国家级生态乡镇标准',
       type:'value',
       unit:'公斤/公顷',
       sign:'Z43',
@@ -277,9 +277,9 @@
     {
       namezh:'农产品剩余物综合利用率',
       calinfo:'',
-      reference:'',
+      reference:'国际级生态村创建标准',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z45',
       score:{
         judge:{
@@ -291,9 +291,9 @@
     {
       namezh:'绿色无公害农产品种植面积比例',
       calinfo:'',
-      reference:'',
+      reference:'国家级生态乡镇标准',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z46',
       score:{
         judge:{
@@ -310,36 +310,37 @@
     {
       namezh:'农田综合生产率',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'数值',
       sign:'Z48',
       score:{
         judge:{
-          'def':'(Max-M)/(Max-Min)',
+          'M<=3500':1,
+          'def':'(Max-M)/(Max-3500)',
         },
       }
     },
     {
       namezh:'农业劳作平均出行距离',
       calinfo:'',
-      reference:'',
+      reference:'根据严寒村镇出行情况调研确定',
       type:'value',
-      unit:'',
+      unit:'米',
       sign:'Z54',
       score:{
         judge:{
           'M<=250':1,
-          'def':'(Max-M)/(Max-3500)',
+          'def':'(Max-M)/(Max-250)',
         },
       }
     },
     {
       namezh:'二三产业GDP贡献率',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z55',
       score:{
         judge:{
@@ -350,9 +351,9 @@
     {
       namezh:'人均农业劳动生产力',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'元/人',
       sign:'Z56',
       score:{
         judge:{
@@ -363,9 +364,9 @@
     {
       namezh:'二、三产业从业人员比例',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z58',
       score:{
         judge:{
@@ -386,9 +387,9 @@
     {
       namezh:'建成区生活污水处理率',
       calinfo:'',
-      reference:'',
+      reference:'国家级生态乡镇标准',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z63',
       score:{
         judge:{
@@ -400,9 +401,9 @@
     {
       namezh:'木柴、秸秆在取暖燃料中的比例',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z64',
       score:{
         judge:{
@@ -414,9 +415,9 @@
     {
       namezh:'生活用水满意度',
       calinfo:'',
-      reference:'',
+      reference:'国家级生态乡镇标准',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z66',
       score:{
         judge:{
@@ -427,9 +428,9 @@
     {
       namezh:'垃圾收集设施覆盖率',
       calinfo:'',
-      reference:'',
+      reference:'黑龙江省生态村建设标准',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z67',
       score:{
         judge:{
@@ -440,9 +441,9 @@
     {
       namezh:'居民绿色出行方式比例',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z68',
       score:{
         judge:{
@@ -455,9 +456,9 @@
     {
       namezh:'居民生活污水无害化处理率',
       calinfo:'',
-      reference:'',
+      reference:'国家级生态乡镇标准',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z70',
       score:{
         judge:{
@@ -470,9 +471,9 @@
     {
       namezh:'居民户均取暖能源消耗量',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'千克标准煤',
       sign:'Z72',
       score:{
         judge:{
@@ -483,9 +484,9 @@
     {
       namezh:'自来水普及率',
       calinfo:'',
-      reference:'',
+      reference:'国家级生态乡镇标准',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z73',
       score:{
         judge:{
@@ -502,7 +503,7 @@
     {
       namezh:'人均道路网密度',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
       unit:'米/平方公里*人',
       sign:'Z74',
@@ -515,9 +516,9 @@
     {
       namezh:'户均用电量',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'KWH',
+      unit:'度/月',
       sign:'Z76',
       score:{
         judge:{
@@ -528,7 +529,7 @@
     {
       namezh:'村镇道路硬化率',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
       unit:'%',
       sign:'Z77',
@@ -542,9 +543,9 @@
     {
       namezh:'道路交通设施满意度',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z79',
       score:{
         judge:{
@@ -566,7 +567,7 @@
     {
       namezh:'中学生均学校建筑面积',
       calinfo:'',
-      reference:'',
+      reference:'农村普通中小学建设标准',
       type:'value',
       unit:'平方米/学生',
       sign:'Z84',
@@ -581,7 +582,7 @@
     {
       namezh:'小学生均学校建筑面积',
       calinfo:'',
-      reference:'',
+      reference:'农村普通中小学建设标准',
       type:'value',
       unit:'平方米/学生',
       sign:'Z86',
@@ -601,9 +602,9 @@
     {
       namezh:'教育公共设施服务满意度',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z88',
       score:{
         judge:{
@@ -615,9 +616,9 @@
     {
       namezh:'医疗公共设施服务满意度',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z89',
       score:{
         judge:{
@@ -629,7 +630,7 @@
     {
       namezh:'人均卫生设施建筑面积',
       calinfo:'',
-      reference:'',
+      reference:'乡镇卫生院建设标准',
       type:'value',
       unit:'平方米/人',
       sign:'Z90',
@@ -645,7 +646,7 @@
     {
       namezh:'公共设施用地比例',
       calinfo:'',
-      reference:'',
+      reference:'镇规划标准',
       type:'value',
       unit:'%',
       sign:'Z92',
@@ -660,9 +661,9 @@
     {
       namezh:'卫生设施千人病床数',
       calinfo:'',
-      reference:'',
+      reference:'乡镇卫生院建设标准',
       type:'value',
-      unit:'',
+      unit:'数值',
       sign:'Z94',
       score:{
         judge:{
@@ -679,14 +680,33 @@
   namezh:'气候与生态环境系统',
   fields:[
   {
+    namezh:'水土保持指数',
+    fields:[
+    {
+      namezh:'水土保持能力',
+      calinfo:'',
+      reference:'',
+      type:'value',
+      unit:'',
+      sign:'Z99',
+      score:{
+        judge:{
+          'def':'(M-Min)/(Max-Min)',
+        },
+      },
+      visible:false,
+    },
+    ],
+  },
+  {
     namezh:'生态脆弱指数',
     fields:[
     {
       namezh:'地形起伏度',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'数值',
       sign:'Z102',
       score:{
         judge:{
@@ -697,13 +717,13 @@
     {
       namezh:'灾害易发度',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'数值',
       sign:'Z105',
       score:{
         judge:{
-          'def':'(Max-M)/(Max-Min)',
+          'def':'(M-Min)/(Max-Min)',
         },
       }
     },
@@ -715,9 +735,9 @@
     {
       namezh:'自然保护区面积比例',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'‰',
+      unit:'%',
       sign:'Z107',
       score:{
         judge:{
@@ -734,9 +754,9 @@
     {
       namezh:'年平均降水',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'毫米/年',
       sign:'Z109',
       score:{
         judge:{
@@ -747,9 +767,9 @@
     {
       namezh:'年均无霜期',
       calinfo:'',
-      reference:'',
+      reference:'根据所有乡镇数据综合评估',
       type:'value',
-      unit:'',
+      unit:'天',
       sign:'Z110',
       score:{
         judge:{
@@ -765,9 +785,9 @@
     {
       namezh:'森林覆盖率',
       calinfo:'',
-      reference:'',
+      reference:'严寒地区绿色村镇体系指标体系',
       type:'value',
-      unit:'',
+      unit:'%',
       sign:'Z111',
       score:{
         judge:{
@@ -780,15 +800,15 @@
     {
       namezh:'本地木本植物指数',
       calinfo:'',
-      reference:'',
+      reference:'城市园林绿化评价标准',
       type:'value',
-      unit:'',
+      unit:'数值',
       sign:'Z113',
       score:{
         judge:{
           '0.9<=M':1,
           'M<0.7':0,
-          'def':'(M-0.7)/0.2',
+          'def':'(M-0.7)/0.002',
         },
       }
     },
